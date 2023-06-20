@@ -10,7 +10,10 @@ This is based on the [popular template on reddit](https://web.archive.org/https:
 
 See [**sample CV**](cv.pdf) and [@jskherman's CV](https://go.jskherman.com/cv):
 
-![Sample CV](cv.png)
+![Sample CV Page 1](https://github.com/jskherman/cv.typ/assets/68434444/ff35d521-d48e-4c32-a6fe-d19ae390512c)
+![Sample CV Page 2](https://github.com/jskherman/cv.typ/assets/68434444/76840b60-4224-495d-a637-30b8ddfa91c3)
+
+
 
 ## Usage
 
