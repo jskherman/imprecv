@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jskherman/cv.typ/main/cv.typ.schema.json
+
 personal:
   name: John Smith L. Doe
   email: johndoe@example.com
