@@ -14,8 +14,8 @@ See [**sample CV**](cv.pdf) and [@jskherman's CV](https://go.jskherman.com/cv):
 <!-- ![Sample CV Page 2](https://github.com/jskherman/cv.typ/assets/68434444/76840b60-4224-495d-a637-30b8ddfa91c3) -->
 
 <div align="center">
-  <img src="https://github.com/jskherman/cv.typ/assets/68434444/ff35d521-d48e-4c32-a6fe-d19ae390512c" alt="Sample CV Page 1" style="float: left; width: 49%; height: auto;">
-  <img src="https://github.com/jskherman/cv.typ/assets/68434444/76840b60-4224-495d-a637-30b8ddfa91c3" alt="Sample CV Page 2" style="float: left; width: 49%; height: auto;">
+  <img src="https://github.com/jskherman/cv.typ/assets/68434444/12cff1a4-76d7-4ce0-97f1-16cd26d61c25" alt="Sample CV Page 1" style="float: left; width: 49%; height: auto;">
+  <img src="https://github.com/jskherman/cv.typ/assets/68434444/52bc078b-35f3-46ba-9561-2d2b4d0f8eb0" alt="Sample CV Page 2" style="float: left; width: 49%; height: auto;">
 </div>
 
 ## Usage
