@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "http://jsonresume.org/schema",
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/jskherman/cv.typ/main/cv.typ.schema.json",
     "title": "@jskherman's CV Typst Schema",
     "description": "Schema for the @jskherman's Curriculum Vitae YAML-Typst Template",
     "type": "object",
