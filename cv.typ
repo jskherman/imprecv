@@ -281,7 +281,7 @@ paper: "us-letter", // a4, us-letter
 #place(
     bottom + right,
     block[
-        #set text(size: 5pt, font: "Consolas")
+        #set text(size: 5pt, font: "Consolas", fill: silver)
         \*This document was last updated on #datetime.today().display("[year]-[month]-[day]") using #strike[LaTeX] #link("https://typst.app")[Typst].
     ]
 )
