@@ -38,4 +38,4 @@ Other options such as the font size and paper size can also be customized by edi
 
 ## License
 
-[MIT](LICENSE)
+[Apache License 2.0](LICENSE)
