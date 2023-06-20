@@ -1,7 +1,7 @@
 #import "utils.typ"
 
 // Load CV Data from YAML
-#let info = yaml("cv.yml")
+#let info = yaml("cv.typ.yml")
 
 // Variables
 #let headingfont = "Linux Libertine" // Set font for headings
