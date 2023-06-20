@@ -1,0 +1,449 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://jsonresume.org/schema",
+    "title": "@jskherman's CV Typst Schema",
+    "description": "Schema for the @jskherman's Curriculum Vitae YAML-Typst Template",
+    "type": "object",
+    "properties": {
+        "personal": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "location": {
+                    "type": "object",
+                    "properties": {
+                        "city": {
+                            "type": "string"
+                        },
+                        "region": {
+                            "type": "string"
+                        },
+                        "postalCode": {
+                            "type": "string"
+                        },
+                        "country": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "city",
+                        "region",
+                        "postalCode",
+                        "country"
+                    ]
+                },
+                "profiles": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "network": {
+                                "type": "string"
+                            },
+                            "username": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string",
+                                "format": "uri"
+                            }
+                        },
+                        "required": [
+                            "network",
+                            "username",
+                            "url"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "email",
+                "phone",
+                "url",
+                "location",
+                "profiles"
+            ]
+        },
+        "work": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "organization": {
+                        "type": "string"
+                    },
+                    "position": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "location": {
+                        "type": "string"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "highlights": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "organization",
+                    "position",
+                    "url",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "highlights"
+                ]
+            }
+        },
+        "education": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "institution": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "area": {
+                        "type": "string"
+                    },
+                    "studyType": {
+                        "type": "string"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "location": {
+                        "type": "string"
+                    },
+                    "honors": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "courses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "highlights": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "institution",
+                    "url",
+                    "area",
+                    "studyType",
+                    "startDate",
+                    "endDate",
+                    "location",
+                    "honors",
+                    "courses",
+                    "highlights"
+                ]
+            }
+        },
+        "affiliations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "organization": {
+                        "type": "string"
+                    },
+                    "position": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "highlights": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "organization",
+                    "position",
+                    "location",
+                    "url",
+                    "startDate",
+                    "endDate",
+                    "highlights"
+                ]
+            }
+        },
+        "awards": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "issuer": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "location": {
+                        "type": "string"
+                    },
+                    "highlights": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "title",
+                    "date",
+                    "issuer",
+                    "url",
+                    "location",
+                    "highlights"
+                ]
+            }
+        },
+        "certificates": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "issuer": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    }
+                },
+                "required": [
+                    "name",
+                    "date",
+                    "issuer",
+                    "url"
+                ]
+            }
+        },
+        "publications": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "publisher": {
+                        "type": "string"
+                    },
+                    "releaseDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    }
+                },
+                "required": [
+                    "name",
+                    "publisher",
+                    "releaseDate",
+                    "url"
+                ]
+            }
+        },
+        "projects": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "affiliation": {
+                        "type": "string"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "highlights": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "name",
+                    "url",
+                    "affiliation",
+                    "startDate",
+                    "endDate",
+                    "highlights"
+                ]
+            }
+        },
+        "skills": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "category": {
+                        "type": "string"
+                    },
+                    "skills": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "category",
+                    "skills"
+                ]
+            }
+        },
+        "languages": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "language": {
+                        "type": "string"
+                    },
+                    "fluency": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "language",
+                    "fluency"
+                ]
+            }
+        },
+        "interests": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "references": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "reference": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri"
+                    }
+                },
+                "required": [
+                    "name",
+                    "reference",
+                    "url"
+                ]
+            }
+        }
+    },
+    "required": [
+        "personal",
+        "work",
+        "education",
+        "affiliations",
+        "awards",
+        "certificates",
+        "publications",
+        "projects",
+        "skills",
+        "languages",
+        "interests",
+        "references"
+    ]
+}
