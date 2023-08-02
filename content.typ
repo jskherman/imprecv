@@ -12,11 +12,13 @@
 #let customrules(doc) = {
     // Add custom document style rules here
 
+    doc
 }
 
 #let cvinit(doc) = {
     doc = setrules(uservars, doc)
     doc = showrules(uservars, doc)
+    doc = customrules(doc)
 
     doc
 }
@@ -27,7 +29,8 @@
 // Content
 #show: doc => cvinit(doc)
 
-#cvheading
+#cvheading(uservars)
+
 #cveducation
 #cvwork
 #cvaffiliations

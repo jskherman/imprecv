@@ -4,13 +4,13 @@
 #let info = yaml("cv.typ.yml")
 
 // Variables
-#let headingfont = "Linux Libertine" // Set font for headings
-#let bodyfont = "Linux Libertine"   // Set font for body
-#let fontsize = 10pt // 10pt, 11pt, 12pt
-#let linespacing = 6pt
+//#let headingfont = "Linux Libertine" // Set font for headings
+//#let bodyfont = "Linux Libertine"   // Set font for body
+//#let fontsize = 10pt // 10pt, 11pt, 12pt
+//#let linespacing = 6pt
 
-#let showAddress = true // true/false Show address in contact info
-#let showNumber = true  // true/false Show phone number in contact info
+//#let showAddress = true // true/false Show address in contact info
+//#let showNumber = true  // true/false Show phone number in contact info
 
 // set rules
 #let setrules(uservars, doc) = {
@@ -70,8 +70,8 @@
 }
 
 // Address
-#let addresstext = {
-    if showAddress {
+#let addresstext(uservars) = {
+    if uservars.showAddress {
         block(width: 100%)[
             #info.personal.location.city, #info.personal.location.region, #info.personal.location.country #info.personal.location.postalCode
             #v(-4pt)
@@ -79,43 +79,43 @@
     } else {none}
 }
 
-// Contact Info
-// Create a list of contact profiles
-#let profiles = (
-    box(link("mailto:" + info.personal.email)),
-    if showNumber {box(link("tel:" + info.personal.phone))} else {none},
-    box(link(info.personal.url)[#info.personal.url.split("//").at(1)]),
-)
-
-// Remove any none elements from the list
-#if none in profiles {
-    profiles.remove(profiles.position(it => it == none))
-}
-
-// Add any social profiles
-#if info.personal.profiles.len() > 0 {
-    for profile in info.personal.profiles {
-        profiles.push(
-            box(link(profile.url)[#profile.url.split("//").at(1)])
-        )
-    }
-}
-
 // Arrange the contact profiles with a diamond separator
-#let contacttext = block(width: 100%)[
+#let contacttext(uservars) = block(width: 100%)[
+    // Contact Info
+    // Create a list of contact profiles
+    #let profiles = (
+        box(link("mailto:" + info.personal.email)),
+        if uservars.showNumber {box(link("tel:" + info.personal.phone))} else {none},
+        box(link(info.personal.url)[#info.personal.url.split("//").at(1)]),
+    )
+
+    // Remove any none elements from the list
+    #if none in profiles {
+        profiles.remove(profiles.position(it => it == none))
+    }
+
+    // Add any social profiles
+    #if info.personal.profiles.len() > 0 {
+        for profile in info.personal.profiles {
+            profiles.push(
+                box(link(profile.url)[#profile.url.split("//").at(1)])
+            )
+        }
+    }
+
     // #set par(justify: false)
-    #set text(font: bodyfont, weight: "medium", size: fontsize * 1)
+    #set text(font: uservars.bodyfont, weight: "medium", size: uservars.fontsize * 1)
     #pad(x: 0em)[
         #profiles.join([#sym.space.en #sym.diamond.filled #sym.space.en])
     ]
 ]
 
 // Create layout of the title + contact info
-#let cvheading = [
+#let cvheading(uservars) = [
     #align(center)[
         = #info.personal.name
-        #addresstext
-        #contacttext
+        #addresstext(uservars)
+        #contacttext(uservars)
         // #v(0.5em)
     ]
 ]
