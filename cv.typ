@@ -112,7 +112,7 @@ paper: "us-letter", // a4, us-letter
     // Create a block layout for each education entry
     #block(width: 100%)[
         // Line 1: Institution and Location
-        *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \ 
+        *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
         // Line 2: Degree and Date Range
         #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
         #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
@@ -137,7 +137,7 @@ paper: "us-letter", // a4, us-letter
     // Create a block layout for each education entry
     #block(width: 100%)[
         // Line 1: Institution and Location
-        *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \ 
+        *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
         // Line 2: Degree and Date Range
         #text(style: "italic")[#w.position] #h(1fr)
         #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
@@ -149,85 +149,93 @@ paper: "us-letter", // a4, us-letter
 ]
 
 // Leadership and Activities
-== Leadership & Activities
+#if info.affiliations != none [
+    == Leadership & Activities
 
-#for org in info.affiliations [
-    // Parse ISO date strings into datetime objects
-    #let start = utils.strpdate(org.startDate)
-    #let end = utils.strpdate(org.endDate)
+    #for org in info.affiliations [
+        // Parse ISO date strings into datetime objects
+        #let start = utils.strpdate(org.startDate)
+        #let end = utils.strpdate(org.endDate)
 
-    // Create a block layout for each education entry
-    #block(width: 100%)[
-        // Line 1: Institution and Location
-        *#link(org.url)[#org.organization]* #h(1fr) *#org.location* \ 
-        // Line 2: Degree and Date Range
-        #text(style: "italic")[#org.position] #h(1fr)
-        #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
-        // Highlights or Description
-        #if org.highlights != none {
-            for hi in org.highlights [
-                - #eval("[" + hi + "]")
-            ]
-        } else {}
+        // Create a block layout for each education entry
+        #block(width: 100%)[
+            // Line 1: Institution and Location
+            *#link(org.url)[#org.organization]* #h(1fr) *#org.location* \
+            // Line 2: Degree and Date Range
+            #text(style: "italic")[#org.position] #h(1fr)
+            #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
+            // Highlights or Description
+            #if org.highlights != none {
+                for hi in org.highlights [
+                    - #eval("[" + hi + "]")
+                ]
+            } else {}
+        ]
     ]
 ]
 
 // Projects
-== Projects
+#if info.projects != none [
+    == Projects
 
-#for project in info.projects [
-    // Parse ISO date strings into datetime objects
-    #let start = utils.strpdate(project.startDate)
-    #let end = utils.strpdate(project.endDate)
+    #for project in info.projects [
+        // Parse ISO date strings into datetime objects
+        #let start = utils.strpdate(project.startDate)
+        #let end = utils.strpdate(project.endDate)
 
-    // Create a block layout for each education entry
-    #block(width: 100%)[
-        // Line 1: Institution and Location
-        *#link(project.url)[#project.name]* \ 
-        // Line 2: Degree and Date Range
-        #text(style: "italic")[#project.affiliation]  #h(1fr) #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
-        // Summary or Description
-        #for hi in project.highlights [
-            - #eval("[" + hi + "]")
+        // Create a block layout for each education entry
+        #block(width: 100%)[
+            // Line 1: Institution and Location
+            *#link(project.url)[#project.name]* \
+            // Line 2: Degree and Date Range
+            #text(style: "italic")[#project.affiliation]  #h(1fr) #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
+            // Summary or Description
+            #for hi in project.highlights [
+                - #eval("[" + hi + "]")
+            ]
         ]
     ]
 ]
 
 // Honors and Awards
-== Honors & Awards
+#if info.awards != none [
+    == Honors & Awards
 
-#for award in info.awards [
-    // Parse ISO date strings into datetime objects
-    #let date = utils.strpdate(award.date)
+    #for award in info.awards [
+        // Parse ISO date strings into datetime objects
+        #let date = utils.strpdate(award.date)
 
-    // Create a block layout for each education entry
-    #block(width: 100%)[
-        // Line 1: Institution and Location
-        *#link(award.url)[#award.title]* #h(1fr) *#award.location*\ 
-        // Line 2: Degree and Date Range
-        Issued by #text(style: "italic")[#award.issuer]  #h(1fr) #utils.monthname(date.month()) #date.year() \
-        // Summary or Description
-        #if award.highlights != none {
-            for hi in award.highlights [
-                - #eval("[" + hi + "]")
-            ]
-        } else {}
+        // Create a block layout for each education entry
+        #block(width: 100%)[
+            // Line 1: Institution and Location
+            *#link(award.url)[#award.title]* #h(1fr) *#award.location*\
+            // Line 2: Degree and Date Range
+            Issued by #text(style: "italic")[#award.issuer]  #h(1fr) #utils.monthname(date.month()) #date.year() \
+            // Summary or Description
+            #if award.highlights != none {
+                for hi in award.highlights [
+                    - #eval("[" + hi + "]")
+                ]
+            } else {}
+        ]
     ]
 ]
 
 // Certifications
-== Licenses & Certifications
+#if info.certificates != none [
+    == Licenses & Certifications
 
-#for cert in info.certificates [
-    // Parse ISO date strings into datetime objects
-    #let date = utils.strpdate(cert.date)
+    #for cert in info.certificates [
+        // Parse ISO date strings into datetime objects
+        #let date = utils.strpdate(cert.date)
 
-    // Create a block layout for each education entry
-    #block(width: 100%)[
-        // Line 1: Institution and Location
-        *#link(cert.url)[#cert.name]* \ 
-        // Line 2: Degree and Date Range
-        Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #utils.monthname(date.month()) #date.year() \
+        // Create a block layout for each education entry
+        #block(width: 100%)[
+            // Line 1: Institution and Location
+            *#link(cert.url)[#cert.name]* \
+            // Line 2: Degree and Date Range
+            Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #utils.monthname(date.month()) #date.year() \
+        ]
     ]
 ]
 
@@ -242,7 +250,7 @@ paper: "us-letter", // a4, us-letter
         // Create a block layout for each education entry
         #block(width: 100%)[
             // Line 1: Institution and Location
-            *#link(pub.url)[#pub.name]* \ 
+            *#link(pub.url)[#pub.name]* \
             // Line 2: Degree and Date Range
             Published on #text(style: "italic")[#pub.publisher]  #h(1fr) #utils.monthname(date.month()) #date.year() \
         ]
@@ -269,7 +277,7 @@ paper: "us-letter", // a4, us-letter
     == References
 
     #for ref in info.references [
-        - *#link(ref.url)[#ref.name]*: "#ref.reference"   
+        - *#link(ref.url)[#ref.name]*: "#ref.reference"
     ]
 ] else {}
 
