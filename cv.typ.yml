@@ -208,6 +208,6 @@ references:
   # You can comment out the entries below if you don't have any references
   # The same goes for the publications
 
-  # - name: Dr. Jane Austin
-  #   reference: John was a great student. He was always eager to learn new things and was very passionate about his studies. As his mentor, I am proud to say that he was also a great leader and was able to lead his team to victory in the 2020 SCG Bangkok Business Challenge Global Competition.
-  #   url: https://janeaustin.com
+  - name: Dr. Jane Austin
+    reference: John was a great student. He was always eager to learn new things and was very passionate about his studies. As his mentor, I am proud to say that he was also a great leader and was able to lead his team to victory in the 2020 SCG Bangkok Business Challenge Global Competition.
+    url: https://janeaustin.com
