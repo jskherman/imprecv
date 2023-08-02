@@ -1,5 +1,8 @@
 #import "cv.typ": *
 
+// Load CV data from YAML
+#let cvdata = yaml("cv.typ.yml")
+
 #let uservars = (
     headingfont: "Linux Libertine", // Set font for headings
     bodyfont: "Linux Libertine",   // Set font for body
@@ -29,14 +32,14 @@
 // Content
 #show: doc => cvinit(doc)
 
-#cvheading(uservars)
+#cvheading(cvdata, uservars)
 
-#cveducation
-#cvwork
-#cvaffiliations
-#cvprojects
-#cvawards
-#cvcertificates
-#cvpublications
-#cvskills
-#cvreferences
+#cveducation(cvdata)
+#cvwork(cvdata)
+#cvaffiliations(cvdata)
+#cvprojects(cvdata)
+#cvawards(cvdata)
+#cvcertificates(cvdata)
+#cvpublications(cvdata)
+#cvskills(cvdata)
+#cvreferences(cvdata)

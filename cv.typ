@@ -1,7 +1,7 @@
 #import "utils.typ"
 
 // Load CV Data from YAML
-#let info = yaml("cv.typ.yml")
+//#let info = yaml("cv.typ.yml")
 
 // Variables
 //#let headingfont = "Linux Libertine" // Set font for headings
@@ -70,7 +70,7 @@
 }
 
 // Address
-#let addresstext(uservars) = {
+#let addresstext(info, uservars) = {
     if uservars.showAddress {
         block(width: 100%)[
             #info.personal.location.city, #info.personal.location.region, #info.personal.location.country #info.personal.location.postalCode
@@ -80,7 +80,7 @@
 }
 
 // Arrange the contact profiles with a diamond separator
-#let contacttext(uservars) = block(width: 100%)[
+#let contacttext(info, uservars) = block(width: 100%)[
     // Contact Info
     // Create a list of contact profiles
     #let profiles = (
@@ -111,17 +111,17 @@
 ]
 
 // Create layout of the title + contact info
-#let cvheading(uservars) = [
+#let cvheading(info, uservars) = [
     #align(center)[
         = #info.personal.name
-        #addresstext(uservars)
-        #contacttext(uservars)
+        #addresstext(info, uservars)
+        #contacttext(info, uservars)
         // #v(0.5em)
     ]
 ]
 
 // Education
-#let cveducation = [
+#let cveducation(info) = [
     == Education
 
     #for edu in info.education [
@@ -148,7 +148,7 @@
 ]
 
 // Work Experience
-#let cvwork = [
+#let cvwork(info) = [
     == Work Experience
 
     #for w in info.work [
@@ -172,7 +172,7 @@
 ]
 
 // Leadership and Activities
-#let cvaffiliations = {
+#let cvaffiliations(info) = {
     if info.affiliations != none [
         == Leadership & Activities
 
@@ -200,7 +200,7 @@
 }
 
 // Projects
-#let cvprojects = [
+#let cvprojects(info) = [
     #if info.projects != none [
         == Projects
 
@@ -225,7 +225,7 @@
 ]
 
 // Honors and Awards
-#let cvawards = [
+#let cvawards(info) = [
     #if info.awards != none [
         == Honors & Awards
 
@@ -251,7 +251,7 @@
 ]
 
 // Certifications
-#let cvcertificates = [
+#let cvcertificates(info) = [
     #if info.certificates != none [
         == Licenses & Certifications
 
@@ -271,7 +271,7 @@
 ]
 
 // Research & Publications
-#let cvpublications = [
+#let cvpublications(info) = [
     #if info.publications != none [
         == Research & Publications
 
@@ -291,12 +291,12 @@
 ]
 
 // Skills, Languages, and Interests
-#let langs = ()
-#for lang in info.languages {
-    langs.push([#lang.language (#lang.fluency)])
-}
+#let cvskills(info) = [
+    #let langs = ()
+    #for lang in info.languages {
+        langs.push([#lang.language (#lang.fluency)])
+    }
 
-#let cvskills = [
     == Skills, Languages, Interests
 
     - *Languages*: #langs.join(", ")
@@ -307,7 +307,7 @@
 ]
 
 // References
-#let cvreferences = [
+#let cvreferences(info) = [
     #if info.references != none [
         == References
 
