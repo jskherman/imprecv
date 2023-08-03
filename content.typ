@@ -12,6 +12,13 @@
     showNumber: true,  // true/false Show phone number in contact info
 )
 
+// setrules and showrules can be overridden by re-declaring it here
+// #let setrules(doc) = {
+//      // Add custom document style rules here
+//
+//      doc
+// }
+
 #let customrules(doc) = {
     // Add custom document style rules here
 
@@ -26,7 +33,7 @@
     doc
 }
 
-// Each section function can also be overridden by re-declaring it here
+// Each section function can be overridden by re-declaring it here
 // #let cveducation = []
 
 // Content
