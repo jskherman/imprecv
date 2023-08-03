@@ -122,26 +122,28 @@
 
 // Education
 #let cveducation(info) = [
-    == Education
+    #if info.education != none [
+        == Education
 
-    #for edu in info.education [
-        // Parse ISO date strings into datetime objects
-        #let start = utils.strpdate(edu.startDate)
-        #let end = utils.strpdate(edu.endDate)
+        #for edu in info.education [
+            // Parse ISO date strings into datetime objects
+            #let start = utils.strpdate(edu.startDate)
+            #let end = utils.strpdate(edu.endDate)
 
-        // Create a block layout for each education entry
-        #block(width: 100%)[
-            // Line 1: Institution and Location
-            *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
-            // Line 2: Degree and Date Range
-            #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
-            #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
-            // Bullet points
-            - *Honors*: #edu.honors.join(", ")
-            - *Courses*: #edu.courses.join(", ")
-            // Highlights or Description
-            #for hi in edu.highlights [
-                - #eval("[" + hi + "]")
+            // Create a block layout for each education entry
+            #block(width: 100%)[
+                // Line 1: Institution and Location
+                *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
+                // Line 2: Degree and Date Range
+                #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
+                #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
+                // Bullet points
+                - *Honors*: #edu.honors.join(", ")
+                - *Courses*: #edu.courses.join(", ")
+                // Highlights or Description
+                #for hi in edu.highlights [
+                    - #eval("[" + hi + "]")
+                ]
             ]
         ]
     ]
@@ -149,31 +151,33 @@
 
 // Work Experience
 #let cvwork(info) = [
-    == Work Experience
+    #if info.work != none [
+        == Work Experience
 
-    #for w in info.work [
-        // Parse ISO date strings into datetime objects
-        #let start = utils.strpdate(w.startDate)
-        #let end = utils.strpdate(w.endDate)
+        #for w in info.work [
+            // Parse ISO date strings into datetime objects
+            #let start = utils.strpdate(w.startDate)
+            #let end = utils.strpdate(w.endDate)
 
-        // Create a block layout for each education entry
-        #block(width: 100%)[
-            // Line 1: Institution and Location
-            *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
-            // Line 2: Degree and Date Range
-            #text(style: "italic")[#w.position] #h(1fr)
-            #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
-            // Highlights or Description
-            #for hi in w.highlights [
-                - #eval("[" + hi + "]")
+            // Create a block layout for each education entry
+            #block(width: 100%)[
+                // Line 1: Institution and Location
+                *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
+                // Line 2: Degree and Date Range
+                #text(style: "italic")[#w.position] #h(1fr)
+                #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
+                // Highlights or Description
+                #for hi in w.highlights [
+                    - #eval("[" + hi + "]")
+                ]
             ]
         ]
     ]
 ]
 
 // Leadership and Activities
-#let cvaffiliations(info) = {
-    if info.affiliations != none [
+#let cvaffiliations(info) = [
+    #if info.affiliations != none [
         == Leadership & Activities
 
         #for org in info.affiliations [
@@ -197,7 +201,7 @@
             ]
         ]
     ]
-}
+]
 
 // Projects
 #let cvprojects(info) = [
@@ -292,18 +296,26 @@
 
 // Skills, Languages, and Interests
 #let cvskills(info) = [
-    #let langs = ()
-    #for lang in info.languages {
-        langs.push([#lang.language (#lang.fluency)])
-    }
+    #if (info.languages != none) or (info.skills != none) or (info.interests != none) [
+        == Skills, Languages, Interests
 
-    == Skills, Languages, Interests
+        #if (info.languages != none) [
+            #let langs = ()
+            #for lang in info.languages {
+                langs.push([#lang.language (#lang.fluency)])
+            }
 
-    - *Languages*: #langs.join(", ")
-    #for group in info.skills [
-        - *#group.category*: #group.skills.join(", ")
+            - *Languages*: #langs.join(", ")
+        ]
+        #if (info.skills != none) [
+            #for group in info.skills [
+                - *#group.category*: #group.skills.join(", ")
+            ]
+        ]
+        #if (info.interests != none) [
+            - *Interests*: #info.interests.join(", ")
+        ]
     ]
-    - *Interests*: #info.interests.join(", ")
 ]
 
 // References
@@ -325,7 +337,6 @@
 #place(
     bottom + right,
     block[
-        // test
         #set text(size: 5pt, font: "Consolas", fill: silver)
         \*This document was last updated on #datetime.today().display("[year]-[month]-[day]") using #strike[LaTeX] #link("https://typst.app")[Typst].
     ]
