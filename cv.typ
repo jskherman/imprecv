@@ -334,13 +334,15 @@
 // =====================================================================
 
 // End Note
-#place(
-    bottom + right,
-    block[
-        #set text(size: 5pt, font: "Consolas", fill: silver)
-        \*This document was last updated on #datetime.today().display("[year]-[month]-[day]") using #strike[LaTeX] #link("https://typst.app")[Typst].
-    ]
-)
+#let placenote = {
+    place(
+        bottom + right,
+        block[
+            #set text(size: 5pt, font: "Consolas", fill: silver)
+            \*This document was last updated on #datetime.today().display("[year]-[month]-[day]") using #strike[LaTeX] #link("https://typst.app")[Typst].
+        ]
+    )
+}
 
 // #place(
 //     bottom + right,

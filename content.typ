@@ -50,3 +50,5 @@
 #cvpublications(cvdata)
 #cvskills(cvdata)
 #cvreferences(cvdata)
+
+#placenote
