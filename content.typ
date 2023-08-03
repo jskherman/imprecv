@@ -51,4 +51,4 @@
 #cvskills(cvdata)
 #cvreferences(cvdata)
 
-#placenote
+#endnote

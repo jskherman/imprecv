@@ -111,27 +111,27 @@
 ]
 
 // Create layout of the title + contact info
-#let cvheading(info, uservars) = [
-    #align(center)[
+#let cvheading(info, uservars) = {
+    align(center)[
         = #info.personal.name
         #addresstext(info, uservars)
         #contacttext(info, uservars)
         // #v(0.5em)
     ]
-]
+}
 
 // Education
-#let cveducation(info) = [
-    #if info.education != none [
+#let cveducation(info) = {
+    if info.education != none [
         == Education
 
-        #for edu in info.education [
+        #for edu in info.education {
             // Parse ISO date strings into datetime objects
-            #let start = utils.strpdate(edu.startDate)
-            #let end = utils.strpdate(edu.endDate)
+            let start = utils.strpdate(edu.startDate)
+            let end = utils.strpdate(edu.endDate)
 
             // Create a block layout for each education entry
-            #block(width: 100%)[
+            block(width: 100%)[
                 // Line 1: Institution and Location
                 *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
                 // Line 2: Degree and Date Range
@@ -145,22 +145,22 @@
                     - #eval("[" + hi + "]")
                 ]
             ]
-        ]
+        }
     ]
-]
+}
 
 // Work Experience
-#let cvwork(info) = [
-    #if info.work != none [
+#let cvwork(info) = {
+    if info.work != none [
         == Work Experience
 
-        #for w in info.work [
+        #for w in info.work {
             // Parse ISO date strings into datetime objects
-            #let start = utils.strpdate(w.startDate)
-            #let end = utils.strpdate(w.endDate)
+            let start = utils.strpdate(w.startDate)
+            let end = utils.strpdate(w.endDate)
 
             // Create a block layout for each education entry
-            #block(width: 100%)[
+            block(width: 100%)[
                 // Line 1: Institution and Location
                 *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
                 // Line 2: Degree and Date Range
@@ -171,22 +171,22 @@
                     - #eval("[" + hi + "]")
                 ]
             ]
-        ]
+        }
     ]
-]
+}
 
 // Leadership and Activities
-#let cvaffiliations(info) = [
-    #if info.affiliations != none [
+#let cvaffiliations(info) = {
+    if info.affiliations != none [
         == Leadership & Activities
 
-        #for org in info.affiliations [
+        #for org in info.affiliations {
             // Parse ISO date strings into datetime objects
-            #let start = utils.strpdate(org.startDate)
-            #let end = utils.strpdate(org.endDate)
+            let start = utils.strpdate(org.startDate)
+            let end = utils.strpdate(org.endDate)
 
             // Create a block layout for each education entry
-            #block(width: 100%)[
+            block(width: 100%)[
                 // Line 1: Institution and Location
                 *#link(org.url)[#org.organization]* #h(1fr) *#org.location* \
                 // Line 2: Degree and Date Range
@@ -199,22 +199,22 @@
                     ]
                 } else {}
             ]
-        ]
+        }
     ]
-]
+}
 
 // Projects
-#let cvprojects(info) = [
-    #if info.projects != none [
+#let cvprojects(info) = {
+    if info.projects != none [
         == Projects
 
-        #for project in info.projects [
+        #for project in info.projects {
             // Parse ISO date strings into datetime objects
-            #let start = utils.strpdate(project.startDate)
-            #let end = utils.strpdate(project.endDate)
+            let start = utils.strpdate(project.startDate)
+            let end = utils.strpdate(project.endDate)
 
             // Create a block layout for each education entry
-            #block(width: 100%)[
+            block(width: 100%)[
                 // Line 1: Institution and Location
                 *#link(project.url)[#project.name]* \
                 // Line 2: Degree and Date Range
@@ -224,21 +224,21 @@
                     - #eval("[" + hi + "]")
                 ]
             ]
-        ]
+        }
     ]
-]
+}
 
 // Honors and Awards
-#let cvawards(info) = [
-    #if info.awards != none [
+#let cvawards(info) = {
+    if info.awards != none [
         == Honors & Awards
 
-        #for award in info.awards [
+        #for award in info.awards {
             // Parse ISO date strings into datetime objects
-            #let date = utils.strpdate(award.date)
+            let date = utils.strpdate(award.date)
 
             // Create a block layout for each education entry
-            #block(width: 100%)[
+            block(width: 100%)[
                 // Line 1: Institution and Location
                 *#link(award.url)[#award.title]* #h(1fr) *#award.location*\
                 // Line 2: Degree and Date Range
@@ -250,53 +250,53 @@
                     ]
                 } else {}
             ]
-        ]
+        }
     ]
-]
+}
 
 // Certifications
-#let cvcertificates(info) = [
-    #if info.certificates != none [
+#let cvcertificates(info) = {
+    if info.certificates != none [
         == Licenses & Certifications
 
-        #for cert in info.certificates [
+        #for cert in info.certificates {
             // Parse ISO date strings into datetime objects
-            #let date = utils.strpdate(cert.date)
+            let date = utils.strpdate(cert.date)
 
             // Create a block layout for each education entry
-            #block(width: 100%)[
+            block(width: 100%)[
                 // Line 1: Institution and Location
                 *#link(cert.url)[#cert.name]* \
                 // Line 2: Degree and Date Range
                 Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #utils.monthname(date.month()) #date.year() \
             ]
-        ]
+        }
     ]
-]
+}
 
 // Research & Publications
-#let cvpublications(info) = [
-    #if info.publications != none [
+#let cvpublications(info) = {
+    if info.publications != none [
         == Research & Publications
 
-        #for pub in info.publications [
+        #for pub in info.publications {
             // Parse ISO date strings into datetime objects
-            #let date = utils.strpdate(pub.releaseDate)
+            let date = utils.strpdate(pub.releaseDate)
 
             // Create a block layout for each education entry
-            #block(width: 100%)[
+            block(width: 100%)[
                 // Line 1: Institution and Location
                 *#link(pub.url)[#pub.name]* \
                 // Line 2: Degree and Date Range
                 Published on #text(style: "italic")[#pub.publisher]  #h(1fr) #utils.monthname(date.month()) #date.year() \
             ]
-        ]
+        }
     ]
-]
+}
 
 // Skills, Languages, and Interests
-#let cvskills(info) = [
-    #if (info.languages != none) or (info.skills != none) or (info.interests != none) [
+#let cvskills(info) = {
+    if (info.languages != none) or (info.skills != none) or (info.interests != none) [
         == Skills, Languages, Interests
 
         #if (info.languages != none) [
@@ -304,7 +304,6 @@
             #for lang in info.languages {
                 langs.push([#lang.language (#lang.fluency)])
             }
-
             - *Languages*: #langs.join(", ")
         ]
         #if (info.skills != none) [
@@ -316,25 +315,25 @@
             - *Interests*: #info.interests.join(", ")
         ]
     ]
-]
+}
 
 // References
-#let cvreferences(info) = [
-    #if info.references != none [
+#let cvreferences(info) = {
+    if info.references != none [
         == References
 
         #for ref in info.references [
             - *#link(ref.url)[#ref.name]*: "#ref.reference"
         ]
     ] else {}
-]
+}
 
 // #cvreferences
 
 // =====================================================================
 
 // End Note
-#let placenote = {
+#let endnote = {
     place(
         bottom + right,
         block[
