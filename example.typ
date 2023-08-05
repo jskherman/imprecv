@@ -1,7 +1,7 @@
 #import "cv.typ": *
 
 // Load CV data from YAML
-#let cvdata = yaml("cv.typ.yml")
+#let cvdata = yaml("example.yml")
 
 #let uservars = (
     headingfont: "Linux Libertine", // Set font for headings
