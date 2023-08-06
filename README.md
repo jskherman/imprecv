@@ -1,17 +1,18 @@
 # Typst CV Template
 
-## Description
+<p align="center">
+  <a href="LICENSE">
+    <img alt="Apache-2 License" src="https://img.shields.io/badge/license-Apache%202-brightgreen"/>
+  </a>
+</p>
 
-A no-frills CV template for [typst.app](https://typst.app) that uses a YAML file for data input.
+A no-frills CV template for [Typst](https://github.com/typst/typst) that uses a YAML file for data input.
 
-This is based on the [popular template on reddit](https://web.archive.org/https://old.reddit.com/r/jobs/comments/7y8k6p/im_an_exrecruiter_for_some_of_the_top_companies/) by [u/SheetsGiggles](https://web.archive.org/https://old.reddit.com/user/SheetsGiggles) and the recommendations of the [r/EngineeringResumes wiki](https://web.archive.org/https://old.reddit.com/r/EngineeringResumes/comments/m2cc65/new_and_improved_wiki).
+This is based on the [popular template on Reddit](https://web.archive.org/https://old.reddit.com/r/jobs/comments/7y8k6p/im_an_exrecruiter_for_some_of_the_top_companies/) by [u/SheetsGiggles](https://web.archive.org/https://old.reddit.com/user/SheetsGiggles) and the recommendations of the [r/EngineeringResumes wiki](https://web.archive.org/https://old.reddit.com/r/EngineeringResumes/comments/m2cc65/new_and_improved_wiki).
 
 ## Demo
 
-See [**sample CV**](cv.pdf) and [@jskherman's CV](https://go.jskherman.com/cv):
-
-<!-- ![Sample CV Page 1](https://github.com/jskherman/cv.typ/assets/68434444/ff35d521-d48e-4c32-a6fe-d19ae390512c) -->
-<!-- ![Sample CV Page 2](https://github.com/jskherman/cv.typ/assets/68434444/76840b60-4224-495d-a637-30b8ddfa91c3) -->
+See [**example CV**](example.pdf) and [@jskherman's CV](https://go.jskherman.com/cv):
 
 <div align="center">
   <img src="https://github.com/jskherman/cv.typ/assets/68434444/12cff1a4-76d7-4ce0-97f1-16cd26d61c25" alt="Sample CV Page 1" style="float: left; width: 49%; height: auto;">
@@ -20,22 +21,42 @@ See [**sample CV**](cv.pdf) and [@jskherman's CV](https://go.jskherman.com/cv):
 
 ## Usage
 
-### With [typst.app](https://typst.app)
+`cv.typ` is intended to be used by importing `cv.typ` file from a "content" file
+([`example.typ`](example.typ) as example). This content file is used to call the functions which
+apply document style & show CV components and load CV data from a YAML file
+([`example.yml`](example.yml) as example). Inside the content file you can modify several style
+variables and even override existing function implementations to your heart's content.
 
-1. Upload the [`cv.typ`](cv.typ), [`utils.typ`](utils.typ), and [`cv.typ.yml`](cv.typ.yml) files to your Typst project.
-2. In your project, Start editing `cv.typ` for the layout and `cv.typ.yml` for the data.
+### With [Typst CLI](https://github.com/typst/typst) (Recommended)
 
-### With [Typst CLI](https://github.com/typst/typst)
+The recommended usage with Typst CLI is by adding this `cv.typ` repository as a [git
+submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). This way, upstream changes can be
+pulled easily.
 
-Fork and clone this repo, then run the command:
-```bash
-typst watch cv.typ
+```
+<your-cv-repo>/
+├── cv.typ/ // git submodule 
+|   └── cv.typ
+├── <your-cv-content>.typ // #import "cv.typ/cv.typ": *
+└── <your-cv-data>.yml
 ```
 
-The default font is Linux Libertine, which you can customize in `cv.typ`. You can run `typst fonts` to see other fonts that can be used instead.
+1. Add [jskherman/cv.typ](https://github.com/jskherman/cv.typ) as git submodule.
+into your CV's repo.
+```
+git submodule add https://github.com/jskherman/cv.typ
+```
+2. Copy and rename `example.typ` and `example.yml` to your CV's repo root directory. Use these files
+   as template/starting point for your CV.
+3. Run the following to command to automatically recompile your CV file on changes.
+```bash
+typst watch <your-cv-content>.typ
+```
 
-Other options such as the font size and paper size can also be customized by editing `cv.typ`.
+### With [typst.app](https://typst.app)
 
-## License
-
-[Apache License 2.0](LICENSE)
+1. Upload the [`cv.typ`](cv.typ), [`utils.typ`](utils.typ), [`example.typ`](example.typ). and
+   [`example.yml`](example.yml) files to your Typst project. You may rename `example.typ` and
+   `example.yml`.
+2. Use `example.typ` and `example.yml` (or whatever the names after you rename it) as
+   template/starting point for your CV.
