@@ -21,11 +21,12 @@ See [**example CV**](example.pdf) and [@jskherman's CV](https://go.jskherman.com
 
 ## Usage
 
-`cv.typ` is intended to be used by importing `cv.typ` file from a "content" file
-([`example.typ`](example.typ) as example). This content file is used to call the functions which
-apply document style & show CV components and load CV data from a YAML file
-([`example.yml`](example.yml) as example). Inside the content file you can modify several style
-variables and even override existing function implementations to your heart's content.
+`cv.typ` is intended to be used by importing the `cv.typ` file from a "content"
+file (see [`example.typ`](example.typ) as an example). In this content file,
+call the functions which apply document styles, show CV components, and load CV
+data from a YAML file (see [`example.yml`](example.yml) as an example). Inside
+the content file you can modify several style variables and even override
+existing function implementations to your own needs and preferences.
 
 ### With [Typst CLI](https://github.com/typst/typst) (Recommended)
 
@@ -43,20 +44,24 @@ pulled easily.
 
 1. Add [jskherman/cv.typ](https://github.com/jskherman/cv.typ) as git submodule.
 into your CV's repo.
-```
-git submodule add https://github.com/jskherman/cv.typ
-```
+
+  ```
+  git submodule add https://github.com/jskherman/cv.typ
+  ```
+
 2. Copy and rename `example.typ` and `example.yml` to your CV's repo root directory. Use these files
    as template/starting point for your CV.
+
 3. Run the following to command to automatically recompile your CV file on changes.
-```bash
-typst watch <your-cv-content>.typ
-```
+
+  ```bash
+  typst watch <your-cv-content>.typ
+  ```
 
 ### With [typst.app](https://typst.app)
 
 1. Upload the [`cv.typ`](cv.typ), [`utils.typ`](utils.typ), [`example.typ`](example.typ). and
    [`example.yml`](example.yml) files to your Typst project. You may rename `example.typ` and
    `example.yml`.
-2. Use `example.typ` and `example.yml` (or whatever the names after you rename it) as
+2. Use `example.typ` and `example.yml` (or whatever the names after you rename it) as a
    template/starting point for your CV.
