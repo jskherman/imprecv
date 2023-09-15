@@ -32,7 +32,10 @@
                             "type": "string"
                         },
                         "postalCode": {
-                            "type": "string"
+                            "type": [
+                                "integer",
+                                "string"
+                            ]
                         },
                         "country": {
                             "type": "string"
@@ -105,7 +108,10 @@
                         "format": "date"
                     },
                     "highlights": {
-                        "type": "array",
+                        "type": [
+                            "array",
+                            "null"
+                        ],
                         "items": {
                             "type": "string"
                         }
