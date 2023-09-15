@@ -136,7 +136,7 @@
                 *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
                 // Line 2: Degree and Date Range
                 #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
-                #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
+                #start.display("[month repr:short]") #start.year() #sym.dash.en #end.display("[month repr:short]") #end.year() \
                 // Bullet points
                 - *Honors*: #edu.honors.join(", ")
                 - *Courses*: #edu.courses.join(", ")
@@ -165,7 +165,7 @@
                 *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
                 // Line 2: Degree and Date Range
                 #text(style: "italic")[#w.position] #h(1fr)
-                #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
+                #start.display("[month repr:short]") #start.year() #sym.dash.en #end.display("[month repr:short]") #end.year() \
                 // Highlights or Description
                 #for hi in w.highlights [
                     - #eval("[" + hi + "]")
@@ -191,7 +191,7 @@
                 *#link(org.url)[#org.organization]* #h(1fr) *#org.location* \
                 // Line 2: Degree and Date Range
                 #text(style: "italic")[#org.position] #h(1fr)
-                #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
+                #start.display("[month repr:short]") #start.year() #sym.dash.en #end.display("[month repr:short]") #end.year() \
                 // Highlights or Description
                 #if org.highlights != none {
                     for hi in org.highlights [
@@ -218,7 +218,7 @@
                 // Line 1: Institution and Location
                 *#link(project.url)[#project.name]* \
                 // Line 2: Degree and Date Range
-                #text(style: "italic")[#project.affiliation]  #h(1fr) #utils.monthname(start.month()) #start.year() #sym.dash.en #utils.monthname(end.month()) #end.year() \
+                #text(style: "italic")[#project.affiliation]  #h(1fr) #start.display("[month repr:short]") #start.year() #sym.dash.en #end.display("[month repr:short]") #end.year() \
                 // Summary or Description
                 #for hi in project.highlights [
                     - #eval("[" + hi + "]")
@@ -242,7 +242,7 @@
                 // Line 1: Institution and Location
                 *#link(award.url)[#award.title]* #h(1fr) *#award.location*\
                 // Line 2: Degree and Date Range
-                Issued by #text(style: "italic")[#award.issuer]  #h(1fr) #utils.monthname(date.month()) #date.year() \
+                Issued by #text(style: "italic")[#award.issuer]  #h(1fr) #date.display("[month repr:short]") #date.year() \
                 // Summary or Description
                 #if award.highlights != none {
                     for hi in award.highlights [
@@ -268,7 +268,7 @@
                 // Line 1: Institution and Location
                 *#link(cert.url)[#cert.name]* \
                 // Line 2: Degree and Date Range
-                Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #utils.monthname(date.month()) #date.year() \
+                Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #date.display("[month repr:short]") #date.year() \
             ]
         }
     ]
@@ -288,7 +288,7 @@
                 // Line 1: Institution and Location
                 *#link(pub.url)[#pub.name]* \
                 // Line 2: Degree and Date Range
-                Published on #text(style: "italic")[#pub.publisher]  #h(1fr) #utils.monthname(date.month()) #date.year() \
+                Published on #text(style: "italic")[#pub.publisher]  #h(1fr) #date.display("[month repr:short]") #date.year() \
             ]
         }
     ]
