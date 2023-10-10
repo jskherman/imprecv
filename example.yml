@@ -24,7 +24,7 @@ work:
     url: https://example.com
     location: Remote / New York, New York
     startDate: 2021-08-01
-    endDate: 2023-05-31
+    endDate: "present"
     highlights:
       - This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?
       - "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."

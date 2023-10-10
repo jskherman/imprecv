@@ -28,10 +28,15 @@
 
 #let strpdate(isodate) = {
     let date = ""
-    date = datetime(
-        year: int(isodate.slice(0, 4)),
-        month: int(isodate.slice(5, 7)),
-        day: int(isodate.slice(8, 10))
-    )
-    date
+    if lower(isodate) != "present" {
+        date = datetime(
+            year: int(isodate.slice(0, 4)),
+            month: int(isodate.slice(5, 7)),
+            day: int(isodate.slice(8, 10))
+        )
+        date = date.display("[month repr:short]") + " " + date.display("[year repr:full]")
+    } else if lower(isodate) == "present" {
+        date = "Present"
+    }
+    return date
 }
