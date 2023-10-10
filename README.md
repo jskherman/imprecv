@@ -12,11 +12,11 @@ This is based on the [popular template on Reddit](https://web.archive.org/https:
 
 ## Demo
 
-See [**example CV**](example.pdf) and [@jskherman's CV](https://go.jskherman.com/cv):
+See [**example CV**](https://github.com/jskherman/cv.typ/releases/latest/download/example.pdf) and [@jskherman's CV](https://go.jskherman.com/cv):
 
 <div align="center">
-  <img src="https://github.com/jskherman/cv.typ/assets/68434444/12cff1a4-76d7-4ce0-97f1-16cd26d61c25" alt="Sample CV Page 1" style="float: left; width: 49%; height: auto;">
-  <img src="https://github.com/jskherman/cv.typ/assets/68434444/52bc078b-35f3-46ba-9561-2d2b4d0f8eb0" alt="Sample CV Page 2" style="float: left; width: 49%; height: auto;">
+  <img src="https://github.com/jskherman/cv.typ/assets/68434444/1e2f786d-b214-4c72-a5e4-24fba0f1c05c" alt="Sample CV Page 1" style="float: left; width: 49%; height: auto;">
+  <img src="https://github.com/jskherman/cv.typ/assets/68434444/f864e4b8-ee17-4808-b7f2-93643dcdd078" alt="Sample CV Page 2" style="float: left; width: 49%; height: auto;">
 </div>
 
 ## Usage
