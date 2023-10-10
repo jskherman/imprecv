@@ -122,14 +122,12 @@
 
 // Education
 #let cveducation(info) = {
-    if info.education != none [
+    if info.education != none {block(breakable: false)[
         == Education
-
         #for edu in info.education {
             // Parse ISO date strings into datetime objects
             let start = utils.strpdate(edu.startDate)
             let end = utils.strpdate(edu.endDate)
-
             // Create a block layout for each education entry
             block(width: 100%)[
                 // Line 1: Institution and Location
@@ -139,18 +137,15 @@
                 #start #sym.dash.en #end
                 - *Honors*: #edu.honors.join(", ")
                 - *Courses*: #edu.courses.join(", ")
-                // Highlights or Description
-                #for hi in edu.highlights [
-                    - #eval("[" + hi + "]")
-                ]
+                #for hi in edu.highlights [- #eval("[" + hi + "]")]
             ]
         }
-    ]
+    ]}
 }
 
 // Work Experience
 #let cvwork(info) = {
-    if info.work != none [
+    if info.work != none {block(breakable: false)[
         == Work Experience
 
         #for w in info.work {
@@ -171,12 +166,12 @@
                 ]
             ]
         }
-    ]
+    ]}
 }
 
 // Leadership and Activities
 #let cvaffiliations(info) = {
-    if info.affiliations != none [
+    if info.affiliations != none {block(breakable: false)[
         == Leadership & Activities
 
         #for org in info.affiliations {
@@ -199,12 +194,12 @@
                 } else {}
             ]
         }
-    ]
+    ]}
 }
 
 // Projects
 #let cvprojects(info) = {
-    if info.projects != none [
+    if info.projects != none {block(breakable: false)[
         == Projects
 
         #for project in info.projects {
@@ -224,12 +219,12 @@
                 ]
             ]
         }
-    ]
+    ]}
 }
 
 // Honors and Awards
 #let cvawards(info) = {
-    if info.awards != none [
+    if info.awards != none {block(breakable: false)[
         == Honors & Awards
 
         #for award in info.awards {
@@ -250,12 +245,12 @@
                 } else {}
             ]
         }
-    ]
+    ]}
 }
 
 // Certifications
 #let cvcertificates(info) = {
-    if info.certificates != none [
+    if info.certificates != none {block(breakable: false)[
         == Licenses & Certifications
 
         #for cert in info.certificates {
@@ -270,12 +265,12 @@
                 Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #date \
             ]
         }
-    ]
+    ]}
 }
 
 // Research & Publications
 #let cvpublications(info) = {
-    if info.publications != none [
+    if info.publications != none {block(breakable: false)[
         == Research & Publications
 
         #for pub in info.publications {
@@ -290,12 +285,12 @@
                 Published on #text(style: "italic")[#pub.publisher]  #h(1fr) #date \
             ]
         }
-    ]
+    ]}
 }
 
 // Skills, Languages, and Interests
 #let cvskills(info) = {
-    if (info.languages != none) or (info.skills != none) or (info.interests != none) [
+    if (info.languages != none) or (info.skills != none) or (info.interests != none) {block(breakable: false)[
         == Skills, Languages, Interests
 
         #if (info.languages != none) [
@@ -313,18 +308,18 @@
         #if (info.interests != none) [
             - *Interests*: #info.interests.join(", ")
         ]
-    ]
+    ]}
 }
 
 // References
 #let cvreferences(info) = {
-    if info.references != none [
+    if info.references != none {block(breakable: false)[
         == References
 
         #for ref in info.references [
             - *#link(ref.url)[#ref.name]*: "#ref.reference"
         ]
-    ] else {}
+    ]} else {}
 }
 
 // #cvreferences
