@@ -86,7 +86,9 @@
     #let profiles = (
         box(link("mailto:" + info.personal.email)),
         if uservars.showNumber {box(link("tel:" + info.personal.phone))} else {none},
-        box(link(info.personal.url)[#info.personal.url.split("//").at(1)]),
+        if info.personal.url != none {
+            box(link(info.personal.url)[#info.personal.url.split("//").at(1)])
+        }
     )
 
     // Remove any none elements from the list
@@ -131,7 +133,11 @@
             // Create a block layout for each education entry
             block(width: 100%)[
                 // Line 1: Institution and Location
-                *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
+                #if edu.url != none [
+                    *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
+                ] else [
+                    *#edu.institution* #h(1fr) *#edu.location* \
+                ]
                 // Line 2: Degree and Date Range
                 #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
                 #start #sym.dash.en #end
@@ -156,7 +162,11 @@
             // Create a block layout for each education entry
             block(width: 100%)[
                 // Line 1: Institution and Location
-                *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
+                #if w.url != none [
+                    *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
+                ] else [
+                    *#w.organization* #h(1fr) *#w.location* \
+                ]
                 // Line 2: Degree and Date Range
                 #text(style: "italic")[#w.position] #h(1fr)
                 #start #sym.dash.en #end \
@@ -182,7 +192,11 @@
             // Create a block layout for each education entry
             block(width: 100%)[
                 // Line 1: Institution and Location
-                *#link(org.url)[#org.organization]* #h(1fr) *#org.location* \
+                #if org.url != none [
+                    *#link(org.url)[#org.organization]* #h(1fr) *#org.location* \
+                ] else [
+                    *#org.organization* #h(1fr) *#org.location* \
+                ]
                 // Line 2: Degree and Date Range
                 #text(style: "italic")[#org.position] #h(1fr)
                 #start #sym.dash.en #end \
@@ -210,7 +224,11 @@
             // Create a block layout for each education entry
             block(width: 100%)[
                 // Line 1: Institution and Location
-                *#link(project.url)[#project.name]* \
+                #if project.url != none [
+                    *#link(project.url)[#project.name]* \
+                ] else [
+                    *#project.name* \
+                ]
                 // Line 2: Degree and Date Range
                 #text(style: "italic")[#project.affiliation]  #h(1fr) #start #sym.dash.en #end \
                 // Summary or Description
@@ -234,7 +252,12 @@
             // Create a block layout for each education entry
             block(width: 100%)[
                 // Line 1: Institution and Location
-                *#link(award.url)[#award.title]* #h(1fr) *#award.location*\
+                #if award.url != none [
+                    *#link(award.url)[#award.title]* #h(1fr) *#award.location* \
+                ] else [
+                    *#award.title* #h(1fr) *#award.location* \
+                ]
+
                 // Line 2: Degree and Date Range
                 Issued by #text(style: "italic")[#award.issuer]  #h(1fr) #date \
                 // Summary or Description
@@ -260,7 +283,11 @@
             // Create a block layout for each education entry
             block(width: 100%)[
                 // Line 1: Institution and Location
-                *#link(cert.url)[#cert.name]* \
+                #if cert.url != none [
+                    *#link(cert.url)[#cert.name]* \
+                ] else [
+                    *#cert.name* \
+                ]
                 // Line 2: Degree and Date Range
                 Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #date \
             ]
@@ -280,7 +307,11 @@
             // Create a block layout for each education entry
             block(width: 100%)[
                 // Line 1: Institution and Location
-                *#link(pub.url)[#pub.name]* \
+                #if pub.url != none [
+                    *#link(pub.url)[#pub.name]* \
+                ] else [
+                    *#pub.name* \
+                ]
                 // Line 2: Degree and Date Range
                 Published on #text(style: "italic")[#pub.publisher]  #h(1fr) #date \
             ]
@@ -316,9 +347,13 @@
     if info.references != none {block(breakable: false)[
         == References
 
-        #for ref in info.references [
-            - *#link(ref.url)[#ref.name]*: "#ref.reference"
-        ]
+        #for ref in info.references {
+            if ref.url != none [
+                - *#link(ref.url)[#ref.name]*: "#ref.reference"
+            ] else [
+                - *#ref.name*: "#ref.reference"
+            ]
+        }
     ]} else {}
 }
 
