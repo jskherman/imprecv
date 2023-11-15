@@ -61,7 +61,7 @@ education:
       - "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow"
       - "*Activites*: Debating, Chess, Cricket"
   - institution: Harvard University
-    url: https://example.com/
+    url:
     area: Computer Science
     studyType: Bachelor of Science
     startDate: 2017-08-01
@@ -94,7 +94,7 @@ affiliations:
   - organization: London Bridge Toastmasters Club
     position: Member
     location: City of London, United Kingdom
-    url: ""
+    url:
     startDate: 2022-06-15
     endDate: 2023-06-30
     highlights:
@@ -106,14 +106,14 @@ awards:
   - title: Champion in the Division A District X Speech Evaluation Contest
     date: 2023-05-09
     issuer: Toastmasters International
-    url: ""
+    url:
     location: City of London, United Kingdom
     highlights:
       # - Champion in the Division A District X Speech Evaluation Contest of Toastmasters International in London.
   - title: "Finalist in the 2020 SCG Bangkok Business Challenge Global Competition"
     date: 2020-07-12
     issuer: Sasin School of Management
-    url: ""
+    url:
     location: Bangkok, Thailand
     highlights:
       - "Made it to the Top 5 (selected from over 100 teams) in the world for the semi-finals of the SCG Bangkok Business Challenge #sym.at Sasin 2020 Global Competition held at Bangkok, Thailand from July 7-12, 2020."
