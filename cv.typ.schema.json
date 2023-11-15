@@ -264,7 +264,6 @@
                     },
                     "endDate": {
                         "type": "string",
-                        "format": "date",
                         "title": "The endDate Schema",
                         "examples": [
                             "present",
@@ -414,7 +413,6 @@
                     },
                     "endDate": {
                         "type": "string",
-                        "format": "date",
                         "title": "The endDate Schema",
                         "examples": [
                             "2021-06-30"
@@ -670,7 +668,6 @@
                     },
                     "endDate": {
                         "type": "string",
-                        "format": "date",
                         "title": "The endDate Schema",
                         "examples": [
                             "2021-05-30",
@@ -799,7 +796,7 @@
                         ]
                     },
                     "url": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "format": "uri",
                         "title": "The url Schema",
                         "examples": [
@@ -1071,7 +1068,6 @@
                     },
                     "endDate": {
                         "type": "string",
-                        "format": "date",
                         "default": "",
                         "title": "The endDate Schema",
                         "examples": [
