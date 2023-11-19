@@ -89,12 +89,7 @@
         if info.personal.url != none {
             box(link(info.personal.url)[#info.personal.url.split("//").at(1)])
         }
-    )
-
-    // Remove any none elements from the list
-    #if none in profiles {
-        profiles.remove(profiles.position(it => it == none))
-    }
+    ).filter(it => it != none)
 
     // Add any social profiles
     #if info.personal.profiles.len() > 0 {
