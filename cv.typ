@@ -89,7 +89,7 @@
         if info.personal.url != none {
             box(link(info.personal.url)[#info.personal.url.split("//").at(1)])
         }
-    ).filter(it => it != none)
+    ).filter(it => it != none) // Filter out none elements from the profile array
 
     // Add any social profiles
     #if info.personal.profiles.len() > 0 {
