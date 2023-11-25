@@ -512,17 +512,17 @@
                             "title": "A Schema",
                             "examples": [
                                 "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                                "*Activites*: Debating, Chess, Cricket"
+                                "*Activities*: Debating, Chess, Cricket"
                             ]
                         },
                         "examples": [
                             [
                                 "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                                "*Activites*: Debating, Chess, Cricket"
+                                "*Activities*: Debating, Chess, Cricket"
                             ],
                             [
                                 "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                                "*Activites*: Debating, Chess, Cricket"
+                                "*Activities*: Debating, Chess, Cricket"
                             ]
                         ]
                     }
@@ -549,7 +549,7 @@
                         ],
                         "highlights": [
                             "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                            "*Activites*: Debating, Chess, Cricket"
+                            "*Activities*: Debating, Chess, Cricket"
                         ]
                     },
                     {
@@ -573,7 +573,7 @@
                         ],
                         "highlights": [
                             "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                            "*Activites*: Debating, Chess, Cricket"
+                            "*Activities*: Debating, Chess, Cricket"
                         ]
                     }
                 ]
@@ -601,7 +601,7 @@
                         ],
                         "highlights": [
                             "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                            "*Activites*: Debating, Chess, Cricket"
+                            "*Activities*: Debating, Chess, Cricket"
                         ]
                     },
                     {
@@ -625,7 +625,7 @@
                         ],
                         "highlights": [
                             "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                            "*Activites*: Debating, Chess, Cricket"
+                            "*Activities*: Debating, Chess, Cricket"
                         ]
                     }
                 ]
@@ -1652,7 +1652,7 @@
                     ],
                     "highlights": [
                         "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                        "*Activites*: Debating, Chess, Cricket"
+                        "*Activities*: Debating, Chess, Cricket"
                     ]
                 },
                 {
@@ -1676,7 +1676,7 @@
                     ],
                     "highlights": [
                         "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                        "*Activites*: Debating, Chess, Cricket"
+                        "*Activities*: Debating, Chess, Cricket"
                     ]
                 }
             ],
