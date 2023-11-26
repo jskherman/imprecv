@@ -58,6 +58,8 @@ into your CV's repo.
   typst watch <your-cv-content>.typ
   ```
 
+Take a look at the [example setup](https://github.com/jskherman/cv.typ-example-repo) for ideas on how to get started. It includes a GitHub action workflow to compile the Typst files to PDF and upload it to Cloudflare R2.
+
 ### With [typst.app](https://typst.app)
 
 1. Upload the [`cv.typ`](cv.typ), [`utils.typ`](utils.typ), [`example.typ`](example.typ). and
