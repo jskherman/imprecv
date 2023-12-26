@@ -125,6 +125,19 @@
             // Parse ISO date strings into datetime objects
             let start = utils.strpdate(edu.startDate)
             let end = utils.strpdate(edu.endDate)
+
+            let edu-items = ""
+            if edu.honors != none {edu-items = edu-items + "- *Honors*: " + edu.honors.join(", ") + "\n"}
+            if edu.courses != none {edu-items = edu-items + "- *Courses*: " + edu.courses.join(", ") + "\n"}
+            if edu.highlights != none {
+                for hi in edu.highlights {
+                    edu-items = edu-items + "- " + hi + "\n"
+                }
+                edu-items = edu-items.trim("\n")
+            }
+
+            set par(leading: 4pt) // Increase tightness of the paragraph/bullet list
+
             // Create a block layout for each education entry
             block(width: 100%, breakable: isbreakable)[
                 // Line 1: Institution and Location
@@ -135,10 +148,8 @@
                 ]
                 // Line 2: Degree and Date Range
                 #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
-                #start #sym.dash.en #end
-                #if edu.honors != none [- *Honors*: #edu.honors.join(", ")]
-                #if edu.courses != none [- *Courses*:  #edu.courses.join(", ")]
-                #if edu.highlights != none {for hi in edu.highlights [- #eval(hi, mode: "markup")]}
+                #start #sym.dash.en #end \
+                #eval(edu-items, mode: "markup")
             ]
         }
     ]}
