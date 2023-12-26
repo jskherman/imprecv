@@ -14,12 +14,12 @@
 
 // set rules
 #let setrules(uservars, doc) = {
-    set page(
-        paper: "us-letter", // a4, us-letter
-        numbering: "1 / 1",
-        number-align: center, // left, center, right
-        margin: 1.25cm, // 1.25cm, 1.87cm, 2.5cm
-    )
+    // set page(
+    //     paper: "us-letter", // a4, us-letter
+    //     numbering: "1 / 1",
+    //     number-align: center, // left, center, right
+    //     margin: 1.25cm, // 1.25cm, 1.87cm, 2.5cm
+    // )
 
     // Set Text settings
     set text(
