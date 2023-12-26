@@ -50,7 +50,11 @@
     ): it => block(width: 100%)[
         #set align(left)
         #set text(font: uservars.headingfont, size: 1em, weight: "bold")
-        #if(uservars.headingsmallcaps) {smallcaps(it.body)} else {upper(it.body)}
+        #if (uservars.at("headingsmallcaps", default:false)) {
+            smallcaps(it.body)
+        } else {
+            upper(it.body)
+        }
         #v(-0.75em) #line(length: 100%, stroke: 1pt + black) // Draw a line
     ]
 
@@ -59,7 +63,11 @@
         level: 1,
     ): it => block(width: 100%)[
         #set text(font: uservars.headingfont, size: 1.5em, weight: "bold")
-        #if(uservars.headingsmallcaps) {smallcaps(it.body)} else {upper(it.body)}
+        #if (uservars.at("headingsmallcaps", default:false)) {
+            smallcaps(it.body)
+        } else {
+            upper(it.body)
+        }
         #v(2pt)
     ]
 
