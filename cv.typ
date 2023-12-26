@@ -138,7 +138,7 @@
                 #start #sym.dash.en #end
                 #if edu.honors != none [- *Honors*: #edu.honors.join(", ")]
                 #if edu.courses != none [- *Courses*:  #edu.courses.join(", ")]
-                #if edu.highlights != none {for hi in edu.highlights [- #eval("[" + hi + "]")]}
+                #if edu.highlights != none {for hi in edu.highlights [- #eval(hi, mode: "markup")]}
             ]
         }
     ]}
@@ -165,7 +165,7 @@
                 #start #sym.dash.en #end \
                 // Highlights or Description
                 #for hi in w.highlights [
-                    - #eval("[" + hi + "]")
+                    - #eval(hi, mode: "markup")
                 ]
             ]
         }
@@ -195,7 +195,7 @@
                 // Highlights or Description
                 #if org.highlights != none {
                     for hi in org.highlights [
-                        - #eval("[" + hi + "]")
+                        - #eval(hi, mode: "markup")
                     ]
                 } else {}
             ]
@@ -223,7 +223,7 @@
                 #text(style: "italic")[#project.affiliation]  #h(1fr) #start #sym.dash.en #end \
                 // Summary or Description
                 #for hi in project.highlights [
-                    - #eval("[" + hi + "]")
+                    - #eval(hi, mode: "markup")
                 ]
             ]
         }
@@ -250,7 +250,7 @@
                 // Summary or Description
                 #if award.highlights != none {
                     for hi in award.highlights [
-                        - #eval("[" + hi + "]")
+                        - #eval(hi, mode: "markup")
                     ]
                 } else {}
             ]
