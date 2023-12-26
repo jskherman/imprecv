@@ -38,11 +38,6 @@
         justify: true,
     )
 
-    set block(
-        spacing: 0.9em,
-        inset: 0pt,
-    )
-
     doc
 }
 
@@ -144,8 +139,6 @@
                 }
                 edu-items = edu-items.trim("\n")
             }
-
-            set par(leading: 4pt) // Increase tightness of the paragraph/bullet list
 
             // Create a block layout for each education entry
             block(width: 100%, breakable: isbreakable)[
