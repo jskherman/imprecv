@@ -28,10 +28,19 @@
         hyphenate: false,
     )
 
+    set list(
+        spacing: uservars.linespacing
+    )
+
     // Set Paragraph settings
     set par(
         leading: uservars.linespacing,
         justify: true,
+    )
+
+    set block(
+        spacing: 0.9em,
+        inset: 0pt,
     )
 
     doc
