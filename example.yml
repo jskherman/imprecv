@@ -20,25 +20,34 @@ personal:
 
 work:
   - organization: X Company
-    position: Senior Developer
     url: https://example.com
     location: Remote / New York, New York
-    startDate: 2021-08-01
-    endDate: "present"
-    highlights:
-      - This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?
-      - "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
-      - Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?
+    positions:
+      - position: Senior Software Engineer
+        startDate: 2021-08-01
+        endDate: "present"
+        highlights:
+          - This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?
+          - "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
+          - Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?
+      - position: Software Engineer
+        startDate: 2019-05-31
+        endDate: 2021-08-01
+        highlights:
+          - This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?
+          - "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
+          - Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?
   - organization: National Aeronautics and Space Administration - Jet Propulsion Laboratory
-    position: Senior Developer
     url: https://example.com
     location: Pasadena, California
-    startDate: 2021-08-01
-    endDate: 2023-05-31
-    highlights:
-      - This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?
-      - "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
-      - Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?
+    positions:
+      - position: Senior Developer
+        startDate: 2016-02-19
+        endDate: 2019-05-31
+        highlights:
+          - This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?
+          - "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
+          - Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?
 
 education:
   - institution: Open University
@@ -109,7 +118,6 @@ awards:
     url:
     location: City of London, United Kingdom
     highlights:
-      # - Champion in the Division A District X Speech Evaluation Contest of Toastmasters International in London.
   - title: "Finalist in the 2020 SCG Bangkok Business Challenge Global Competition"
     date: 2020-07-12
     issuer: Sasin School of Management
