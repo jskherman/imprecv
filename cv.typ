@@ -233,7 +233,16 @@
                     *#project.name* \
                 ]
                 // Line 2: Degree and Date Range
-                #utils.daterange(start, end) \
+                                #if project.affiliation != none and project.tools != none [
+                #text(style: "italic")[#project.affiliation] #h(1fr) #utils.daterange(start, end) \
+                #text(style: "italic")[#project.tools.join(", ")]
+                ]
+                #if project.affiliation != none and project.tools == none [
+                #text(style: "italic")[#project.affiliation] #h(1fr) #utils.daterange(start, end) \
+                ]
+                #if project.affiliation == none and project.tools != none [
+                #text(style: "italic")[#project.tools.join(", ")] #h(1fr) #utils.daterange(start, end) \
+                ]
                 // Summary or Description
                 #for hi in project.highlights [
                     - #eval(hi, mode: "markup")
