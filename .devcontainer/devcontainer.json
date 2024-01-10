@@ -1,8 +1,6 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/devcontainers-contrib/features/homebrew-package:1": {
-      "package" : "typst"
-    }
+    "ghcr.io/meaningful-ooo/devcontainer-features/homebrew:2": {}
   }
 }
