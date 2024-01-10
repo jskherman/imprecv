@@ -1,7 +1,7 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/devcontainers-contrib/features/typst:1": {},
+    "ghcr.io/michidk/devcontainers-features/typst:0": {},
     "ghcr.io/jungaretti/features/make:1": {}
   }
 }
