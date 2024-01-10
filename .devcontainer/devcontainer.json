@@ -1,7 +1,8 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/michidk/devcontainers-features/typst:0": {},
-    "ghcr.io/jungaretti/features/make:1": {}
+    "ghcr.io/devcontainers-contrib/features/homebrew-package:1": {
+      "package" : "typst"
+    }
   }
 }
