@@ -265,7 +265,7 @@
                         ]
                     },
                     "startDate": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "format": "date",
                         "title": "The startDate Schema",
                         "examples": [
@@ -273,7 +273,7 @@
                         ]
                     },
                     "endDate": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "title": "The endDate Schema",
                         "examples": [
                             "present",
@@ -420,7 +420,7 @@
                         ]
                     },
                     "startDate": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "format": "date",
                         "title": "The startDate Schema",
                         "examples": [
@@ -428,7 +428,7 @@
                         ]
                     },
                     "endDate": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "title": "The endDate Schema",
                         "examples": [
                             "2021-06-30"
@@ -684,7 +684,7 @@
                         ]
                     },
                     "startDate": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "format": "date",
                         "title": "The startDate Schema",
                         "examples": [
@@ -693,7 +693,7 @@
                         ]
                     },
                     "endDate": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "title": "The endDate Schema",
                         "examples": [
                             "2021-05-30",
@@ -1112,7 +1112,7 @@
                         ]
                     },
                     "startDate": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "format": "date",
                         "default": "",
                         "title": "The startDate Schema",
@@ -1121,7 +1121,7 @@
                         ]
                     },
                     "endDate": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "default": "",
                         "title": "The endDate Schema",
                         "examples": [
