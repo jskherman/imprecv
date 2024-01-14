@@ -1,1854 +1,619 @@
 {
-    "$schema": "https://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/jskherman/cv.typ/main/cv.typ.schema.json",
-    "type": "object",
-    "default": {},
-    "title": "jskherman/cv.typ schema",
-    "required": [
-        "personal",
-        "education",
-        "skills",
-        "languages"
-    ],
-    "properties": {
-        "personal": {
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/jskherman/cv.typ/main/cv.typ.schema.json",
+  "type": "object",
+  "default": {},
+  "title": "jskherman/cv.typ schema",
+  "required": [
+    "personal",
+    "education",
+    "skills",
+    "languages"
+  ],
+  "properties": {
+    "personal": {
+      "type": "object",
+      "default": {},
+      "title": "The personal Schema",
+      "required": [
+        "name",
+        "profiles"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": "",
+          "title": "The name Schema"
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "email",
+          "default": "",
+          "title": "The email Schema"
+        },
+        "phone": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": "",
+          "title": "The phone Schema"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "default": "",
+          "title": "The url Schema"
+        },
+        "location": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "default": {},
+          "title": "The location Schema",
+          "required": [
+            "city",
+            "region",
+            "postalCode",
+            "country"
+          ],
+          "properties": {
+            "city": {
+              "type": "string",
+              "default": "",
+              "title": "The city Schema"
+            },
+            "region": {
+              "type": "string",
+              "default": "",
+              "title": "The region Schema"
+            },
+            "postalCode": {
+              "type": "integer",
+              "default": 0,
+              "title": "The postalCode Schema"
+            },
+            "country": {
+              "type": "string",
+              "default": "",
+              "title": "The country Schema"
+            }
+          }
+        },
+        "profiles": {
+          "type": "array",
+          "default": [],
+          "title": "The profiles Schema",
+          "items": {
             "type": "object",
-            "default": {},
-            "title": "The personal Schema",
+            "title": "A Schema",
             "required": [
-                "name",
-                "profiles"
+              "network",
+              "username",
+              "url"
             ],
             "properties": {
-                "name": {
-                    "type": "string",
-                    "default": "",
-                    "title": "The name Schema",
-                    "examples": [
-                        "John Smith L. Doe"
-                    ]
-                },
-                "email": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "format": "email",
-                    "default": "",
-                    "title": "The email Schema",
-                    "examples": [
-                        "johndoe@example.com"
-                    ]
-                },
-                "phone": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "default": "",
-                    "title": "The phone Schema",
-                    "examples": [
-                        "(+1) 987 6543 210"
-                    ]
-                },
-                "url": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "format": "uri",
-                    "default": "",
-                    "title": "The url Schema",
-                    "examples": [
-                        "https://johndoe.com"
-                    ]
-                },
-                "location": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "default": {},
-                    "title": "The location Schema",
-                    "required": [
-                        "city",
-                        "region",
-                        "postalCode",
-                        "country"
-                    ],
-                    "properties": {
-                        "city": {
-                            "type": "string",
-                            "default": "",
-                            "title": "The city Schema",
-                            "examples": [
-                                "New York"
-                            ]
-                        },
-                        "region": {
-                            "type": "string",
-                            "default": "",
-                            "title": "The region Schema",
-                            "examples": [
-                                "New York"
-                            ]
-                        },
-                        "postalCode": {
-                            "type": "integer",
-                            "default": 0,
-                            "title": "The postalCode Schema",
-                            "examples": [
-                                1234
-                            ]
-                        },
-                        "country": {
-                            "type": "string",
-                            "default": "",
-                            "title": "The country Schema",
-                            "examples": [
-                                "United States of America"
-                            ]
-                        }
-                    },
-                    "examples": [
-                        {
-                            "city": "New York",
-                            "region": "New York",
-                            "postalCode": 1234,
-                            "country": "United States of America"
-                        }
-                    ]
-                },
-                "profiles": {
-                    "type": "array",
-                    "default": [],
-                    "title": "The profiles Schema",
-                    "items": {
-                        "type": "object",
-                        "title": "A Schema",
-                        "required": [
-                            "network",
-                            "username",
-                            "url"
-                        ],
-                        "properties": {
-                            "network": {
-                                "type": "string",
-                                "title": "The network Schema",
-                                "examples": [
-                                    "LinkedIn",
-                                    "GitHub"
-                                ]
-                            },
-                            "username": {
-                                "type": "string",
-                                "title": "The username Schema",
-                                "examples": [
-                                    "John Doe",
-                                    "johndoe"
-                                ]
-                            },
-                            "url": {
-                                "type": "string",
-                                "format": "uri",
-                                "title": "The url Schema",
-                                "examples": [
-                                    "https://linkedin.com/in/johndoe",
-                                    "https://github.com/johndoe"
-                                ]
-                            }
-                        },
-                        "examples": [
-                            {
-                                "network": "LinkedIn",
-                                "username": "John Doe",
-                                "url": "https://linkedin.com/in/johndoe"
-                            },
-                            {
-                                "network": "GitHub",
-                                "username": "johndoe",
-                                "url": "https://github.com/johndoe"
-                            }
-                        ]
-                    },
-                    "examples": [
-                        [
-                            {
-                                "network": "LinkedIn",
-                                "username": "John Doe",
-                                "url": "https://linkedin.com/in/johndoe"
-                            },
-                            {
-                                "network": "GitHub",
-                                "username": "johndoe",
-                                "url": "https://github.com/johndoe"
-                            }
-                        ]
-                    ]
-                }
-            },
-            "examples": [
-                {
-                    "name": "John Smith L. Doe",
-                    "email": "johndoe@example.com",
-                    "phone": "(+1) 987 6543 210",
-                    "url": "https://johndoe.com",
-                    "location": {
-                        "city": "New York",
-                        "region": "New York",
-                        "postalCode": 1234,
-                        "country": "United States of America"
-                    },
-                    "profiles": [
-                        {
-                            "network": "LinkedIn",
-                            "username": "John Doe",
-                            "url": "https://linkedin.com/in/johndoe"
-                        },
-                        {
-                            "network": "GitHub",
-                            "username": "johndoe",
-                            "url": "https://github.com/johndoe"
-                        }
-                    ]
-                }
-            ]
-        },
-        "work": {
-            "type": "array",
-            "default": [],
-            "title": "The work Schema",
-            "items": {
-                "type": "object",
-                "title": "A Schema",
-                "required": [
-                    "organization",
-                    "position",
-                    "location",
-                    "startDate",
-                    "endDate",
-                    "highlights"
-                ],
-                "properties": {
-                    "organization": {
-                        "type": "string",
-                        "title": "The organization Schema",
-                        "examples": [
-                            "X Company",
-                            "National Aeronautics and Space Administration - Jet Propulsion Laboratory"
-                        ]
-                    },
-                    "position": {
-                        "type": "string",
-                        "title": "The position Schema",
-                        "examples": [
-                            "Senior Developer"
-                        ]
-                    },
-                    "url": {
-                        "type": [
-                            "string",
-                            "null"
-                        ],
-                        "format": "uri",
-                        "title": "The url Schema",
-                        "examples": [
-                            "https://example.com"
-                        ]
-                    },
-                    "location": {
-                        "type": "string",
-                        "title": "The location Schema",
-                        "examples": [
-                            "Remote / New York, New York",
-                            "Pasadena, California"
-                        ]
-                    },
-                    "startDate": {
-                        "type": "string",
-                        "format": "date",
-                        "title": "The startDate Schema",
-                        "examples": [
-                            "2021-08-01"
-                        ]
-                    },
-                    "endDate": {
-                        "type": "string",
-                        "title": "The endDate Schema",
-                        "examples": [
-                            "present",
-                            "2023-05-31"
-                        ]
-                    },
-                    "highlights": {
-                        "type": [
-                            "array",
-                            "null"
-                        ],
-                        "title": "The highlights Schema",
-                        "items": {
-                            "type": "string",
-                            "title": "A Schema",
-                            "examples": [
-                                "This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?",
-                                "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.",
-                                "Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?"
-                            ]
-                        },
-                        "examples": [
-                            [
-                                "This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?",
-                                "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.",
-                                "Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?"
-                            ],
-                            [
-                                "This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?",
-                                "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.",
-                                "Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?"
-                            ]
-                        ]
-                    }
-                },
-                "examples": [
-                    {
-                        "organization": "X Company",
-                        "position": "Senior Developer",
-                        "url": "https://example.com",
-                        "location": "Remote / New York, New York",
-                        "startDate": "2021-08-01",
-                        "endDate": "present",
-                        "highlights": [
-                            "This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?",
-                            "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.",
-                            "Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?"
-                        ]
-                    },
-                    {
-                        "organization": "National Aeronautics and Space Administration - Jet Propulsion Laboratory",
-                        "position": "Senior Developer",
-                        "url": "https://example.com",
-                        "location": "Pasadena, California",
-                        "startDate": "2021-08-01",
-                        "endDate": "2023-05-31",
-                        "highlights": [
-                            "This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?",
-                            "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.",
-                            "Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?"
-                        ]
-                    }
-                ]
-            },
-            "examples": [
-                [
-                    {
-                        "organization": "X Company",
-                        "position": "Senior Developer",
-                        "url": "https://example.com",
-                        "location": "Remote / New York, New York",
-                        "startDate": "2021-08-01",
-                        "endDate": "present",
-                        "highlights": [
-                            "This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?",
-                            "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.",
-                            "Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?"
-                        ]
-                    },
-                    {
-                        "organization": "National Aeronautics and Space Administration - Jet Propulsion Laboratory",
-                        "position": "Senior Developer",
-                        "url": "https://example.com",
-                        "location": "Pasadena, California",
-                        "startDate": "2021-08-01",
-                        "endDate": "2023-05-31",
-                        "highlights": [
-                            "This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?",
-                            "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.",
-                            "Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?"
-                        ]
-                    }
-                ]
-            ]
-        },
-        "education": {
-            "type": "array",
-            "default": [],
-            "title": "The education Schema",
-            "items": {
-                "type": "object",
-                "title": "A Schema",
-                "required": [
-                    "institution",
-                    "area",
-                    "studyType",
-                    "startDate",
-                    "endDate",
-                    "location",
-                    "highlights"
-                ],
-                "properties": {
-                    "institution": {
-                        "type": "string",
-                        "title": "The institution Schema",
-                        "examples": [
-                            "Open University",
-                            "Harvard University"
-                        ]
-                    },
-                    "url": {
-                        "type": [
-                            "string",
-                            "null"
-                        ],
-                        "format": "uri",
-                        "title": "The url Schema",
-                        "examples": [
-                            "https://example.com/"
-                        ]
-                    },
-                    "area": {
-                        "type": "string",
-                        "title": "The area Schema",
-                        "examples": [
-                            "Computer Science"
-                        ]
-                    },
-                    "studyType": {
-                        "type": "string",
-                        "title": "The studyType Schema",
-                        "examples": [
-                            "Bachelor of Science"
-                        ]
-                    },
-                    "startDate": {
-                        "type": "string",
-                        "format": "date",
-                        "title": "The startDate Schema",
-                        "examples": [
-                            "2017-08-01"
-                        ]
-                    },
-                    "endDate": {
-                        "type": "string",
-                        "title": "The endDate Schema",
-                        "examples": [
-                            "2021-06-30"
-                        ]
-                    },
-                    "location": {
-                        "type": "string",
-                        "title": "The location Schema",
-                        "examples": [
-                            "City of London, United Kingdom"
-                        ]
-                    },
-                    "honors": {
-                        "type": [
-                            "array",
-                            "null"
-                        ],
-                        "title": "The honors Schema",
-                        "items": {
-                            "type": "string",
-                            "title": "A Schema",
-                            "examples": [
-                                "4.0 / 4.0 GPA",
-                                "President's List",
-                                "Dean's List",
-                                "Summa Cum Laude (4.0 GPA)"
-                            ]
-                        },
-                        "examples": [
-                            [
-                                "4.0 / 4.0 GPA",
-                                "President's List",
-                                "Dean's List"
-                            ],
-                            [
-                                "Summa Cum Laude (4.0 GPA)",
-                                "President's List",
-                                "Dean's List"
-                            ]
-                        ]
-                    },
-                    "courses": {
-                        "type": [
-                            "array",
-                            "null"
-                        ],
-                        "title": "The courses Schema",
-                        "items": {
-                            "type": "string",
-                            "title": "A Schema",
-                            "examples": [
-                                "Algorithms \u0026 Data Structures",
-                                "Applications in Quantitative Finance",
-                                "Engineering Data Analysis",
-                                "Compiler Architecture"
-                            ]
-                        },
-                        "examples": [
-                            [
-                                "Algorithms \u0026 Data Structures",
-                                "Applications in Quantitative Finance",
-                                "Engineering Data Analysis",
-                                "Compiler Architecture"
-                            ],
-                            [
-                                "Algorithms \u0026 Data Structures",
-                                "Applications in Quantitative Finance",
-                                "Engineering Data Analysis",
-                                "Compiler Architecture"
-                            ]
-                        ]
-                    },
-                    "highlights": {
-                        "type": [
-                            "array",
-                            "null"
-                        ],
-                        "title": "The highlights Schema",
-                        "items": {
-                            "type": "string",
-                            "title": "A Schema",
-                            "examples": [
-                                "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                                "*Activities*: Debating, Chess, Cricket"
-                            ]
-                        },
-                        "examples": [
-                            [
-                                "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                                "*Activities*: Debating, Chess, Cricket"
-                            ],
-                            [
-                                "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                                "*Activities*: Debating, Chess, Cricket"
-                            ]
-                        ]
-                    }
-                },
-                "examples": [
-                    {
-                        "institution": "Open University",
-                        "url": "https://example.com/",
-                        "area": "Computer Science",
-                        "studyType": "Bachelor of Science",
-                        "startDate": "2017-08-01",
-                        "endDate": "2021-06-30",
-                        "location": "City of London, United Kingdom",
-                        "honors": [
-                            "4.0 / 4.0 GPA",
-                            "President's List",
-                            "Dean's List"
-                        ],
-                        "courses": [
-                            "Algorithms \u0026 Data Structures",
-                            "Applications in Quantitative Finance",
-                            "Engineering Data Analysis",
-                            "Compiler Architecture"
-                        ],
-                        "highlights": [
-                            "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                            "*Activities*: Debating, Chess, Cricket"
-                        ]
-                    },
-                    {
-                        "institution": "Harvard University",
-                        "url": "https://example.com/",
-                        "area": "Computer Science",
-                        "studyType": "Bachelor of Science",
-                        "startDate": "2017-08-01",
-                        "endDate": "2021-06-30",
-                        "location": "City of London, United Kingdom",
-                        "honors": [
-                            "Summa Cum Laude (4.0 GPA)",
-                            "President's List",
-                            "Dean's List"
-                        ],
-                        "courses": [
-                            "Algorithms \u0026 Data Structures",
-                            "Applications in Quantitative Finance",
-                            "Engineering Data Analysis",
-                            "Compiler Architecture"
-                        ],
-                        "highlights": [
-                            "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                            "*Activities*: Debating, Chess, Cricket"
-                        ]
-                    }
-                ]
-            },
-            "examples": [
-                [
-                    {
-                        "institution": "Open University",
-                        "url": "https://example.com/",
-                        "area": "Computer Science",
-                        "studyType": "Bachelor of Science",
-                        "startDate": "2017-08-01",
-                        "endDate": "2021-06-30",
-                        "location": "City of London, United Kingdom",
-                        "honors": [
-                            "4.0 / 4.0 GPA",
-                            "President's List",
-                            "Dean's List"
-                        ],
-                        "courses": [
-                            "Algorithms \u0026 Data Structures",
-                            "Applications in Quantitative Finance",
-                            "Engineering Data Analysis",
-                            "Compiler Architecture"
-                        ],
-                        "highlights": [
-                            "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                            "*Activities*: Debating, Chess, Cricket"
-                        ]
-                    },
-                    {
-                        "institution": "Harvard University",
-                        "url": "https://example.com/",
-                        "area": "Computer Science",
-                        "studyType": "Bachelor of Science",
-                        "startDate": "2017-08-01",
-                        "endDate": "2021-06-30",
-                        "location": "City of London, United Kingdom",
-                        "honors": [
-                            "Summa Cum Laude (4.0 GPA)",
-                            "President's List",
-                            "Dean's List"
-                        ],
-                        "courses": [
-                            "Algorithms \u0026 Data Structures",
-                            "Applications in Quantitative Finance",
-                            "Engineering Data Analysis",
-                            "Compiler Architecture"
-                        ],
-                        "highlights": [
-                            "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                            "*Activities*: Debating, Chess, Cricket"
-                        ]
-                    }
-                ]
-            ]
-        },
-        "affiliations": {
-            "type": "array",
-            "default": [],
-            "title": "The affiliations Schema",
-            "items": {
-                "type": "object",
-                "title": "A Schema",
-                "required": [
-                    "organization",
-                    "position",
-                    "location",
-                    "startDate",
-                    "endDate",
-                    "highlights"
-                ],
-                "properties": {
-                    "organization": {
-                        "type": "string",
-                        "title": "The organization Schema",
-                        "examples": [
-                            "White Hat Hackers Association",
-                            "London Bridge Toastmasters Club"
-                        ]
-                    },
-                    "position": {
-                        "type": "string",
-                        "title": "The position Schema",
-                        "examples": [
-                            "Vice President for Internal Affairs",
-                            "Member"
-                        ]
-                    },
-                    "location": {
-                        "title": "The location Schema",
-                        "examples": [
-                            "Cambridge, United Kingdom",
-                            "City of London, United Kingdom"
-                        ],
-                        "type": "string"
-                    },
-                    "url": {
-                        "type": [
-                            "string",
-                            "null"
-                        ],
-                        "format": "uri",
-                        "title": "The url Schema",
-                        "examples": [
-                            "https://example.com",
-                            ""
-                        ]
-                    },
-                    "startDate": {
-                        "type": "string",
-                        "format": "date",
-                        "title": "The startDate Schema",
-                        "examples": [
-                            "2020-05-30",
-                            "2022-06-15"
-                        ]
-                    },
-                    "endDate": {
-                        "type": "string",
-                        "title": "The endDate Schema",
-                        "examples": [
-                            "2021-05-30",
-                            "2023-06-30"
-                        ]
-                    },
-                    "highlights": {
-                        "type": [
-                            "array",
-                            "null"
-                        ],
-                        "title": "The highlights Schema",
-                        "items": {
-                            "type": "string",
-                            "title": "A Schema",
-                            "examples": [
-                                "But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose.",
-                                "But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?",
-                                "Can you then suppose that those heroic men performed their famous deeds without any motive at all?",
-                                "Won Champion in the Division A District X Speech Evaluation Contest of Toastmasters International",
-                                "Promising Toastmaster of the Year (PY 2022-2023)",
-                                "Tell me, pray, what explanation do you put upon their actions?"
-                            ]
-                        },
-                        "examples": [
-                            [
-                                "But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose.",
-                                "But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?",
-                                "Can you then suppose that those heroic men performed their famous deeds without any motive at all?"
-                            ],
-                            [
-                                "Won Champion in the Division A District X Speech Evaluation Contest of Toastmasters International",
-                                "Promising Toastmaster of the Year (PY 2022-2023)",
-                                "Tell me, pray, what explanation do you put upon their actions?"
-                            ]
-                        ]
-                    }
-                },
-                "examples": [
-                    {
-                        "organization": "White Hat Hackers Association",
-                        "position": "Vice President for Internal Affairs",
-                        "location": "Cambridge, United Kingdom",
-                        "url": "https://example.com",
-                        "startDate": "2020-05-30",
-                        "endDate": "2021-05-30",
-                        "highlights": [
-                            "But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose.",
-                            "But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?",
-                            "Can you then suppose that those heroic men performed their famous deeds without any motive at all?"
-                        ]
-                    },
-                    {
-                        "organization": "London Bridge Toastmasters Club",
-                        "position": "Member",
-                        "location": "City of London, United Kingdom",
-                        "url": "",
-                        "startDate": "2022-06-15",
-                        "endDate": "2023-06-30",
-                        "highlights": [
-                            "Won Champion in the Division A District X Speech Evaluation Contest of Toastmasters International",
-                            "Promising Toastmaster of the Year (PY 2022-2023)",
-                            "Tell me, pray, what explanation do you put upon their actions?"
-                        ]
-                    }
-                ]
-            },
-            "examples": [
-                [
-                    {
-                        "organization": "White Hat Hackers Association",
-                        "position": "Vice President for Internal Affairs",
-                        "location": "Cambridge, United Kingdom",
-                        "url": "https://example.com",
-                        "startDate": "2020-05-30",
-                        "endDate": "2021-05-30",
-                        "highlights": [
-                            "But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose.",
-                            "But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?",
-                            "Can you then suppose that those heroic men performed their famous deeds without any motive at all?"
-                        ]
-                    },
-                    {
-                        "organization": "London Bridge Toastmasters Club",
-                        "position": "Member",
-                        "location": "City of London, United Kingdom",
-                        "url": "",
-                        "startDate": "2022-06-15",
-                        "endDate": "2023-06-30",
-                        "highlights": [
-                            "Won Champion in the Division A District X Speech Evaluation Contest of Toastmasters International",
-                            "Promising Toastmaster of the Year (PY 2022-2023)",
-                            "Tell me, pray, what explanation do you put upon their actions?"
-                        ]
-                    }
-                ]
-            ]
-        },
-        "awards": {
-            "type": "array",
-            "default": [],
-            "title": "The awards Schema",
-            "items": {
-                "type": "object",
-                "title": "A Schema",
-                "required": [
-                    "title",
-                    "date",
-                    "issuer"
-                ],
-                "properties": {
-                    "title": {
-                        "type": "string",
-                        "title": "The title Schema",
-                        "examples": [
-                            "Champion in the Division A District X Speech Evaluation Contest",
-                            "Finalist in the 2020 SCG Bangkok Business Challenge Global Competition"
-                        ]
-                    },
-                    "date": {
-                        "type": "string",
-                        "format": "date",
-                        "title": "The date Schema",
-                        "examples": [
-                            "2023-05-09",
-                            "2020-07-12"
-                        ]
-                    },
-                    "issuer": {
-                        "type": "string",
-                        "title": "The issuer Schema",
-                        "examples": [
-                            "Toastmasters International",
-                            "Sasin School of Management"
-                        ]
-                    },
-                    "url": {
-                        "type": [
-                            "string",
-                            "null"
-                        ],
-                        "format": "uri",
-                        "title": "The url Schema",
-                        "examples": [
-                            "https://example.com"
-                        ]
-                    },
-                    "location": {
-                        "type": "string",
-                        "title": "The location Schema",
-                        "examples": [
-                            "City of London, United Kingdom",
-                            "Bangkok, Thailand"
-                        ]
-                    },
-                    "highlights": {
-                        "type": [
-                            "null",
-                            "array"
-                        ],
-                        "title": "The highlights Schema",
-                        "items": {
-                            "type": "string",
-                            "title": "A Schema",
-                            "examples": [
-                                "Made it to the Top 5 (selected from over 100 teams) in the world for the semi-finals of the SCG Bangkok Business Challenge #sym.at Sasin 2020 Global Competition held at Bangkok, Thailand from July 7-12, 2020.",
-                                "Served as the speaker and presented in the 60-second pitch round of the Opening Reception of the SCG Bangkok Business Challenge #sym.at Sasin 2022 for Team London Bridge."
-                            ]
-                        },
-                        "examples": [
-                            null,
-                            [
-                                "Made it to the Top 5 (selected from over 100 teams) in the world for the semi-finals of the SCG Bangkok Business Challenge #sym.at Sasin 2020 Global Competition held at Bangkok, Thailand from July 7-12, 2020.",
-                                "Served as the speaker and presented in the 60-second pitch round of the Opening Reception of the SCG Bangkok Business Challenge #sym.at Sasin 2022 for Team London Bridge."
-                            ]
-                        ]
-                    }
-                },
-                "examples": [
-                    {
-                        "title": "Champion in the Division A District X Speech Evaluation Contest",
-                        "date": "2023-05-09",
-                        "issuer": "Toastmasters International",
-                        "url": "",
-                        "location": "City of London, United Kingdom",
-                        "highlights": null
-                    },
-                    {
-                        "title": "Finalist in the 2020 SCG Bangkok Business Challenge Global Competition",
-                        "date": "2020-07-12",
-                        "issuer": "Sasin School of Management",
-                        "url": "",
-                        "location": "Bangkok, Thailand",
-                        "highlights": [
-                            "Made it to the Top 5 (selected from over 100 teams) in the world for the semi-finals of the SCG Bangkok Business Challenge #sym.at Sasin 2020 Global Competition held at Bangkok, Thailand from July 7-12, 2020.",
-                            "Served as the speaker and presented in the 60-second pitch round of the Opening Reception of the SCG Bangkok Business Challenge #sym.at Sasin 2022 for Team London Bridge."
-                        ]
-                    }
-                ]
-            },
-            "examples": [
-                [
-                    {
-                        "title": "Champion in the Division A District X Speech Evaluation Contest",
-                        "date": "2023-05-09",
-                        "issuer": "Toastmasters International",
-                        "url": "",
-                        "location": "City of London, United Kingdom",
-                        "highlights": null
-                    },
-                    {
-                        "title": "Finalist in the 2020 SCG Bangkok Business Challenge Global Competition",
-                        "date": "2020-07-12",
-                        "issuer": "Sasin School of Management",
-                        "url": "",
-                        "location": "Bangkok, Thailand",
-                        "highlights": [
-                            "Made it to the Top 5 (selected from over 100 teams) in the world for the semi-finals of the SCG Bangkok Business Challenge #sym.at Sasin 2020 Global Competition held at Bangkok, Thailand from July 7-12, 2020.",
-                            "Served as the speaker and presented in the 60-second pitch round of the Opening Reception of the SCG Bangkok Business Challenge #sym.at Sasin 2022 for Team London Bridge."
-                        ]
-                    }
-                ]
-            ]
-        },
-        "certificates": {
+              "network": {
+                "type": "string",
+                "title": "The network Schema"
+              },
+              "username": {
+                "type": "string",
+                "title": "The username Schema"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "title": "The url Schema"
+              }
+            }
+          }
+        }
+      }
+    },
+    "work": {
+      "type": "array",
+      "default": [],
+      "title": "The work Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "organization",
+          "position",
+          "location",
+          "startDate",
+          "endDate",
+          "highlights"
+        ],
+        "properties": {
+          "organization": {
+            "type": "string",
+            "title": "The organization Schema"
+          },
+          "position": {
+            "type": "string",
+            "title": "The position Schema"
+          },
+          "url": {
             "type": [
-                "array",
-                "null"
+              "string",
+              "null"
             ],
-            "default": [],
-            "title": "The certificates Schema",
-            "items": {
-                "type": "object",
-                "default": {},
-                "title": "A Schema",
-                "required": [
-                    "name",
-                    "date",
-                    "issuer"
-                ],
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The name Schema",
-                        "examples": [
-                            "Learning How to Learn: Powerful mental tools to help you master tough subjects"
-                        ]
-                    },
-                    "date": {
-                        "type": "string",
-                        "format": "date",
-                        "default": "",
-                        "title": "The date Schema",
-                        "examples": [
-                            "2021-09-01"
-                        ]
-                    },
-                    "issuer": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The issuer Schema",
-                        "examples": [
-                            "Coursera"
-                        ]
-                    },
-                    "url": {
-                        "type": "string",
-                        "format": "uri",
-                        "default": "",
-                        "title": "The url Schema",
-                        "examples": [
-                            "https://example.com"
-                        ]
-                    }
-                },
-                "examples": [
-                    {
-                        "name": "Learning How to Learn: Powerful mental tools to help you master tough subjects",
-                        "date": "2021-09-01",
-                        "issuer": "Coursera",
-                        "url": "https://example.com"
-                    }
-                ]
-            },
-            "examples": [
-                [
-                    {
-                        "name": "Learning How to Learn: Powerful mental tools to help you master tough subjects",
-                        "date": "2021-09-01",
-                        "issuer": "Coursera",
-                        "url": "https://example.com"
-                    }
-                ]
-            ]
-        },
-        "publications": {
+            "format": "uri",
+            "title": "The url Schema"
+          },
+          "location": {
+            "type": "string",
+            "title": "The location Schema"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "title": "The startDate Schema"
+          },
+          "endDate": {
+            "type": "string",
+            "title": "The endDate Schema"
+          },
+          "highlights": {
             "type": [
-                "array",
-                "null"
+              "array",
+              "null"
             ],
-            "default": [],
-            "title": "The publications Schema",
+            "title": "The highlights Schema",
             "items": {
-                "type": "object",
-                "default": {},
-                "title": "A Schema",
-                "required": [
-                    "name",
-                    "publisher",
-                    "releaseDate",
-                    "url"
-                ],
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The name Schema",
-                        "examples": [
-                            "A convolutional neural network for predicting Greenland glacier melt and glacial water flow"
-                        ]
-                    },
-                    "publisher": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The publisher Schema",
-                        "examples": [
-                            "Theoretical and Computational Fluid Dynamics"
-                        ]
-                    },
-                    "releaseDate": {
-                        "type": "string",
-                        "format": "date",
-                        "default": "",
-                        "title": "The releaseDate Schema",
-                        "examples": [
-                            "2020-09-30"
-                        ]
-                    },
-                    "url": {
-                        "type": "string",
-                        "format": "uri",
-                        "default": "",
-                        "title": "The url Schema",
-                        "examples": [
-                            "https://example.com"
-                        ]
-                    }
-                },
-                "examples": [
-                    {
-                        "name": "A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                        "publisher": "Theoretical and Computational Fluid Dynamics",
-                        "releaseDate": "2020-09-30",
-                        "url": "https://example.com"
-                    }
-                ]
-            },
-            "examples": [
-                [
-                    {
-                        "name": "A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                        "publisher": "Theoretical and Computational Fluid Dynamics",
-                        "releaseDate": "2020-09-30",
-                        "url": "https://example.com"
-                    }
-                ]
-            ]
-        },
-        "projects": {
+              "type": "string",
+              "title": "A Schema"
+            }
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "default": [],
+      "title": "The education Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "institution",
+          "area",
+          "studyType",
+          "startDate",
+          "endDate",
+          "location",
+          "highlights"
+        ],
+        "properties": {
+          "institution": {
+            "type": "string",
+            "title": "The institution Schema"
+          },
+          "url": {
             "type": [
-                "array",
-                "null"
+              "string",
+              "null"
             ],
-            "default": [],
-            "title": "The projects Schema",
+            "format": "uri",
+            "title": "The url Schema"
+          },
+          "area": {
+            "type": "string",
+            "title": "The area Schema"
+          },
+          "studyType": {
+            "type": "string",
+            "title": "The studyType Schema"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "title": "The startDate Schema"
+          },
+          "endDate": {
+            "type": "string",
+            "title": "The endDate Schema"
+          },
+          "location": {
+            "type": "string",
+            "title": "The location Schema"
+          },
+          "honors": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "title": "The honors Schema",
             "items": {
-                "type": "object",
-                "default": {},
-                "title": "A Schema",
-                "required": [
-                    "name",
-                    "url",
-                    "affiliation",
-                    "startDate",
-                    "endDate",
-                    "highlights"
-                ],
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The name Schema",
-                        "examples": [
-                            "Job Tailor"
-                        ]
-                    },
-                    "url": {
-                        "type": [
-                            "string",
-                            "null"
-                        ],
-                        "format": "uri",
-                        "default": "",
-                        "title": "The url Schema",
-                        "examples": [
-                            "https://example.com/"
-                        ]
-                    },
-                    "affiliation": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The affiliation Schema",
-                        "examples": [
-                            "Open University"
-                        ]
-                    },
-                    "startDate": {
-                        "type": "string",
-                        "format": "date",
-                        "default": "",
-                        "title": "The startDate Schema",
-                        "examples": [
-                            "2020-11-01"
-                        ]
-                    },
-                    "endDate": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The endDate Schema",
-                        "examples": [
-                            "2021-04-30"
-                        ]
-                    },
-                    "highlights": {
-                        "type": "array",
-                        "default": [],
-                        "title": "The highlights Schema",
-                        "items": {
-                            "type": "string",
-                            "title": "A Schema",
-                            "examples": [
-                                "Created an AI-powered resume editor application that allowed users to easily create different resumes and cover letters specifically tailored to and customized for individual job descriptions based on their personal information in their complete curriculum vitae.",
-                                "Acquired more than 100,000 user sign ups in 3 months and more than 10,000 active monthly users in its lifetime before being sold to investors.",
-                                "Generated profit of upwards \\$20,000 yearly with a team of only four developers and three business operatives"
-                            ]
-                        },
-                        "examples": [
-                            [
-                                "Created an AI-powered resume editor application that allowed users to easily create different resumes and cover letters specifically tailored to and customized for individual job descriptions based on their personal information in their complete curriculum vitae.",
-                                "Acquired more than 100,000 user sign ups in 3 months and more than 10,000 active monthly users in its lifetime before being sold to investors.",
-                                "Generated profit of upwards \\$20,000 yearly with a team of only four developers and three business operatives"
-                            ]
-                        ]
-                    }
-                },
-                "examples": [
-                    {
-                        "name": "Job Tailor",
-                        "url": "https://example.com/",
-                        "affiliation": "Open University",
-                        "startDate": "2020-11-01",
-                        "endDate": "2021-04-30",
-                        "highlights": [
-                            "Created an AI-powered resume editor application that allowed users to easily create different resumes and cover letters specifically tailored to and customized for individual job descriptions based on their personal information in their complete curriculum vitae.",
-                            "Acquired more than 100,000 user sign ups in 3 months and more than 10,000 active monthly users in its lifetime before being sold to investors.",
-                            "Generated profit of upwards \\$20,000 yearly with a team of only four developers and three business operatives"
-                        ]
-                    }
-                ]
-            },
-            "examples": [
-                [
-                    {
-                        "name": "Job Tailor",
-                        "url": "https://example.com/",
-                        "affiliation": "Open University",
-                        "startDate": "2020-11-01",
-                        "endDate": "2021-04-30",
-                        "highlights": [
-                            "Created an AI-powered resume editor application that allowed users to easily create different resumes and cover letters specifically tailored to and customized for individual job descriptions based on their personal information in their complete curriculum vitae.",
-                            "Acquired more than 100,000 user sign ups in 3 months and more than 10,000 active monthly users in its lifetime before being sold to investors.",
-                            "Generated profit of upwards \\$20,000 yearly with a team of only four developers and three business operatives"
-                        ]
-                    }
-                ]
-            ]
-        },
-        "skills": {
+              "type": "string",
+              "title": "A Schema"
+            }
+          },
+          "courses": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "title": "The courses Schema",
+            "items": {
+              "type": "string",
+              "title": "A Schema"
+            }
+          },
+          "highlights": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "title": "The highlights Schema",
+            "items": {
+              "type": "string",
+              "title": "A Schema"
+            }
+          }
+        }
+      }
+    },
+    "affiliations": {
+      "type": "array",
+      "default": [],
+      "title": "The affiliations Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "organization",
+          "position",
+          "location",
+          "startDate",
+          "endDate",
+          "highlights"
+        ],
+        "properties": {
+          "organization": {
+            "type": "string",
+            "title": "The organization Schema"
+          },
+          "position": {
+            "type": "string",
+            "title": "The position Schema"
+          },
+          "location": {
+            "title": "The location Schema",
+            "type": "string"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri",
+            "title": "The url Schema"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "title": "The startDate Schema"
+          },
+          "endDate": {
+            "type": "string",
+            "title": "The endDate Schema"
+          },
+          "highlights": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "title": "The highlights Schema",
+            "items": {
+              "type": "string",
+              "title": "A Schema"
+            }
+          }
+        }
+      }
+    },
+    "awards": {
+      "type": "array",
+      "default": [],
+      "title": "The awards Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "title",
+          "date",
+          "issuer"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "The title Schema"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "title": "The date Schema"
+          },
+          "issuer": {
+            "type": "string",
+            "title": "The issuer Schema"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri",
+            "title": "The url Schema"
+          },
+          "location": {
+            "type": "string",
+            "title": "The location Schema"
+          },
+          "highlights": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "title": "The highlights Schema",
+            "items": {
+              "type": "string",
+              "title": "A Schema"
+            }
+          }
+        }
+      }
+    },
+    "certificates": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "default": [],
+      "title": "The certificates Schema",
+      "items": {
+        "type": "object",
+        "default": {},
+        "title": "A Schema",
+        "required": [
+          "name",
+          "date",
+          "issuer"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": "",
+            "title": "The name Schema"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "default": "",
+            "title": "The date Schema"
+          },
+          "issuer": {
+            "type": "string",
+            "default": "",
+            "title": "The issuer Schema"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "default": "",
+            "title": "The url Schema"
+          }
+        }
+      }
+    },
+    "publications": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "default": [],
+      "title": "The publications Schema",
+      "items": {
+        "type": "object",
+        "default": {},
+        "title": "A Schema",
+        "required": [
+          "name",
+          "publisher",
+          "releaseDate",
+          "url"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": "",
+            "title": "The name Schema"
+          },
+          "publisher": {
+            "type": "string",
+            "default": "",
+            "title": "The publisher Schema"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date",
+            "default": "",
+            "title": "The releaseDate Schema"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "default": "",
+            "title": "The url Schema"
+          }
+        }
+      }
+    },
+    "projects": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "default": [],
+      "title": "The projects Schema",
+      "items": {
+        "type": "object",
+        "default": {},
+        "title": "A Schema",
+        "required": [
+          "name",
+          "url",
+          "affiliation",
+          "startDate",
+          "endDate",
+          "highlights"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": "",
+            "title": "The name Schema"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri",
+            "default": "",
+            "title": "The url Schema"
+          },
+          "affiliation": {
+            "type": "string",
+            "default": "",
+            "title": "The affiliation Schema"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "default": "",
+            "title": "The startDate Schema"
+          },
+          "endDate": {
+            "type": "string",
+            "default": "",
+            "title": "The endDate Schema"
+          },
+          "highlights": {
             "type": "array",
             "default": [],
+            "title": "The highlights Schema",
+            "items": {
+              "type": "string",
+              "title": "A Schema"
+            }
+          }
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "default": [],
+      "title": "The skills Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "category",
+          "skills"
+        ],
+        "properties": {
+          "category": {
+            "type": "string",
+            "title": "The category Schema"
+          },
+          "skills": {
+            "type": "array",
             "title": "The skills Schema",
             "items": {
-                "type": "object",
-                "title": "A Schema",
-                "required": [
-                    "category",
-                    "skills"
-                ],
-                "properties": {
-                    "category": {
-                        "type": "string",
-                        "title": "The category Schema",
-                        "examples": [
-                            "Soft Skills",
-                            "Programming",
-                            "Tools",
-                            "Web Development",
-                            "BI \u0026 Data Analytics"
-                        ]
-                    },
-                    "skills": {
-                        "type": "array",
-                        "title": "The skills Schema",
-                        "items": {
-                            "type": "string",
-                            "title": "A Schema",
-                            "examples": [
-                                "Public Speaking",
-                                "Debating",
-                                "Communication",
-                                "Critical Thinking",
-                                "Leadership",
-                                "Persuasive Writing",
-                                "Technical Writing",
-                                "Python",
-                                "SQL, PostgreSQL",
-                                "MATLAB/Octave",
-                                "HTML",
-                                "CSS",
-                                "Javascript",
-                                "Typst",
-                                "LaTeX",
-                                "Microsoft Word",
-                                "Git",
-                                "Docker",
-                                "Visual Studio Code",
-                                "Canva",
-                                "React",
-                                "Next.js",
-                                "million.js",
-                                "Svelte \u0026 Sveltekit",
-                                "Tailwind CSS",
-                                "Node.js",
-                                "Deno",
-                                "FastAPI",
-                                "Flask",
-                                "Microsoft Excel",
-                                "Microsoft Power BI",
-                                "Jupyter Notebook",
-                                "Numpy",
-                                "Pandas",
-                                "Plotly",
-                                "Altair"
-                            ]
-                        },
-                        "examples": [
-                            [
-                                "Public Speaking",
-                                "Debating",
-                                "Communication",
-                                "Critical Thinking",
-                                "Leadership",
-                                "Persuasive Writing",
-                                "Technical Writing"
-                            ],
-                            [
-                                "Python",
-                                "SQL, PostgreSQL",
-                                "MATLAB/Octave",
-                                "HTML",
-                                "CSS",
-                                "Javascript",
-                                "Typst",
-                                "LaTeX"
-                            ],
-                            [
-                                "Microsoft Word",
-                                "Git",
-                                "Docker",
-                                "Visual Studio Code",
-                                "Canva"
-                            ],
-                            [
-                                "React",
-                                "Next.js",
-                                "million.js",
-                                "Svelte \u0026 Sveltekit",
-                                "Tailwind CSS",
-                                "Node.js",
-                                "Deno",
-                                "FastAPI",
-                                "Flask"
-                            ],
-                            [
-                                "Microsoft Excel",
-                                "Microsoft Power BI",
-                                "Jupyter Notebook",
-                                "Numpy",
-                                "Pandas",
-                                "Plotly",
-                                "Altair"
-                            ]
-                        ]
-                    }
-                },
-                "examples": [
-                    {
-                        "category": "Soft Skills",
-                        "skills": [
-                            "Public Speaking",
-                            "Debating",
-                            "Communication",
-                            "Critical Thinking",
-                            "Leadership",
-                            "Persuasive Writing",
-                            "Technical Writing"
-                        ]
-                    },
-                    {
-                        "category": "Programming",
-                        "skills": [
-                            "Python",
-                            "SQL, PostgreSQL",
-                            "MATLAB/Octave",
-                            "HTML",
-                            "CSS",
-                            "Javascript",
-                            "Typst",
-                            "LaTeX"
-                        ]
-                    },
-                    {
-                        "category": "Tools",
-                        "skills": [
-                            "Microsoft Word",
-                            "Git",
-                            "Docker",
-                            "Visual Studio Code",
-                            "Canva"
-                        ]
-                    },
-                    {
-                        "category": "Web Development",
-                        "skills": [
-                            "React",
-                            "Next.js",
-                            "million.js",
-                            "Svelte \u0026 Sveltekit",
-                            "Tailwind CSS",
-                            "Node.js",
-                            "Deno",
-                            "FastAPI",
-                            "Flask"
-                        ]
-                    },
-                    {
-                        "category": "BI \u0026 Data Analytics",
-                        "skills": [
-                            "Microsoft Excel",
-                            "Microsoft Power BI",
-                            "Jupyter Notebook",
-                            "Numpy",
-                            "Pandas",
-                            "Plotly",
-                            "Altair"
-                        ]
-                    }
-                ]
-            },
-            "examples": [
-                [
-                    {
-                        "category": "Soft Skills",
-                        "skills": [
-                            "Public Speaking",
-                            "Debating",
-                            "Communication",
-                            "Critical Thinking",
-                            "Leadership",
-                            "Persuasive Writing",
-                            "Technical Writing"
-                        ]
-                    },
-                    {
-                        "category": "Programming",
-                        "skills": [
-                            "Python",
-                            "SQL, PostgreSQL",
-                            "MATLAB/Octave",
-                            "HTML",
-                            "CSS",
-                            "Javascript",
-                            "Typst",
-                            "LaTeX"
-                        ]
-                    },
-                    {
-                        "category": "Tools",
-                        "skills": [
-                            "Microsoft Word",
-                            "Git",
-                            "Docker",
-                            "Visual Studio Code",
-                            "Canva"
-                        ]
-                    },
-                    {
-                        "category": "Web Development",
-                        "skills": [
-                            "React",
-                            "Next.js",
-                            "million.js",
-                            "Svelte \u0026 Sveltekit",
-                            "Tailwind CSS",
-                            "Node.js",
-                            "Deno",
-                            "FastAPI",
-                            "Flask"
-                        ]
-                    },
-                    {
-                        "category": "BI \u0026 Data Analytics",
-                        "skills": [
-                            "Microsoft Excel",
-                            "Microsoft Power BI",
-                            "Jupyter Notebook",
-                            "Numpy",
-                            "Pandas",
-                            "Plotly",
-                            "Altair"
-                        ]
-                    }
-                ]
-            ]
-        },
-        "languages": {
-            "type": "array",
-            "default": [],
-            "title": "The languages Schema",
-            "items": {
-                "type": "object",
-                "title": "A Schema",
-                "required": [
-                    "language",
-                    "fluency"
-                ],
-                "properties": {
-                    "language": {
-                        "type": "string",
-                        "title": "The language Schema",
-                        "examples": [
-                            "English",
-                            "German",
-                            "Japanese"
-                        ]
-                    },
-                    "fluency": {
-                        "type": "string",
-                        "title": "The fluency Schema",
-                        "examples": [
-                            "Native speaker",
-                            "Basic proficiency"
-                        ]
-                    }
-                },
-                "examples": [
-                    {
-                        "language": "English",
-                        "fluency": "Native speaker"
-                    },
-                    {
-                        "language": "German",
-                        "fluency": "Native speaker"
-                    },
-                    {
-                        "language": "Japanese",
-                        "fluency": "Basic proficiency"
-                    }
-                ]
-            },
-            "examples": [
-                [
-                    {
-                        "language": "English",
-                        "fluency": "Native speaker"
-                    },
-                    {
-                        "language": "German",
-                        "fluency": "Native speaker"
-                    },
-                    {
-                        "language": "Japanese",
-                        "fluency": "Basic proficiency"
-                    }
-                ]
-            ]
-        },
-        "interests": {
-            "type": "array",
-            "default": [],
-            "title": "The interests Schema",
-            "items": {
-                "type": "string",
-                "title": "A Schema",
-                "examples": [
-                    "Video Games",
-                    "Anime",
-                    "Reading Non-fiction",
-                    "Classical and Original Soundtrack Music"
-                ]
-            },
-            "examples": [
-                [
-                    "Video Games",
-                    "Anime",
-                    "Reading Non-fiction",
-                    "Classical and Original Soundtrack Music"
-                ]
-            ]
-        },
-        "references": {
-            "type": [
-                "array",
-                "null"
-            ],
-            "default": [],
-            "title": "The references Schema",
-            "items": {
-                "type": "object",
-                "default": {},
-                "title": "A Schema",
-                "required": [
-                    "name",
-                    "reference"
-                ],
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The name Schema",
-                        "examples": [
-                            "Dr. Jane Austin"
-                        ]
-                    },
-                    "reference": {
-                        "type": "string",
-                        "default": "",
-                        "title": "The reference Schema",
-                        "examples": [
-                            "John was a great student. He was always eager to learn new things and was very passionate about his studies. As his mentor, I am proud to say that he was also a great leader and was able to lead his team to victory in the 2020 SCG Bangkok Business Challenge Global Competition."
-                        ]
-                    },
-                    "url": {
-                        "type": "string",
-                        "format": "uri",
-                        "default": "",
-                        "title": "The url Schema",
-                        "examples": [
-                            "https://janeaustin.com"
-                        ]
-                    }
-                },
-                "examples": [
-                    {
-                        "name": "Dr. Jane Austin",
-                        "reference": "John was a great student. He was always eager to learn new things and was very passionate about his studies. As his mentor, I am proud to say that he was also a great leader and was able to lead his team to victory in the 2020 SCG Bangkok Business Challenge Global Competition.",
-                        "url": "https://janeaustin.com"
-                    }
-                ]
-            },
-            "examples": [
-                [
-                    {
-                        "name": "Dr. Jane Austin",
-                        "reference": "John was a great student. He was always eager to learn new things and was very passionate about his studies. As his mentor, I am proud to say that he was also a great leader and was able to lead his team to victory in the 2020 SCG Bangkok Business Challenge Global Competition.",
-                        "url": "https://janeaustin.com"
-                    }
-                ]
-            ]
+              "type": "string",
+              "title": "A Schema"
+            }
+          }
         }
+      }
     },
-    "examples": [
-        {
-            "personal": {
-                "name": "John Smith L. Doe",
-                "email": "johndoe@example.com",
-                "phone": "(+1) 987 6543 210",
-                "url": "https://johndoe.com",
-                "location": {
-                    "city": "New York",
-                    "region": "New York",
-                    "postalCode": 1234,
-                    "country": "United States of America"
-                },
-                "profiles": [
-                    {
-                        "network": "LinkedIn",
-                        "username": "John Doe",
-                        "url": "https://linkedin.com/in/johndoe"
-                    },
-                    {
-                        "network": "GitHub",
-                        "username": "johndoe",
-                        "url": "https://github.com/johndoe"
-                    }
-                ]
-            },
-            "work": [
-                {
-                    "organization": "X Company",
-                    "position": "Senior Developer",
-                    "url": "https://example.com",
-                    "location": "Remote / New York, New York",
-                    "startDate": "2021-08-01",
-                    "endDate": "present",
-                    "highlights": [
-                        "This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?",
-                        "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.",
-                        "Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?"
-                    ]
-                },
-                {
-                    "organization": "National Aeronautics and Space Administration - Jet Propulsion Laboratory",
-                    "position": "Senior Developer",
-                    "url": "https://example.com",
-                    "location": "Pasadena, California",
-                    "startDate": "2021-08-01",
-                    "endDate": "2023-05-31",
-                    "highlights": [
-                        "This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?",
-                        "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.",
-                        "Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?"
-                    ]
-                }
-            ],
-            "education": [
-                {
-                    "institution": "Open University",
-                    "url": "https://example.com/",
-                    "area": "Computer Science",
-                    "studyType": "Bachelor of Science",
-                    "startDate": "2017-08-01",
-                    "endDate": "2021-06-30",
-                    "location": "City of London, United Kingdom",
-                    "honors": [
-                        "4.0 / 4.0 GPA",
-                        "President's List",
-                        "Dean's List"
-                    ],
-                    "courses": [
-                        "Algorithms \u0026 Data Structures",
-                        "Applications in Quantitative Finance",
-                        "Engineering Data Analysis",
-                        "Compiler Architecture"
-                    ],
-                    "highlights": [
-                        "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                        "*Activities*: Debating, Chess, Cricket"
-                    ]
-                },
-                {
-                    "institution": "Harvard University",
-                    "url": "https://example.com/",
-                    "area": "Computer Science",
-                    "studyType": "Bachelor of Science",
-                    "startDate": "2017-08-01",
-                    "endDate": "2021-06-30",
-                    "location": "City of London, United Kingdom",
-                    "honors": [
-                        "Summa Cum Laude (4.0 GPA)",
-                        "President's List",
-                        "Dean's List"
-                    ],
-                    "courses": [
-                        "Algorithms \u0026 Data Structures",
-                        "Applications in Quantitative Finance",
-                        "Engineering Data Analysis",
-                        "Compiler Architecture"
-                    ],
-                    "highlights": [
-                        "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                        "*Activities*: Debating, Chess, Cricket"
-                    ]
-                }
-            ],
-            "affiliations": [
-                {
-                    "organization": "White Hat Hackers Association",
-                    "position": "Vice President for Internal Affairs",
-                    "location": "Cambridge, United Kingdom",
-                    "url": "https://example.com",
-                    "startDate": "2020-05-30",
-                    "endDate": "2021-05-30",
-                    "highlights": [
-                        "But I must explain to you how all this mistaken idea of reprobating pleasure and extolling pain arose.",
-                        "But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?",
-                        "Can you then suppose that those heroic men performed their famous deeds without any motive at all?"
-                    ]
-                },
-                {
-                    "organization": "London Bridge Toastmasters Club",
-                    "position": "Member",
-                    "location": "City of London, United Kingdom",
-                    "url": "",
-                    "startDate": "2022-06-15",
-                    "endDate": "2023-06-30",
-                    "highlights": [
-                        "Won Champion in the Division A District X Speech Evaluation Contest of Toastmasters International",
-                        "Promising Toastmaster of the Year (PY 2022-2023)",
-                        "Tell me, pray, what explanation do you put upon their actions?"
-                    ]
-                }
-            ],
-            "awards": [
-                {
-                    "title": "Champion in the Division A District X Speech Evaluation Contest",
-                    "date": "2023-05-09",
-                    "issuer": "Toastmasters International",
-                    "url": "",
-                    "location": "City of London, United Kingdom",
-                    "highlights": null
-                },
-                {
-                    "title": "Finalist in the 2020 SCG Bangkok Business Challenge Global Competition",
-                    "date": "2020-07-12",
-                    "issuer": "Sasin School of Management",
-                    "url": "",
-                    "location": "Bangkok, Thailand",
-                    "highlights": [
-                        "Made it to the Top 5 (selected from over 100 teams) in the world for the semi-finals of the SCG Bangkok Business Challenge #sym.at Sasin 2020 Global Competition held at Bangkok, Thailand from July 7-12, 2020.",
-                        "Served as the speaker and presented in the 60-second pitch round of the Opening Reception of the SCG Bangkok Business Challenge #sym.at Sasin 2022 for Team London Bridge."
-                    ]
-                }
-            ],
-            "certificates": [
-                {
-                    "name": "Learning How to Learn: Powerful mental tools to help you master tough subjects",
-                    "date": "2021-09-01",
-                    "issuer": "Coursera",
-                    "url": "https://example.com"
-                }
-            ],
-            "publications": [
-                {
-                    "name": "A convolutional neural network for predicting Greenland glacier melt and glacial water flow",
-                    "publisher": "Theoretical and Computational Fluid Dynamics",
-                    "releaseDate": "2020-09-30",
-                    "url": "https://example.com"
-                }
-            ],
-            "projects": [
-                {
-                    "name": "Job Tailor",
-                    "url": "https://example.com/",
-                    "affiliation": "Open University",
-                    "startDate": "2020-11-01",
-                    "endDate": "2021-04-30",
-                    "highlights": [
-                        "Created an AI-powered resume editor application that allowed users to easily create different resumes and cover letters specifically tailored to and customized for individual job descriptions based on their personal information in their complete curriculum vitae.",
-                        "Acquired more than 100,000 user sign ups in 3 months and more than 10,000 active monthly users in its lifetime before being sold to investors.",
-                        "Generated profit of upwards \\$20,000 yearly with a team of only four developers and three business operatives"
-                    ]
-                }
-            ],
-            "skills": [
-                {
-                    "category": "Soft Skills",
-                    "skills": [
-                        "Public Speaking",
-                        "Debating",
-                        "Communication",
-                        "Critical Thinking",
-                        "Leadership",
-                        "Persuasive Writing",
-                        "Technical Writing"
-                    ]
-                },
-                {
-                    "category": "Programming",
-                    "skills": [
-                        "Python",
-                        "SQL, PostgreSQL",
-                        "MATLAB/Octave",
-                        "HTML",
-                        "CSS",
-                        "Javascript",
-                        "Typst",
-                        "LaTeX"
-                    ]
-                },
-                {
-                    "category": "Tools",
-                    "skills": [
-                        "Microsoft Word",
-                        "Git",
-                        "Docker",
-                        "Visual Studio Code",
-                        "Canva"
-                    ]
-                },
-                {
-                    "category": "Web Development",
-                    "skills": [
-                        "React",
-                        "Next.js",
-                        "million.js",
-                        "Svelte \u0026 Sveltekit",
-                        "Tailwind CSS",
-                        "Node.js",
-                        "Deno",
-                        "FastAPI",
-                        "Flask"
-                    ]
-                },
-                {
-                    "category": "BI \u0026 Data Analytics",
-                    "skills": [
-                        "Microsoft Excel",
-                        "Microsoft Power BI",
-                        "Jupyter Notebook",
-                        "Numpy",
-                        "Pandas",
-                        "Plotly",
-                        "Altair"
-                    ]
-                }
-            ],
-            "languages": [
-                {
-                    "language": "English",
-                    "fluency": "Native speaker"
-                },
-                {
-                    "language": "German",
-                    "fluency": "Native speaker"
-                },
-                {
-                    "language": "Japanese",
-                    "fluency": "Basic proficiency"
-                }
-            ],
-            "interests": [
-                "Video Games",
-                "Anime",
-                "Reading Non-fiction",
-                "Classical and Original Soundtrack Music"
-            ],
-            "references": [
-                {
-                    "name": "Dr. Jane Austin",
-                    "reference": "John was a great student. He was always eager to learn new things and was very passionate about his studies. As his mentor, I am proud to say that he was also a great leader and was able to lead his team to victory in the 2020 SCG Bangkok Business Challenge Global Competition.",
-                    "url": "https://janeaustin.com"
-                }
-            ]
+    "languages": {
+      "type": "array",
+      "default": [],
+      "title": "The languages Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "language",
+          "fluency"
+        ],
+        "properties": {
+          "language": {
+            "type": "string",
+            "title": "The language Schema"
+          },
+          "fluency": {
+            "type": "string",
+            "title": "The fluency Schema"
+          }
         }
-    ]
+      }
+    },
+    "interests": {
+      "type": "array",
+      "default": [],
+      "title": "The interests Schema",
+      "items": {
+        "type": "string",
+        "title": "A Schema"
+      }
+    },
+    "references": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "default": [],
+      "title": "The references Schema",
+      "items": {
+        "type": "object",
+        "default": {},
+        "title": "A Schema",
+        "required": [
+          "name",
+          "reference"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": "",
+            "title": "The name Schema"
+          },
+          "reference": {
+            "type": "string",
+            "default": "",
+            "title": "The reference Schema"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "default": "",
+            "title": "The url Schema"
+          }
+        }
+      }
+    }
+  }
 }
