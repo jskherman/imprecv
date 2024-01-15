@@ -14,7 +14,6 @@
     "personal": {
       "type": "object",
       "default": {},
-      "title": "The personal Schema",
       "required": [
         "name",
         "profiles"
@@ -22,8 +21,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "default": "",
-          "title": "The name Schema"
+          "default": ""
         },
         "email": {
           "type": [
@@ -31,16 +29,14 @@
             "null"
           ],
           "format": "email",
-          "default": "",
-          "title": "The email Schema"
+          "default": ""
         },
         "phone": {
           "type": [
             "string",
             "null"
           ],
-          "default": "",
-          "title": "The phone Schema"
+          "default": ""
         },
         "url": {
           "type": [
@@ -48,8 +44,7 @@
             "null"
           ],
           "format": "uri",
-          "default": "",
-          "title": "The url Schema"
+          "default": ""
         },
         "location": {
           "type": [
@@ -57,7 +52,6 @@
             "null"
           ],
           "default": {},
-          "title": "The location Schema",
           "required": [
             "city",
             "region",
@@ -67,33 +61,27 @@
           "properties": {
             "city": {
               "type": "string",
-              "default": "",
-              "title": "The city Schema"
+              "default": ""
             },
             "region": {
               "type": "string",
-              "default": "",
-              "title": "The region Schema"
+              "default": ""
             },
             "postalCode": {
               "type": "integer",
-              "default": 0,
-              "title": "The postalCode Schema"
+              "default": 0
             },
             "country": {
               "type": "string",
-              "default": "",
-              "title": "The country Schema"
+              "default": ""
             }
           }
         },
         "profiles": {
           "type": "array",
           "default": [],
-          "title": "The profiles Schema",
           "items": {
             "type": "object",
-            "title": "A Schema",
             "required": [
               "network",
               "username",
@@ -101,17 +89,14 @@
             ],
             "properties": {
               "network": {
-                "type": "string",
-                "title": "The network Schema"
+                "type": "string"
               },
               "username": {
-                "type": "string",
-                "title": "The username Schema"
+                "type": "string"
               },
               "url": {
                 "type": "string",
-                "format": "uri",
-                "title": "The url Schema"
+                "format": "uri"
               }
             }
           }
@@ -121,10 +106,8 @@
     "work": {
       "type": "array",
       "default": [],
-      "title": "The work Schema",
       "items": {
         "type": "object",
-        "title": "A Schema",
         "required": [
           "organization",
           "position",
@@ -135,43 +118,35 @@
         ],
         "properties": {
           "organization": {
-            "type": "string",
-            "title": "The organization Schema"
+            "type": "string"
           },
           "position": {
-            "type": "string",
-            "title": "The position Schema"
+            "type": "string"
           },
           "url": {
             "type": [
               "string",
               "null"
             ],
-            "format": "uri",
-            "title": "The url Schema"
+            "format": "uri"
           },
           "location": {
-            "type": "string",
-            "title": "The location Schema"
+            "type": "string"
           },
           "startDate": {
             "type": "string",
-            "format": "date",
-            "title": "The startDate Schema"
+            "format": "date"
           },
           "endDate": {
-            "type": "string",
-            "title": "The endDate Schema"
+            "type": "string"
           },
           "highlights": {
             "type": [
               "array",
               "null"
             ],
-            "title": "The highlights Schema",
             "items": {
-              "type": "string",
-              "title": "A Schema"
+              "type": "string"
             }
           }
         }
@@ -180,10 +155,8 @@
     "education": {
       "type": "array",
       "default": [],
-      "title": "The education Schema",
       "items": {
         "type": "object",
-        "title": "A Schema",
         "required": [
           "institution",
           "area",
@@ -195,47 +168,38 @@
         ],
         "properties": {
           "institution": {
-            "type": "string",
-            "title": "The institution Schema"
+            "type": "string"
           },
           "url": {
             "type": [
               "string",
               "null"
             ],
-            "format": "uri",
-            "title": "The url Schema"
+            "format": "uri"
           },
           "area": {
-            "type": "string",
-            "title": "The area Schema"
+            "type": "string"
           },
           "studyType": {
-            "type": "string",
-            "title": "The studyType Schema"
+            "type": "string"
           },
           "startDate": {
             "type": "string",
-            "format": "date",
-            "title": "The startDate Schema"
+            "format": "date"
           },
           "endDate": {
-            "type": "string",
-            "title": "The endDate Schema"
+            "type": "string"
           },
           "location": {
-            "type": "string",
-            "title": "The location Schema"
+            "type": "string"
           },
           "honors": {
             "type": [
               "array",
               "null"
             ],
-            "title": "The honors Schema",
             "items": {
-              "type": "string",
-              "title": "A Schema"
+              "type": "string"
             }
           },
           "courses": {
@@ -243,10 +207,8 @@
               "array",
               "null"
             ],
-            "title": "The courses Schema",
             "items": {
-              "type": "string",
-              "title": "A Schema"
+              "type": "string"
             }
           },
           "highlights": {
@@ -254,10 +216,8 @@
               "array",
               "null"
             ],
-            "title": "The highlights Schema",
             "items": {
-              "type": "string",
-              "title": "A Schema"
+              "type": "string"
             }
           }
         }
@@ -266,10 +226,8 @@
     "affiliations": {
       "type": "array",
       "default": [],
-      "title": "The affiliations Schema",
       "items": {
         "type": "object",
-        "title": "A Schema",
         "required": [
           "organization",
           "position",
@@ -280,15 +238,12 @@
         ],
         "properties": {
           "organization": {
-            "type": "string",
-            "title": "The organization Schema"
+            "type": "string"
           },
           "position": {
-            "type": "string",
-            "title": "The position Schema"
+            "type": "string"
           },
           "location": {
-            "title": "The location Schema",
             "type": "string"
           },
           "url": {
@@ -296,27 +251,22 @@
               "string",
               "null"
             ],
-            "format": "uri",
-            "title": "The url Schema"
+            "format": "uri"
           },
           "startDate": {
             "type": "string",
-            "format": "date",
-            "title": "The startDate Schema"
+            "format": "date"
           },
           "endDate": {
-            "type": "string",
-            "title": "The endDate Schema"
+            "type": "string"
           },
           "highlights": {
             "type": [
               "array",
               "null"
             ],
-            "title": "The highlights Schema",
             "items": {
-              "type": "string",
-              "title": "A Schema"
+              "type": "string"
             }
           }
         }
@@ -325,10 +275,8 @@
     "awards": {
       "type": "array",
       "default": [],
-      "title": "The awards Schema",
       "items": {
         "type": "object",
-        "title": "A Schema",
         "required": [
           "title",
           "date",
@@ -336,282 +284,238 @@
         ],
         "properties": {
           "title": {
-            "type": "string",
-            "title": "The title Schema"
-          },
-          "date": {
-            "type": "string",
-            "format": "date",
-            "title": "The date Schema"
-          },
-          "issuer": {
-            "type": "string",
-            "title": "The issuer Schema"
-          },
-          "url": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "uri",
-            "title": "The url Schema"
-          },
-          "location": {
-            "type": "string",
-            "title": "The location Schema"
-          },
-          "highlights": {
-            "type": [
-              "null",
-              "array"
-            ],
-            "title": "The highlights Schema",
-            "items": {
-              "type": "string",
-              "title": "A Schema"
-            }
+            "type": "string"
+          }
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "issuer": {
+          "type": "string"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "location": {
+          "type": "string"
+        },
+        "highlights": {
+          "type": [
+            "null",
+            "array"
+          ],
+          "items": {
+            "type": "string"
           }
         }
       }
-    },
-    "certificates": {
-      "type": [
-        "array",
-        "null"
+    }
+  },
+  "certificates": {
+    "type": [
+      "array",
+      "null"
+    ],
+    "default": [],
+    "items": {
+      "type": "object",
+      "default": {},
+      "required": [
+        "name",
+        "date",
+        "issuer"
       ],
-      "default": [],
-      "title": "The certificates Schema",
-      "items": {
-        "type": "object",
-        "default": {},
-        "title": "A Schema",
-        "required": [
-          "name",
-          "date",
-          "issuer"
-        ],
-        "properties": {
-          "name": {
-            "type": "string",
-            "default": "",
-            "title": "The name Schema"
-          },
-          "date": {
-            "type": "string",
-            "format": "date",
-            "default": "",
-            "title": "The date Schema"
-          },
-          "issuer": {
-            "type": "string",
-            "default": "",
-            "title": "The issuer Schema"
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "default": "",
-            "title": "The url Schema"
-          }
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "default": ""
+        },
+        "issuer": {
+          "type": "string",
+          "default": ""
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "default": ""
         }
       }
-    },
-    "publications": {
-      "type": [
-        "array",
-        "null"
+    }
+  },
+  "publications": {
+    "type": [
+      "array",
+      "null"
+    ],
+    "default": [],
+    "items": {
+      "type": "object",
+      "default": {},
+      "required": [
+        "name",
+        "publisher",
+        "releaseDate",
+        "url"
       ],
-      "default": [],
-      "title": "The publications Schema",
-      "items": {
-        "type": "object",
-        "default": {},
-        "title": "A Schema",
-        "required": [
-          "name",
-          "publisher",
-          "releaseDate",
-          "url"
-        ],
-        "properties": {
-          "name": {
-            "type": "string",
-            "default": "",
-            "title": "The name Schema"
-          },
-          "publisher": {
-            "type": "string",
-            "default": "",
-            "title": "The publisher Schema"
-          },
-          "releaseDate": {
-            "type": "string",
-            "format": "date",
-            "default": "",
-            "title": "The releaseDate Schema"
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "default": "",
-            "title": "The url Schema"
-          }
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "publisher": {
+          "type": "string",
+          "default": ""
+        },
+        "releaseDate": {
+          "type": "string",
+          "format": "date",
+          "default": ""
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "default": ""
         }
       }
-    },
-    "projects": {
-      "type": [
-        "array",
-        "null"
+    }
+  },
+  "projects": {
+    "type": [
+      "array",
+      "null"
+    ],
+    "default": [],
+    "items": {
+      "type": "object",
+      "default": {},
+      "required": [
+        "name",
+        "url",
+        "affiliation",
+        "startDate",
+        "endDate",
+        "highlights"
       ],
-      "default": [],
-      "title": "The projects Schema",
-      "items": {
-        "type": "object",
-        "default": {},
-        "title": "A Schema",
-        "required": [
-          "name",
-          "url",
-          "affiliation",
-          "startDate",
-          "endDate",
-          "highlights"
-        ],
-        "properties": {
-          "name": {
-            "type": "string",
-            "default": "",
-            "title": "The name Schema"
-          },
-          "url": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "uri",
-            "default": "",
-            "title": "The url Schema"
-          },
-          "affiliation": {
-            "type": "string",
-            "default": "",
-            "title": "The affiliation Schema"
-          },
-          "startDate": {
-            "type": "string",
-            "format": "date",
-            "default": "",
-            "title": "The startDate Schema"
-          },
-          "endDate": {
-            "type": "string",
-            "default": "",
-            "title": "The endDate Schema"
-          },
-          "highlights": {
-            "type": "array",
-            "default": [],
-            "title": "The highlights Schema",
-            "items": {
-              "type": "string",
-              "title": "A Schema"
-            }
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "default": ""
+        },
+        "affiliation": {
+          "type": "string",
+          "default": ""
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date",
+          "default": ""
+        },
+        "endDate": {
+          "type": "string",
+          "default": ""
+        },
+        "highlights": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
           }
         }
       }
-    },
-    "skills": {
-      "type": "array",
-      "default": [],
-      "title": "The skills Schema",
-      "items": {
-        "type": "object",
-        "title": "A Schema",
-        "required": [
-          "category",
-          "skills"
-        ],
-        "properties": {
-          "category": {
-            "type": "string",
-            "title": "The category Schema"
-          },
-          "skills": {
-            "type": "array",
-            "title": "The skills Schema",
-            "items": {
-              "type": "string",
-              "title": "A Schema"
-            }
-          }
-        }
-      }
-    },
-    "languages": {
-      "type": "array",
-      "default": [],
-      "title": "The languages Schema",
-      "items": {
-        "type": "object",
-        "title": "A Schema",
-        "required": [
-          "language",
-          "fluency"
-        ],
-        "properties": {
-          "language": {
-            "type": "string",
-            "title": "The language Schema"
-          },
-          "fluency": {
-            "type": "string",
-            "title": "The fluency Schema"
-          }
-        }
-      }
-    },
-    "interests": {
-      "type": "array",
-      "default": [],
-      "title": "The interests Schema",
-      "items": {
-        "type": "string",
-        "title": "A Schema"
-      }
-    },
-    "references": {
-      "type": [
-        "array",
-        "null"
+    }
+  },
+  "skills": {
+    "type": "array",
+    "default": [],
+    "items": {
+      "type": "object",
+      "required": [
+        "category",
+        "skills"
       ],
-      "default": [],
-      "title": "The references Schema",
-      "items": {
-        "type": "object",
-        "default": {},
-        "title": "A Schema",
-        "required": [
-          "name",
-          "reference"
-        ],
-        "properties": {
-          "name": {
-            "type": "string",
-            "default": "",
-            "title": "The name Schema"
-          },
-          "reference": {
-            "type": "string",
-            "default": "",
-            "title": "The reference Schema"
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "default": "",
-            "title": "The url Schema"
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
+        }
+      }
+    }
+  },
+  "languages": {
+    "type": "array",
+    "default": [],
+    "items": {
+      "type": "object",
+      "required": [
+        "language",
+        "fluency"
+      ],
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "fluency": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "interests": {
+    "type": "array",
+    "default": [],
+    "items": {
+      "type": "string"
+    }
+  },
+  "references": {
+    "type": [
+      "array",
+      "null"
+    ],
+    "default": [],
+    "items": {
+      "type": "object",
+      "default": {},
+      "required": [
+        "name",
+        "reference"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "reference": {
+          "type": "string",
+          "default": ""
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "default": ""
         }
       }
     }
