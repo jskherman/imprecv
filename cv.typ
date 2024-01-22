@@ -101,6 +101,40 @@
     ]
 }
 
+#let cvwork(info, isbreakable: true) = {
+    if info.work != none {block[
+        == Work Experience
+        #for w in info.work {
+            block(width: 100%, breakable: isbreakable)[
+                // line 1: company and location
+                #if w.url != none [
+                    *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
+                ] else [
+                    *#w.organization* #h(1fr) *#w.location* \
+                ]
+            ]
+            // create a block layout for each work entry
+            let index = 0
+            for p in w.positions {
+                if index != 0 {v(0.6em)}
+                block(width: 100%, breakable: isbreakable, above: 0.6em)[
+                    // parse ISO date strings into datetime objects
+                    #let start = utils.strpdate(p.startDate)
+                    #let end = utils.strpdate(p.endDate)
+                    // line 2: position and date range
+                    #text(style: "italic")[#p.position] #h(1fr)
+                    #start #sym.dash.en #end \
+                    // highlights or description
+                    #for hi in p.highlights [
+                        - #eval(hi, mode: "markup")
+                    ]
+                ]
+                index = index + 1
+            }
+        }
+    ]}
+}
+
 #let cveducation(info, isbreakable: true) = {
     if info.education != none {block[
         == Education
@@ -130,33 +164,6 @@
                 #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
                 #start #sym.dash.en #end \
                 #eval(edu-items, mode: "markup")
-            ]
-        }
-    ]}
-}
-
-#let cvwork(info, isbreakable: true) = {
-    if info.work != none {block[
-        == Work Experience
-        #for w in info.work {
-            let start = utils.strpdate(w.startDate)
-            let end = utils.strpdate(w.endDate)
-
-            // create a block layout for each work entry
-            block(width: 100%, breakable: isbreakable)[
-                // line 1: workplace and location
-                #if w.url != none [
-                    *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
-                ] else [
-                    *#w.organization* #h(1fr) *#w.location* \
-                ]
-                // line 2: position and date
-                #text(style: "italic")[#w.position] #h(1fr)
-                #start #sym.dash.en #end \
-                // highlights or description
-                #for hi in w.highlights [
-                    - #eval(hi, mode: "markup")
-                ]
             ]
         }
     ]}
