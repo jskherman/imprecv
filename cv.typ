@@ -101,40 +101,6 @@
     ]
 }
 
-#let cveducation(info, isbreakable: true) = {
-    if info.education != none {block[
-        == Education
-        #for edu in info.education {
-            let start = utils.strpdate(edu.startDate)
-            let end = utils.strpdate(edu.endDate)
-
-            let edu-items = ""
-            if edu.honors != none {edu-items = edu-items + "- *Honors*: " + edu.honors.join(", ") + "\n"}
-            if edu.courses != none {edu-items = edu-items + "- *Courses*: " + edu.courses.join(", ") + "\n"}
-            if edu.highlights != none {
-                for hi in edu.highlights {
-                    edu-items = edu-items + "- " + hi + "\n"
-                }
-                edu-items = edu-items.trim("\n")
-            }
-
-            // create a block layout for each education entry
-            block(width: 100%, breakable: isbreakable)[
-                // line 1: institution and location
-                #if edu.url != none [
-                    *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
-                ] else [
-                    *#edu.institution* #h(1fr) *#edu.location* \
-                ]
-                // line 2: degree and date
-                #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
-                #start #sym.dash.en #end \
-                #eval(edu-items, mode: "markup")
-            ]
-        }
-    ]}
-}
-
 #let cvwork(info, isbreakable: true) = {
     if info.work != none {block[
         == Work Experience
@@ -165,6 +131,40 @@
                 ]
                 index = index + 1
             }
+        }
+    ]}
+}
+
+#let cveducation(info, isbreakable: true) = {
+    if info.education != none {block[
+        == Education
+        #for edu in info.education {
+            let start = utils.strpdate(edu.startDate)
+            let end = utils.strpdate(edu.endDate)
+
+            let edu-items = ""
+            if edu.honors != none {edu-items = edu-items + "- *Honors*: " + edu.honors.join(", ") + "\n"}
+            if edu.courses != none {edu-items = edu-items + "- *Courses*: " + edu.courses.join(", ") + "\n"}
+            if edu.highlights != none {
+                for hi in edu.highlights {
+                    edu-items = edu-items + "- " + hi + "\n"
+                }
+                edu-items = edu-items.trim("\n")
+            }
+
+            // create a block layout for each education entry
+            block(width: 100%, breakable: isbreakable)[
+                // line 1: institution and location
+                #if edu.url != none [
+                    *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
+                ] else [
+                    *#edu.institution* #h(1fr) *#edu.location* \
+                ]
+                // line 2: degree and date
+                #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
+                #start #sym.dash.en #end \
+                #eval(edu-items, mode: "markup")
+            ]
         }
     ]}
 }
