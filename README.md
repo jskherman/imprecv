@@ -10,7 +10,7 @@ A no-frills curriculum vitae (CV) template for [Typst](https://github.com/typst/
 
 This is based on the [popular template on Reddit](https://web.archive.org/https://old.reddit.com/r/jobs/comments/7y8k6p/im_an_exrecruiter_for_some_of_the_top_companies/) by [u/SheetsGiggles](https://web.archive.org/https://old.reddit.com/user/SheetsGiggles) and the recommendations of the [r/EngineeringResumes wiki](https://web.archive.org/https://old.reddit.com/r/EngineeringResumes/comments/m2cc65/new_and_improved_wiki).
 
-> **Note**  
+> [!NOTE]  
 > Due to circumstances, this project will be minimally maintained and responses to issues and pull requests will be delayed. If you would like to contribute to this project, I will be happy to review and merge your pull requests when I can. Thank you for your understanding.
 
 ## Demo
