@@ -46,8 +46,8 @@ work:
         endDate: 2019-05-31
         highlights:
           - This being the theory I hold, why need I be afraid of not being able to reconcile it with the case of my ancestors?
-          - "The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
-          - Do you really believe that they charged an armed enemy, or treated their children, their own flesh and blood, so cruelly, without a thought for their own interest or advantage?
+          - Spearheaded the development of a mission-critical software module, resulting in a 30% improvement in data processing efficiency for the Mars Rover project.
+          - Led a cross-functional team in implementing agile methodologies, reducing project timelines by 20% and ensuring timely delivery of software updates for multiple space exploration missions.
 
 education:
   - institution: Open University
@@ -59,25 +59,6 @@ education:
     location: City of London, United Kingdom
     honors:
       - 4.0 / 4.0 GPA
-      - President's List
-      - Dean's List
-    courses:
-      - Algorithms & Data Structures
-      - Applications in Quantitative Finance
-      - Engineering Data Analysis
-      - Compiler Architecture
-    highlights:
-      - "*Thesis*: A convolutional neural network for predicting Greenland glacier melt and glacial water flow"
-      - "*Activities*: Debating, Chess, Cricket"
-  - institution: Harvard University
-    url:
-    area: Computer Science
-    studyType: Bachelor of Science
-    startDate: 2017-08-01
-    endDate: 2021-06-30
-    location: City of London, United Kingdom
-    honors:
-      - Summa Cum Laude (4.0 GPA)
       - President's List
       - Dean's List
     courses:
@@ -147,7 +128,7 @@ projects:
     endDate: 2021-04-30
     highlights:
       - Created an AI-powered resume editor application that allowed users to easily create different resumes and cover letters specifically tailored to and customized for individual job descriptions based on their personal information in their complete curriculum vitae.
-      - Acquired more than 100,000 user sign ups in 3 months and more than 10,000 active monthly users in its lifetime before being sold to investors.
+      - Acquired more than 100,000 user sign ups in 3 months and more than 10,000 active monthly users.
       - Generated profit of upwards \$20,000 yearly with a team of only four developers and three business operatives
 
 skills:
