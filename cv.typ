@@ -265,7 +265,7 @@
                 #if cert.url != none [
                     *#link(cert.url)[#cert.name]* \
                 ] else [
-                    *#cert.name* \
+                    *#cert.name* #h(1fr)ID: #cert.id\
                 ]
                 // line 2: issuer and date
                 Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #date \
