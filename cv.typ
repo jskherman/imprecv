@@ -158,7 +158,7 @@
           })
 
           for hi in p.highlights {
-            [- #hi]
+            [- #eval(hi, mode: "markup")]
           }
 
           index = index + 1
@@ -196,8 +196,8 @@
           dot_list("Courses", courses)
 
           if edu.at("highlights", default: none) != none {
-            for h in edu.highlights {
-              [- #eval(h, mode: "markup")]
+            for hi in edu.highlights {
+              [- #eval(hi, mode: "markup")]
             }
           }
         })
@@ -228,8 +228,8 @@
           line_two(org.position, right_start: start, right_end: end)
 
           if org.at("highlights", default: none) != none {
-            for h in org.highlights {
-              [- #h]
+            for hi in org.highlights {
+              [- #eval(hi, mode: "markup")]
             }
           }
         })
@@ -259,8 +259,8 @@
           // line 2: organization and date
           line_two(project.affiliation, right_start: start, right_end: end)
 
-          for h in project.highlights {
-            [- #h]
+          for hi in project.highlights {
+            [- #eval(hi, mode: "markup")]
           }
         })
       }
@@ -285,8 +285,8 @@
           line_two(award.issuer, right_end: date)
 
           if award.at("highlights", default: none) != none {
-            for h in award.highlights {
-              [- #h]
+            for hi in award.highlights {
+              [- #eval(hi, mode: "markup")]
             }
           }
         })
