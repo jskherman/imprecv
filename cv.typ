@@ -369,9 +369,7 @@
       [== References]
 
       for ref in info.references {
-        let foo = ()
-        foo.push(ref.reference)
-        dot_list(ref.name, foo, url: ref.url)
+        dot_list(ref.name, (ref.reference,), url: ref.url)
       }
     })
   }
