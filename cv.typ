@@ -1,36 +1,20 @@
 #import "utils.typ"
 
-// set rules
-#let setrules(uservars, doc) = {
-  set text(font: uservars.bodyfont, size: uservars.fontsize, hyphenate: false)
-  set list(spacing: uservars.linespacing)
-  set par(leading: uservars.linespacing, justify: true)
+#let set_style(opts, doc) = {
+  set list(spacing: opts.line-spacing)
+  set par(leading: opts.line-spacing, justify: true)
+  set text(font: opts.font.body, size: opts.font.size, hyphenate: false)
+  set page(
+    margin: 1.25cm, // 1.25cm, 1.87cm, 2.5cm
+    number-align: center, // left, center, right
+    numbering: "1 / 1", paper: "us-letter", // a4, us-letter
+  )
 
-  doc
-}
-
-// show rules
-#let showrules(uservars, doc) = {
-  // uppercase section headings
-  show heading.where(level: 2): it => block(width: 100%, {
-    set align(left)
-    set text(font: uservars.headingfont, size: 1em, weight: "bold")
-
-    if (uservars.at("headingsmallcaps", default: false)) {
-      smallcaps(it.body)
-    } else {
-      upper(it.body)
-    }
-
-    v(-0.5em)
-    line(length: 100%, stroke: 1pt + black)
-  })
-
-  // name title
+  // name title case
   show heading.where(level: 1): it => block(width: 100%, {
-    set text(font: uservars.headingfont, size: 1.5em, weight: "bold")
+    set text(font: opts.font.heading, size: 1.5em, weight: "bold")
 
-    if (uservars.at("headingsmallcaps", default: false)) {
+    if (opts.at("heading-smallcaps", default: false)) {
       smallcaps(it.body)
     } else {
       upper(it.body)
@@ -39,13 +23,20 @@
     v(0.1em)
   })
 
-  doc
-}
+  // section headings case
+  show heading.where(level: 2): it => block(width: 100%, {
+    set align(left)
+    set text(font: opts.font.heading, size: 1em, weight: "bold")
 
-// set page layout
-#let cvinit(doc) = {
-  doc = setrules(doc)
-  doc = showrules(doc)
+    if (opts.at("heading-smallcaps", default: false)) {
+      smallcaps(it.body)
+    } else {
+      upper(it.body)
+    }
+
+    v(-0.5em)
+    line(length: 100%, stroke: 1pt + black)
+  })
 
   doc
 }
@@ -83,8 +74,8 @@
 }
 
 // address
-#let addresstext(info, uservars) = {
-  if uservars.showAddress {
+#let address_text(info, opts) = {
+  if opts.show-address {
     let address_line = ()
     let location = info.personal.at("location")
 
@@ -101,11 +92,11 @@
   }
 }
 
-#let contacttext(info, uservars) = block(
+#let contact_text(info, opts) = block(
   width: 100%, {
     let profiles = array(
       (
-        box(link("mailto:" + info.personal.email)), if uservars.showNumber { box(link("tel:" + info.personal.phone)) } else { none }, if info.at("personal.url", default: none) != none { box(link(info.personal.url, { info.personal.url.split("//").at(1) })) },
+        box(link("mailto:" + info.personal.email)), if opts.show-number { box(link("tel:" + info.personal.phone)) } else { none }, if info.at("personal.url", default: none) != none { box(link(info.personal.url, { info.personal.url.split("//").at(1) })) },
       ).filter(it => it != none),
     ) // remove empty elements from profiles
 
@@ -115,23 +106,23 @@
       }
     }
 
-    set text(font: uservars.bodyfont, weight: "medium", size: uservars.fontsize * 1)
+    set text(font: opts.font.body, weight: "medium", size: opts.font.size * 1)
     pad(x: 0em, {
       profiles.join([#sym.space.en #sym.diamond.filled #sym.space.en])
     })
   },
 )
 
-#let cvheading(info, uservars) = {
+#let header(info, opts) = {
   align(center, {
     [= #info.personal.name]
 
-    addresstext(info, uservars)
-    contacttext(info, uservars)
+    address_text(info, opts)
+    contact_text(info, opts)
   })
 }
 
-#let cvwork(info, isbreakable: true) = {
+#let work(info, isbreakable: true) = {
   if info.at("work", default: none) != none {
     block({
       [== Work Experience]
@@ -168,7 +159,7 @@
   }
 }
 
-#let cveducation(info, isbreakable: true) = {
+#let education(info, isbreakable: true) = {
   if info.at("education", default: none) != none {
     block({
       [== Education]
@@ -206,7 +197,7 @@
   }
 }
 
-#let cvaffiliations(info, isbreakable: true) = {
+#let affiliations(info, isbreakable: true) = {
   if info.at("affiliations", default: none) != none {
     block({
       [== Leadership & Activities]
@@ -238,7 +229,7 @@
   }
 }
 
-#let cvprojects(info, isbreakable: true) = {
+#let projects(info, isbreakable: true) = {
   if info.at("projects", default: none) != none {
     block({
       [== Projects]
@@ -268,7 +259,7 @@
   }
 }
 
-#let cvawards(info, isbreakable: true) = {
+#let awards(info, isbreakable: true) = {
   if info.at("awards", default: none) != none {
     block({
       [== Honors & Awards]
@@ -295,7 +286,7 @@
   }
 }
 
-#let cvcertificates(info, isbreakable: true) = {
+#let certificates(info, isbreakable: true) = {
   if info.at("certificates", default: none) != none {
     block({
       [== Licenses & Certifications]
@@ -317,7 +308,7 @@
   }
 }
 
-#let cvpublications(info, isbreakable: true) = {
+#let publications(info, isbreakable: true) = {
   if info.at("publications", default: none) != none {
     block({
       [== Research & Publications]
@@ -339,7 +330,7 @@
   }
 }
 
-#let cvskills(info, isbreakable: true) = {
+#let skills(info, isbreakable: true) = {
   if (info.at("languages", default: none) != none) or (info.at("skills", default: none) != none) or (info.at("interests", default: none) != none) {
     block(breakable: isbreakable, {
       [== Skills, Languages, Interests]
@@ -353,8 +344,8 @@
       dot_list("Languages", langs_join)
 
       let skills = info.at("skills", default: none)
-      for skill in skills {
-        dot_list(skill.category, skill.skills)
+      for skill-group in skills {
+        dot_list(skill-group.category, skill-group.skills)
       }
 
       let interests = info.at("interests", default: none)
@@ -363,7 +354,7 @@
   }
 }
 
-#let cvreferences(info, isbreakable: true) = {
+#let references(info, isbreakable: true) = {
   if info.at("references", default: none) != none {
     block({
       [== References]
@@ -375,7 +366,7 @@
   }
 }
 
-#let endnote() = {
+#let footer() = {
   place(
     bottom + right, block(
       {

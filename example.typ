@@ -1,59 +1,52 @@
-#import "cv.typ": *
+#import "cv.typ"
 
-#let cvdata = yaml("example.yml")
+#let user-data = yaml("example.yml")
 
-#let uservars = (
-    headingfont: "Linux Libertine",
-    bodyfont: "Linux Libertine",
-    fontsize: 10pt, // 10pt, 11pt, 12pt
-    linespacing: 6pt,
-    showAddress: true, // true/false show address in contact info
-    showNumber: true,  // true/false show phone number in contact info
-    headingsmallcaps: false
+#let cv-options = (
+  font: (
+    body: "Linux Libertine",
+    heading: "Linux Libertine",
+    size: 10pt,
+  ),
+  heading-smallcaps: false,
+  line-spacing: 6pt,
+  show-address: true, // bool: show address in header
+  show-number: true, // bool: show phone number in header
 )
 
-// setrules and showrules can be overridden by re-declaring it here
-// #let setrules(doc) = {
-//      // add custom document style rules here
-//
-//      doc
-// }
-
-#let customrules(doc) = {
-    // add custom document style rules here
-    set page(
-        paper: "us-letter", // a4, us-letter
-        numbering: "1 / 1",
-        number-align: center, // left, center, right
-        margin: 1.25cm, // 1.25cm, 1.87cm, 2.5cm
-    )
-
-    doc
+// you could override default style by re-applying style rules here
+#let set_style(doc) = {
+  // set list(spacing: 10pt)
+  // set par(leading: 10pt, justify: false)
+  doc
 }
 
-#let cvinit(doc) = {
-    doc = setrules(uservars, doc)
-    doc = showrules(uservars, doc)
-    doc = customrules(doc)
+#let init(doc) = {
+  doc = cv.set_style(cv-options, doc)
+  doc = set_style(doc)
 
-    doc
+  doc
 }
 
-// each section body can be overridden by re-declaring it here
-// #let cveducation = []
+// you could override each section format by re-declaring section function here
+// #let work = [
+//   [== Work Experience]
+// ]
 
 // ========================================================================== //
+//                             cv-content                                     //
+// ========================================================================== //
 
-#show: doc => cvinit(doc)
+#show: doc => init(doc)
 
-#cvheading(cvdata, uservars)
-#cvwork(cvdata)
-#cveducation(cvdata)
-#cvaffiliations(cvdata)
-#cvprojects(cvdata)
-#cvawards(cvdata)
-#cvcertificates(cvdata)
-#cvpublications(cvdata)
-#cvskills(cvdata)
-#cvreferences(cvdata)
-#endnote()
+#cv.header(user-data, cv-options)
+#cv.work(user-data)
+#cv.education(user-data)
+#cv.affiliations(user-data)
+#cv.projects(user-data)
+#cv.awards(user-data)
+#cv.certificates(user-data)
+#cv.publications(user-data)
+#cv.skills(user-data)
+#cv.references(user-data)
+#cv.footer()
