@@ -14,7 +14,7 @@
   show heading.where(level: 1): it => block(width: 100%, {
     set text(font: opts.font.heading, size: 1.5em, weight: "bold")
 
-    if (opts.at("heading-smallcaps", default: false)) {
+    if opts.heading-smallcaps {
       smallcaps(it.body)
     } else {
       upper(it.body)
@@ -23,12 +23,12 @@
     v(0.1em)
   })
 
-  // section headings case
+  // section heading case
   show heading.where(level: 2): it => block(width: 100%, {
     set align(left)
     set text(font: opts.font.heading, size: 1em, weight: "bold")
 
-    if (opts.at("heading-smallcaps", default: false)) {
+    if opts.heading-smallcaps {
       smallcaps(it.body)
     } else {
       upper(it.body)
@@ -73,35 +73,34 @@
   }
 }
 
-// address
-#let address_text(info, opts) = {
+#let address_text(personal, opts) = {
   if opts.show-address {
     let address_line = ()
-    let location = info.personal.at("location")
 
     for key in ("city", "region", "country") {
-      let value = location.at(key, default: none)
+      let value = personal.location.at(key, default: none)
       if value != none and value != "" {
-        address_line.push([#location.at(key, default: none)])
+        address_line.push([#personal.location.at(key, default: none)])
       }
     }
 
-    [#address_line.join(", ") #location.postalCode]
+    [#address_line.join(", ") #personal.location.postalCode]
 
     v(-0.5em)
   }
 }
 
-#let contact_text(info, opts) = block(
+#let contact_text(personal, opts) = block(
   width: 100%, {
+    // remove empty elements from profiles
     let profiles = array(
       (
-        box(link("mailto:" + info.personal.email)), if opts.show-number { box(link("tel:" + info.personal.phone)) } else { none }, if info.at("personal.url", default: none) != none { box(link(info.personal.url, { info.personal.url.split("//").at(1) })) },
+        box(link("mailto:" + personal.email)), if opts.show-number { box(link("tel:" + personal.phone)) } else { none }, if personal.at("url", default: none) != none { box(link(personal.url, { personal.url.split("//").at(1) })) },
       ).filter(it => it != none),
-    ) // remove empty elements from profiles
+    )
 
-    if info.personal.profiles.len() > 0 {
-      for profile in info.personal.profiles {
+    if personal.profiles.len() > 0 {
+      for profile in personal.profiles {
         profiles.push(box(link(profile.url, { profile.url.split("//").at(1) })))
       }
     }
@@ -113,257 +112,239 @@
   },
 )
 
-#let header(info, opts) = {
+#let header(personal, opts) = {
   align(center, {
-    [= #info.personal.name]
+    [= #personal.name]
 
-    address_text(info, opts)
-    contact_text(info, opts)
+    address_text(personal, opts)
+    contact_text(personal, opts)
   })
 }
 
-#let work(info, isbreakable: true) = {
-  if info.at("work", default: none) != none {
-    block({
-      [== Work Experience]
+#let work(works, breakable: true) = {
+  block({
+    [== Work Experience]
 
-      for w in info.work {
-        let company = w.organization
-        let url = w.at("url", default: none)
-        let location = w.location
+    for work in works {
+      let company = work.organization
+      let url = work.at("url", default: none)
+      let location = work.location
 
-        line_one(company, right: location, url: url)
+      line_one(company, right: location, url: url)
 
-        let index = 0
-        for p in w.positions {
-          let start = p.at("startDate", default: none)
-          if start != none {
-            start = utils.str_to_date(start)
-          }
-          let end = utils.str_to_date(p.endDate)
+      let index = 0
+      for pos in work.positions {
+        let start = pos.at("startDate", default: none)
+        if start != none {
+          start = utils.str_to_date(start)
+        }
+        let end = utils.str_to_date(pos.endDate)
 
-          if index != 0 { v(0.5em) }
+        if index != 0 { v(0.5em) }
 
-          block(above: 0.5em, {
-            line_two(p.position, right_start: start, right_end: end)
-          })
+        block(above: 0.5em, {
+          line_two(pos.position, right_start: start, right_end: end)
+        })
 
-          for hi in p.highlights {
+        for hi in pos.highlights {
+          [- #eval(hi, mode: "markup")]
+        }
+
+        index = index + 1
+      }
+    }
+  })
+}
+
+#let education(edus, breakable: true) = {
+  block({
+    [== Education]
+
+    for edu in edus {
+      let start = edu.at("startDate", default: none)
+      if start != none {
+        start = utils.str_to_date(start)
+      }
+      let end = utils.str_to_date(edu.endDate)
+
+      let left = [#edu.studyType in #edu.area]
+      let url = edu.at("url", default: none)
+
+      block(width: 100%, breakable: breakable, {
+        // line 1: institution and location
+        line_one(edu.institution, right: edu.location, url: edu.url)
+        linebreak()
+        // line 2: degree and date
+        line_two(left, right_start: start, right_end: end)
+        let honors = edu.at("honors", default: ())
+        dot_list("Honors", honors)
+
+        let courses = edu.at("courses", default: ())
+        dot_list("Courses", courses)
+
+        if edu.at("highlights", default: none) != none {
+          for hi in edu.highlights {
             [- #eval(hi, mode: "markup")]
           }
-
-          index = index + 1
         }
-      }
-    })
-  }
+      })
+    }
+  })
 }
 
-#let education(info, isbreakable: true) = {
-  if info.at("education", default: none) != none {
-    block({
-      [== Education]
+#let affiliations(affiliations, breakable: true) = {
+  block({
+    [== Leadership & Activities]
 
-      for edu in info.education {
-        let start = edu.at("startDate", default: none)
-        if start != none {
-          start = utils.str_to_date(start)
-        }
-        let end = utils.str_to_date(edu.endDate)
-
-        let left = [#edu.studyType in #edu.area]
-        let url = edu.at("url", default: none)
-
-        block(width: 100%, breakable: isbreakable, {
-          // line 1: institution and location
-          line_one(edu.institution, right: edu.location, url: edu.url)
-          linebreak()
-          // line 2: degree and date
-          line_two(left, right_start: start, right_end: end)
-          let honors = edu.at("honors", default: ())
-          dot_list("Honors", honors)
-
-          let courses = edu.at("courses", default: ())
-          dot_list("Courses", courses)
-
-          if edu.at("highlights", default: none) != none {
-            for hi in edu.highlights {
-              [- #eval(hi, mode: "markup")]
-            }
-          }
-        })
+    for af in affiliations {
+      let url = af.at("url", default: none)
+      let start = af.at("startDate", default: none)
+      if start != none {
+        start = utils.str_to_date(start)
       }
-    })
-  }
-}
+      let end = utils.str_to_date(af.endDate)
 
-#let affiliations(info, isbreakable: true) = {
-  if info.at("affiliations", default: none) != none {
-    block({
-      [== Leadership & Activities]
+      block(width: 100%, breakable: breakable, {
+        // line 1: organization and location
+        line_one(af.organization, right: af.location, url: af.url)
 
-      for org in info.affiliations {
-        let url = org.at("url", default: none)
-        let start = org.at("startDate", default: none)
-        if start != none {
-          start = utils.str_to_date(start)
-        }
-        let end = utils.str_to_date(org.endDate)
+        linebreak()
+        // line 2: position and date
+        line_two(af.position, right_start: start, right_end: end)
 
-        block(width: 100%, breakable: isbreakable, {
-          // line 1: organization and location
-          line_one(org.organization, right: org.location, url: org.url)
-
-          linebreak()
-          // line 2: position and date
-          line_two(org.position, right_start: start, right_end: end)
-
-          if org.at("highlights", default: none) != none {
-            for hi in org.highlights {
-              [- #eval(hi, mode: "markup")]
-            }
-          }
-        })
-      }
-    })
-  }
-}
-
-#let projects(info, isbreakable: true) = {
-  if info.at("projects", default: none) != none {
-    block({
-      [== Projects]
-
-      for project in info.projects {
-        let url = project.at("url", default: none)
-        let start = project.at("startDate", default: none)
-        if start != none {
-          start = utils.str_to_date(start)
-        }
-        let end = utils.str_to_date(project.endDate)
-
-        block(width: 100%, breakable: isbreakable, {
-          // line 1: project name
-          line_one(project.name, url: url)
-
-          linebreak()
-          // line 2: organization and date
-          line_two(project.affiliation, right_start: start, right_end: end)
-
-          for hi in project.highlights {
+        if af.at("highlights", default: none) != none {
+          for hi in af.highlights {
             [- #eval(hi, mode: "markup")]
           }
-        })
-      }
-    })
-  }
+        }
+      })
+    }
+  })
 }
 
-#let awards(info, isbreakable: true) = {
-  if info.at("awards", default: none) != none {
-    block({
-      [== Honors & Awards]
-      for award in info.awards {
-        let url = award.at("url", default: none)
-        let date = utils.str_to_date(award.date)
+#let projects(projects, breakable: true) = {
+  block({
+    [== Projects]
 
-        block(width: 100%, breakable: isbreakable, {
-          // line 1: award title and location
-          line_one(award.title, right: award.location, url: url)
+    for proj in projects {
+      let url = proj.at("url", default: none)
+      let start = proj.at("startDate", default: none)
+      if start != none {
+        start = utils.str_to_date(start)
+      }
+      let end = utils.str_to_date(proj.endDate)
 
-          linebreak()
-          // line 2: issuer and date
-          line_two(award.issuer, right_end: date)
+      block(width: 100%, breakable: breakable, {
+        // line 1: project name
+        line_one(proj.name, url: url)
 
-          if award.at("highlights", default: none) != none {
-            for hi in award.highlights {
-              [- #eval(hi, mode: "markup")]
-            }
+        linebreak()
+        // line 2: organization and date
+        line_two(proj.affiliation, right_start: start, right_end: end)
+
+        for hi in proj.highlights {
+          [- #eval(hi, mode: "markup")]
+        }
+      })
+    }
+  })
+}
+
+#let awards(awards, breakable: true) = {
+  block({
+    [== Honors & Awards]
+    for award in awards {
+      let url = award.at("url", default: none)
+      let date = utils.str_to_date(award.date)
+
+      block(width: 100%, breakable: breakable, {
+        // line 1: award title and location
+        line_one(award.title, right: award.location, url: url)
+
+        linebreak()
+        // line 2: issuer and date
+        line_two(award.issuer, right_end: date)
+
+        if award.at("highlights", default: none) != none {
+          for hi in award.highlights {
+            [- #eval(hi, mode: "markup")]
           }
-        })
-      }
-    })
-  }
+        }
+      })
+    }
+  })
 }
 
-#let certificates(info, isbreakable: true) = {
-  if info.at("certificates", default: none) != none {
-    block({
-      [== Licenses & Certifications]
+#let certificates(certs, breakable: true) = {
+  block({
+    [== Licenses & Certifications]
 
-      for cert in info.certificates {
-        let url = cert.at("url", default: none)
-        let date = utils.str_to_date(cert.date)
+    for cert in certs {
+      let url = cert.at("url", default: none)
+      let date = utils.str_to_date(cert.date)
 
-        block(width: 100%, breakable: isbreakable, {
-          // line 1: certificate name
-          line_one(cert.name, url: cert.url)
+      block(width: 100%, breakable: breakable, {
+        // line 1: certificate name
+        line_one(cert.name, url: cert.url)
 
-          linebreak()
-          // line 2: issuer and date
-          line_two(cert.issuer, right_end: date)
-        })
-      }
-    })
-  }
+        linebreak()
+        // line 2: issuer and date
+        line_two(cert.issuer, right_end: date)
+      })
+    }
+  })
 }
 
-#let publications(info, isbreakable: true) = {
-  if info.at("publications", default: none) != none {
-    block({
-      [== Research & Publications]
+#let publications(pubs, breakable: true) = {
+  block({
+    [== Research & Publications]
 
-      for pub in info.publications {
-        let url = pub.at("url", default: none)
-        let date = utils.str_to_date(pub.releaseDate)
+    for pub in pubs {
+      let url = pub.at("url", default: none)
+      let date = utils.str_to_date(pub.releaseDate)
 
-        block(width: 100%, breakable: isbreakable, {
-          // line 1: publication title
-          line_one(pub.name, url: url)
+      block(width: 100%, breakable: breakable, {
+        // line 1: publication title
+        line_one(pub.name, url: url)
 
-          linebreak()
-          // line 2: publisher and date
-          [Published on #line_two(pub.publisher, right_end: date)]
-        })
-      }
-    })
-  }
+        linebreak()
+        // line 2: publisher and date
+        [Published on #line_two(pub.publisher, right_end: date)]
+      })
+    }
+  })
 }
 
-#let skills(info, isbreakable: true) = {
-  if (info.at("languages", default: none) != none) or (info.at("skills", default: none) != none) or (info.at("interests", default: none) != none) {
-    block(breakable: isbreakable, {
-      [== Skills, Languages, Interests]
+#let skills(skill-groups, langs, interests, breakable: true) = {
+  block(breakable: breakable, {
+    [== Skills, Languages & Interests]
 
-      let langs = info.at("languages", default: none)
+    for skill-group in skill-groups {
+      dot_list(skill-group.category, skill-group.skills)
+    }
+
+    if langs != none {
       let langs_join = ()
       for lang in langs {
         langs_join.push([#lang.language (#lang.fluency)])
       }
-
       dot_list("Languages", langs_join)
+    }
 
-      let skills = info.at("skills", default: none)
-      for skill-group in skills {
-        dot_list(skill-group.category, skill-group.skills)
-      }
-
-      let interests = info.at("interests", default: none)
+    if interests != none {
       dot_list("Interests", interests)
-    })
-  }
+    }
+  })
 }
 
-#let references(info, isbreakable: true) = {
-  if info.at("references", default: none) != none {
-    block({
-      [== References]
+#let references(refs, breakable: true) = {
+  block({
+    [== References]
 
-      for ref in info.references {
-        dot_list(ref.name, (ref.reference,), url: ref.url)
-      }
-    })
-  }
+    for ref in refs {
+      dot_list(ref.name, ("\"" + ref.reference + "\"",), url: ref.url)
+    }
+  })
 }
 
 #let footer() = {
