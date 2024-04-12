@@ -1,4 +1,8 @@
-#let str_to_date(date-iso) = {
+//
+// internal
+//
+
+#let _str-to-date(date-iso) = {
   if lower(date-iso) == "present" {
     return "Present"
   } else {
@@ -9,7 +13,82 @@
   }
 }
 
-#let set_style(opts, doc) = {
+#let _line-one(left, right: none, url: none) = {
+  if url != none {
+    if right != none {
+      [*#link(url, left)* #h(1fr) *#right*]
+    } else {
+      [*#link(url, left)* #h(1fr)]
+    }
+  } else {
+    if right != none {
+      [*#left* #h(1fr) *#right*]
+    } else {
+      [*#left* #h(1fr)]
+    }
+  }
+}
+
+#let _line-two(left, right-start: none, right-end: none) = {
+  if right-start != none {
+    [#text(style: "italic", left) #h(1fr) #right-start #sym.dash.en #right-end]
+  } else {
+    [#text(style: "italic", left) #h(1fr) #right-end]
+  }
+}
+
+#let _dot-list(title, elements, url: none) = {
+  if url != none {
+    [- *#link(url, title)*: #elements.join(", ")]
+  } else {
+    [- *#title*: #elements.join(", ")]
+  }
+}
+
+#let _address-line(personal, opts) = {
+  if opts.show-address {
+    let address-line = ()
+
+    for key in ("city", "region", "country") {
+      let value = personal.location.at(key, default: none)
+      if value != none and value != "" {
+        address-line.push([#personal.location.at(key, default: none)])
+      }
+    }
+
+    [#address-line.join(", ") #personal.location.postalCode]
+
+    v(-0.5em)
+  }
+}
+
+#let _contact-line(personal, opts) = block(
+  width: 100%, {
+    // remove empty elements from profiles
+    let profiles = array(
+      (
+        box(link("mailto:" + personal.email)), if opts.show-number { box(link("tel:" + personal.phone)) } else { none }, if personal.at("url", default: none) != none { box(link(personal.url, { personal.url.split("//").at(1) })) },
+      ).filter(it => it != none),
+    )
+
+    if personal.profiles.len() > 0 {
+      for profile in personal.profiles {
+        profiles.push(box(link(profile.url, { profile.url.split("//").at(1) })))
+      }
+    }
+
+    set text(font: opts.font.body, weight: "medium", size: opts.font.size * 1)
+    pad(x: 0em, {
+      profiles.join([#sym.space.en #sym.diamond.filled #sym.space.en])
+    })
+  },
+)
+
+//
+// external
+//
+
+#let set-style(opts, doc) = {
   set list(spacing: opts.line-spacing)
   set par(leading: opts.line-spacing, justify: true)
   set text(font: opts.font.body, size: opts.font.size, hyphenate: false)
@@ -50,83 +129,12 @@
   doc
 }
 
-#let line_one(left, right: none, url: none) = {
-  if url != none {
-    if right != none {
-      [*#link(url, left)* #h(1fr) *#right*]
-    } else {
-      [*#link(url, left)* #h(1fr)]
-    }
-  } else {
-    if right != none {
-      [*#left* #h(1fr) *#right*]
-    } else {
-      [*#left* #h(1fr)]
-    }
-  }
-}
-
-#let line_two(left, right_start: none, right_end: none) = {
-  if right_start != none {
-    [#text(style: "italic", left) #h(1fr) #right_start #sym.dash.en #right_end]
-  } else {
-    [#text(style: "italic", left) #h(1fr) #right_end]
-  }
-}
-
-#let dot_list(title, elements, url: none) = {
-  if url != none {
-    [- *#link(url, title)*: #elements.join(", ")]
-  } else {
-    [- *#title*: #elements.join(", ")]
-  }
-}
-
-#let address_text(personal, opts) = {
-  if opts.show-address {
-    let address_line = ()
-
-    for key in ("city", "region", "country") {
-      let value = personal.location.at(key, default: none)
-      if value != none and value != "" {
-        address_line.push([#personal.location.at(key, default: none)])
-      }
-    }
-
-    [#address_line.join(", ") #personal.location.postalCode]
-
-    v(-0.5em)
-  }
-}
-
-#let contact_text(personal, opts) = block(
-  width: 100%, {
-    // remove empty elements from profiles
-    let profiles = array(
-      (
-        box(link("mailto:" + personal.email)), if opts.show-number { box(link("tel:" + personal.phone)) } else { none }, if personal.at("url", default: none) != none { box(link(personal.url, { personal.url.split("//").at(1) })) },
-      ).filter(it => it != none),
-    )
-
-    if personal.profiles.len() > 0 {
-      for profile in personal.profiles {
-        profiles.push(box(link(profile.url, { profile.url.split("//").at(1) })))
-      }
-    }
-
-    set text(font: opts.font.body, weight: "medium", size: opts.font.size * 1)
-    pad(x: 0em, {
-      profiles.join([#sym.space.en #sym.diamond.filled #sym.space.en])
-    })
-  },
-)
-
 #let header(personal, opts) = {
   align(center, {
     [= #personal.name]
 
-    address_text(personal, opts)
-    contact_text(personal, opts)
+    _address-line(personal, opts)
+    _contact-line(personal, opts)
   })
 }
 
@@ -139,20 +147,20 @@
       let url = work.at("url", default: none)
       let location = work.location
 
-      line_one(company, right: location, url: url)
+      _line-one(company, right: location, url: url)
 
       let index = 0
       for pos in work.positions {
         let start = pos.at("startDate", default: none)
         if start != none {
-          start = str_to_date(start)
+          start = _str-to-date(start)
         }
-        let end = str_to_date(pos.endDate)
+        let end = _str-to-date(pos.endDate)
 
         if index != 0 { v(0.5em) }
 
         block(above: 0.5em, {
-          line_two(pos.position, right_start: start, right_end: end)
+          _line-two(pos.position, right-start: start, right-end: end)
         })
 
         for hi in pos.highlights {
@@ -172,24 +180,24 @@
     for edu in edus {
       let start = edu.at("startDate", default: none)
       if start != none {
-        start = str_to_date(start)
+        start = _str-to-date(start)
       }
-      let end = str_to_date(edu.endDate)
+      let end = _str-to-date(edu.endDate)
 
       let left = [#edu.studyType in #edu.area]
       let url = edu.at("url", default: none)
 
       block(width: 100%, breakable: breakable, {
         // line 1: institution and location
-        line_one(edu.institution, right: edu.location, url: edu.url)
+        _line-one(edu.institution, right: edu.location, url: edu.url)
         linebreak()
         // line 2: degree and date
-        line_two(left, right_start: start, right_end: end)
+        _line-two(left, right-start: start, right-end: end)
         let honors = edu.at("honors", default: ())
-        dot_list("Honors", honors)
+        _dot-list("Honors", honors)
 
         let courses = edu.at("courses", default: ())
-        dot_list("Courses", courses)
+        _dot-list("Courses", courses)
 
         if edu.at("highlights", default: none) != none {
           for hi in edu.highlights {
@@ -209,17 +217,17 @@
       let url = af.at("url", default: none)
       let start = af.at("startDate", default: none)
       if start != none {
-        start = str_to_date(start)
+        start = _str-to-date(start)
       }
-      let end = str_to_date(af.endDate)
+      let end = _str-to-date(af.endDate)
 
       block(width: 100%, breakable: breakable, {
         // line 1: organization and location
-        line_one(af.organization, right: af.location, url: af.url)
+        _line-one(af.organization, right: af.location, url: af.url)
 
         linebreak()
         // line 2: position and date
-        line_two(af.position, right_start: start, right_end: end)
+        _line-two(af.position, right-start: start, right-end: end)
 
         if af.at("highlights", default: none) != none {
           for hi in af.highlights {
@@ -239,17 +247,17 @@
       let url = proj.at("url", default: none)
       let start = proj.at("startDate", default: none)
       if start != none {
-        start = str_to_date(start)
+        start = _str-to-date(start)
       }
-      let end = str_to_date(proj.endDate)
+      let end = _str-to-date(proj.endDate)
 
       block(width: 100%, breakable: breakable, {
         // line 1: project name
-        line_one(proj.name, url: url)
+        _line-one(proj.name, url: url)
 
         linebreak()
         // line 2: organization and date
-        line_two(proj.affiliation, right_start: start, right_end: end)
+        _line-two(proj.affiliation, right-start: start, right-end: end)
 
         for hi in proj.highlights {
           [- #eval(hi, mode: "markup")]
@@ -264,15 +272,15 @@
     [== Honors & Awards]
     for award in awards {
       let url = award.at("url", default: none)
-      let date = str_to_date(award.date)
+      let date = _str-to-date(award.date)
 
       block(width: 100%, breakable: breakable, {
         // line 1: award title and location
-        line_one(award.title, right: award.location, url: url)
+        _line-one(award.title, right: award.location, url: url)
 
         linebreak()
         // line 2: issuer and date
-        line_two(award.issuer, right_end: date)
+        _line-two(award.issuer, right-end: date)
 
         if award.at("highlights", default: none) != none {
           for hi in award.highlights {
@@ -290,15 +298,15 @@
 
     for cert in certs {
       let url = cert.at("url", default: none)
-      let date = str_to_date(cert.date)
+      let date = _str-to-date(cert.date)
 
       block(width: 100%, breakable: breakable, {
         // line 1: certificate name
-        line_one(cert.name, url: cert.url)
+        _line-one(cert.name, url: cert.url)
 
         linebreak()
         // line 2: issuer and date
-        line_two(cert.issuer, right_end: date)
+        _line-two(cert.issuer, right-end: date)
       })
     }
   })
@@ -310,15 +318,15 @@
 
     for pub in pubs {
       let url = pub.at("url", default: none)
-      let date = str_to_date(pub.releaseDate)
+      let date = _str-to-date(pub.releaseDate)
 
       block(width: 100%, breakable: breakable, {
         // line 1: publication title
-        line_one(pub.name, url: url)
+        _line-one(pub.name, url: url)
 
         linebreak()
         // line 2: publisher and date
-        [Published on #line_two(pub.publisher, right_end: date)]
+        [Published on #_line-two(pub.publisher, right-end: date)]
       })
     }
   })
@@ -329,19 +337,19 @@
     [== Skills, Languages & Interests]
 
     for skill-group in skill-groups {
-      dot_list(skill-group.category, skill-group.skills)
+      _dot-list(skill-group.category, skill-group.skills)
     }
 
     if langs != none {
-      let langs_join = ()
+      let langs-join = ()
       for lang in langs {
-        langs_join.push([#lang.language (#lang.fluency)])
+        langs-join.push([#lang.language (#lang.fluency)])
       }
-      dot_list("Languages", langs_join)
+      _dot-list("Languages", langs-join)
     }
 
     if interests != none {
-      dot_list("Interests", interests)
+      _dot-list("Interests", interests)
     }
   })
 }
@@ -351,7 +359,7 @@
     [== References]
 
     for ref in refs {
-      dot_list(ref.name, ("\"" + ref.reference + "\"",), url: ref.url)
+      _dot-list(ref.name, ("\"" + ref.reference + "\"",), url: ref.url)
     }
   })
 }

@@ -7,21 +7,21 @@
   show-number: true, // bool: show phone number in header
 )
 
-// you could override default style by re-applying style rules here
-#let set_style(doc) = {
+// you could override default style by reapplying style rules here
+#let set-style(doc) = {
   // set list(spacing: 10pt)
   // set par(leading: 10pt, justify: false)
   doc
 }
 
 #let init(doc) = {
-  doc = cv.set_style(options, doc)
-  doc = set_style(doc)
+  doc = cv.set-style(options, doc)
+  doc = set-style(doc)
 
   doc
 }
 
-// you could override each section format by re-declaring section function here
+// you could override each section format by redeclaring section function here
 // #let work = [
 //   [== Work Experience]
 // ]
