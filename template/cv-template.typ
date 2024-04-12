@@ -1,6 +1,6 @@
-#import "cv.typ"
+#import "../cv.typ"
 
-#let user-data = yaml("example.yml")
+#let user-data = yaml("cv-data.yml")
 
 #let options = (
   font: (body: "Linux Libertine", heading: "Linux Libertine", size: 10pt), heading-smallcaps: false, line-spacing: 6pt, show-address: true, // bool: show address in header
