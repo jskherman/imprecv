@@ -1,4 +1,13 @@
-#import "utils.typ"
+#let str_to_date(date-iso) = {
+  if lower(date-iso) == "present" {
+    return "Present"
+  } else {
+    let date = datetime(
+      year: int(date-iso.slice(0, 4)), month: int(date-iso.slice(5, 7)), day: int(date-iso.slice(8, 10)),
+    )
+    return date.display("[month repr:short]") + " " + date.display("[year repr:full]")
+  }
+}
 
 #let set_style(opts, doc) = {
   set list(spacing: opts.line-spacing)
@@ -136,9 +145,9 @@
       for pos in work.positions {
         let start = pos.at("startDate", default: none)
         if start != none {
-          start = utils.str_to_date(start)
+          start = str_to_date(start)
         }
-        let end = utils.str_to_date(pos.endDate)
+        let end = str_to_date(pos.endDate)
 
         if index != 0 { v(0.5em) }
 
@@ -163,9 +172,9 @@
     for edu in edus {
       let start = edu.at("startDate", default: none)
       if start != none {
-        start = utils.str_to_date(start)
+        start = str_to_date(start)
       }
-      let end = utils.str_to_date(edu.endDate)
+      let end = str_to_date(edu.endDate)
 
       let left = [#edu.studyType in #edu.area]
       let url = edu.at("url", default: none)
@@ -200,9 +209,9 @@
       let url = af.at("url", default: none)
       let start = af.at("startDate", default: none)
       if start != none {
-        start = utils.str_to_date(start)
+        start = str_to_date(start)
       }
-      let end = utils.str_to_date(af.endDate)
+      let end = str_to_date(af.endDate)
 
       block(width: 100%, breakable: breakable, {
         // line 1: organization and location
@@ -230,9 +239,9 @@
       let url = proj.at("url", default: none)
       let start = proj.at("startDate", default: none)
       if start != none {
-        start = utils.str_to_date(start)
+        start = str_to_date(start)
       }
-      let end = utils.str_to_date(proj.endDate)
+      let end = str_to_date(proj.endDate)
 
       block(width: 100%, breakable: breakable, {
         // line 1: project name
@@ -255,7 +264,7 @@
     [== Honors & Awards]
     for award in awards {
       let url = award.at("url", default: none)
-      let date = utils.str_to_date(award.date)
+      let date = str_to_date(award.date)
 
       block(width: 100%, breakable: breakable, {
         // line 1: award title and location
@@ -281,7 +290,7 @@
 
     for cert in certs {
       let url = cert.at("url", default: none)
-      let date = utils.str_to_date(cert.date)
+      let date = str_to_date(cert.date)
 
       block(width: 100%, breakable: breakable, {
         // line 1: certificate name
@@ -301,7 +310,7 @@
 
     for pub in pubs {
       let url = pub.at("url", default: none)
-      let date = utils.str_to_date(pub.releaseDate)
+      let date = str_to_date(pub.releaseDate)
 
       block(width: 100%, breakable: breakable, {
         // line 1: publication title
