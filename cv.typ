@@ -95,7 +95,7 @@
   set page(
     margin: 1.25cm, // 1.25cm, 1.87cm, 2.5cm
     number-align: center, // left, center, right
-    numbering: "1 / 1", paper: "us-letter", // a4, us-letter
+    numbering: "1 / 1", paper: opts.paper, // a4, us-letter
   )
 
   // name title case
