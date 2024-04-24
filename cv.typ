@@ -26,6 +26,7 @@
     show heading.where(
         level: 2,
     ): it => block(width: 100%)[
+        #v(uservars.sectionspacing)
         #set align(left)
         #set text(font: uservars.headingfont, size: 1em, weight: "bold")
         #if (uservars.at("headingsmallcaps", default:false)) {
