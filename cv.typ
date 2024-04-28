@@ -263,10 +263,14 @@
             block(width: 100%, breakable: isbreakable)[
                 // line 1: certificate name
                 #if cert.url != none [
-                    *#link(cert.url)[#cert.name]* #h(1fr) ID: #cert.id \
+                    *#link(cert.url)[#cert.name]* #h(1fr)
                 ] else [
-                    *#cert.name* #h(1fr)ID: #cert.id\
+                    *#cert.name* #h(1fr)
                 ]
+                #if cert.id != none [
+                    ID: #cert.id
+                ]
+                \
                 // line 2: issuer and date
                 Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #date \
             ]
