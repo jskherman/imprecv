@@ -24,8 +24,8 @@ This is based on the [popular template on Reddit](https://web.archive.org/https:
 See [**example CV**](https://github.com/jskherman/imprecv/releases/latest/download/example.pdf) and [@jskherman's CV](https://go.jskherman.com/cv):
 
 <div align="center">
-  <img src="assets/thumbnail.1.png" alt="Sample CV Page 1" style="float: left; width: 49%; height: auto;">
-  <img src="assets/thumbnail.2.png" alt="Sample CV Page 2" style="float: left; width: 49%; height: auto;">
+  <img src="https://github.com/jskherman/imprecv/raw/main/assets/thumbnail.1.png" alt="Sample CV Page 1" style="float: left; width: 49%; height: auto;">
+  <img src="https://github.com/jskherman/imprecv/raw/main/assets/thumbnail.2.png" alt="Sample CV Page 2" style="float: left; width: 49%; height: auto;">
 </div>
 
 ## Usage
