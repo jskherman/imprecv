@@ -1,10 +1,14 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/jskherman/cv.typ/main/cv.typ.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jskherman/imprecv/main/cv.typ.schema.json
 
 personal:
   name: John Smith L. Doe
   email: johndoe@example.com
   phone: (+1) 987 6543 210
   url: https://johndoe.com
+  titles:
+    - Software Engineer
+    - Data Analyst
+    - Entrepreneur
   location:
     city: New York
     region: New York
@@ -113,6 +117,7 @@ certificates:
     date: 2021-09-01
     issuer: Coursera
     url: https://example.com
+    id: "1MPR3CVR3SUM3"
 
 publications:
   - name: A convolutional neural network for predicting Greenland glacier melt and glacial water flow
@@ -127,7 +132,7 @@ projects:
     startDate: 2020-11-01
     endDate: 2021-04-30
     highlights:
-      - Created an AI-powered resume editor application that allowed users to easily create different resumes and cover letters specifically tailored to and customized for individual job descriptions based on their personal information in their complete curriculum vitae.
+      - Developed an AI-powered résumé editor app to create tailored résumés from users' comprehensive CVs based on specific job descriptions.
       - Acquired more than 100,000 user sign ups in 3 months and more than 10,000 active monthly users.
       - Generated profit of upwards \$20,000 yearly with a team of only four developers and three business operatives
 

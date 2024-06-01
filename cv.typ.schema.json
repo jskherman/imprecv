@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "$id": "https://raw.githubusercontent.com/jskherman/cv.typ/main/cv.typ.schema.json",
+  "$id": "https://raw.githubusercontent.com/jskherman/imprecv/main/cv.typ.schema.json",
   "type": "object",
   "default": {},
-  "title": "jskherman/cv.typ schema",
+  "title": "imprecv data schema",
   "required": [
     "personal",
     "education",
@@ -45,6 +45,13 @@
           ],
           "format": "uri",
           "default": ""
+        },
+        "titles": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "string"
+            }
         },
         "location": {
           "type": [
@@ -142,11 +149,11 @@
                   "type": "string"
                 },
                 "startDate": {
-                  "type": "string",
+                  "type": ["string", "null"],
                   "format": "date"
                 },
                 "endDate": {
-                  "type": "string"
+                  "type": ["string", "null"]
                 },
                 "highlights": {
                   "type": [
@@ -216,11 +223,11 @@
             }
           },
           "startDate": {
-            "type": "string",
+            "type": ["string", "null"],
             "format": "date"
           },
           "endDate": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "highlights": {
             "type": [
@@ -268,11 +275,11 @@
             "type": "string"
           },
           "startDate": {
-            "type": "string",
+            "type": ["string", "null"],
             "format": "date"
           },
           "endDate": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "highlights": {
             "type": [
@@ -344,7 +351,8 @@
         "required": [
           "name",
           "date",
-          "issuer"
+          "issuer",
+          "id"
         ],
         "properties": {
           "name": {
@@ -444,12 +452,12 @@
             "default": ""
           },
           "startDate": {
-            "type": "string",
+            "type": ["string", "null"],
             "format": "date",
             "default": ""
           },
           "endDate": {
-            "type": "string",
+            "type": ["string", "null"],
             "default": ""
           },
           "highlights": {

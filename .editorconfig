@@ -4,19 +4,22 @@
 
 root = true
 
-[*.typ]
+[*]
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 indent_style = space
-indent_size = 4
 max_line_length = 120
 
-[*.md]
+[*.{rs,toml,json}]
+indent_size = 4
+
+[*.{typ,md}]
 # double whitespace at end of line
 # denotes a line break in Markdown
+indent_size = 2
 trim_trailing_whitespace = false
 
-[*.yml]
+[*.{yml,yaml}]
 indent_size = 2
