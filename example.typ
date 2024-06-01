@@ -7,7 +7,7 @@
     bodyfont: "Linux Libertine",
     fontsize: 10pt, // 10pt, 11pt, 12pt
     linespacing: 6pt,
-    sectionspacing: 10pt,
+    sectionspacing: 0pt,
     showAddress: true, // true/false show address in contact info
     showNumber: true,  // true/false show phone number in contact info
     headingsmallcaps: false
