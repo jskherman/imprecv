@@ -1,0 +1,12 @@
+[package]
+name = "imprecv"
+version = "0.5.0"
+entrypoint = "lib.typ"
+authors = ["Typst GmbH <https://typst.app>"]
+license = "MIT-0"
+description = "An IEEE-style paper template to publish at conferences and journals for Electrical Engineering, Computer Science, and Computer Engineering"
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"

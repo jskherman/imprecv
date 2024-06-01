@@ -364,6 +364,10 @@
             "type": "string",
             "format": "uri",
             "default": ""
+          },
+          "id": {
+            "type": "string",
+            "default": ""
           }
         }
       }

@@ -26,6 +26,7 @@
     show heading.where(
         level: 2,
     ): it => block(width: 100%)[
+        #v(uservars.sectionspacing)
         #set align(left)
         #set text(font: uservars.headingfont, size: 1em, weight: "bold")
         #if (uservars.at("headingsmallcaps", default:false)) {
@@ -263,10 +264,14 @@
             block(width: 100%, breakable: isbreakable)[
                 // line 1: certificate name
                 #if cert.url != none [
-                    *#link(cert.url)[#cert.name]* \
+                    *#link(cert.url)[#cert.name]* #h(1fr)
                 ] else [
-                    *#cert.name* \
+                    *#cert.name* #h(1fr)
                 ]
+                #if "id" in cert.keys() and cert.id != none and cert.id.len() > 0 [
+                    ID: #cert.id
+                ]
+                \
                 // line 2: issuer and date
                 Issued by #text(style: "italic")[#cert.issuer]  #h(1fr) #date \
             ]

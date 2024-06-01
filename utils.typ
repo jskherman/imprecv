@@ -29,12 +29,12 @@
 #let strpdate(isodate) = {
     let date = ""
     if lower(isodate) != "present" {
-        date = datetime(
-            year: int(isodate.slice(0, 4)),
-            month: int(isodate.slice(5, 7)),
-            day: int(isodate.slice(8, 10))
-        )
-        date = date.display("[month repr:short]") + " " + date.display("[year repr:full]")
+        let year = int(isodate.slice(0, 4))
+        let month = int(isodate.slice(5, 7))
+        let day = int(isodate.slice(8, 10))
+        let monthName = monthname(month, display: "short")
+        date = datetime(year: year, month: month, day: day)
+        date = monthName + " " + date.display("[year repr:full]")
     } else if lower(isodate) == "present" {
         date = "Present"
     }
