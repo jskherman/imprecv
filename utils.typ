@@ -40,3 +40,15 @@
     }
     return date
 }
+
+#let daterange(start, end) = {
+    if start != none and end != none [
+        #start #sym.dash.en #end
+    ]
+    if start == none and end != none [
+        #end
+    ]
+    if start != none and end == none [
+        #start
+    ]
+}
