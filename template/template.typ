@@ -1,4 +1,4 @@
-#import "@preview/imprecv:0.5.0": *
+#import "@preview/imprecv:1.0.0": *
 
 #let cvdata = yaml("template.yml")
 
