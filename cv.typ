@@ -268,7 +268,7 @@
                 ] else [
                     *#cert.name* #h(1fr)
                 ]
-                #if cert.id != none [
+                #if "id" in cert.keys() and cert.id != none and cert.id.len() > 0 [
                     ID: #cert.id
                 ]
                 \
