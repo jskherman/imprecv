@@ -7,7 +7,9 @@
   <a href="LICENSE">
     <img alt="Apache-2 License" src="https://img.shields.io/badge/license-Apache%202-brightgreen"/>
   </a>
-  <img alt="Release" src="https://img.shields.io/github/v/release/jskherman/imprecv"/>
+  <a href="https://github.com/jskherman/imprecv/releases">
+    <img alt="Release" src="https://img.shields.io/github/v/release/jskherman/imprecv"/>
+  </a>
 </p>
 
 `imprecv` is a no-frills curriculum vitae (CV) template for [Typst](https://github.com/typst/typst) that uses a YAML file for data input in order to version control CV data easily.
