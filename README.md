@@ -28,15 +28,13 @@ See [**example CV**](https://github.com/jskherman/imprecv/releases/latest/downlo
   <img src="https://github.com/jskherman/imprecv/raw/main/assets/thumbnail.2.png" alt="Sample CV Page 2" style="float: left; width: 49%; height: auto;">
 </div>
 
-
+<!-- 
 `imprecv` is intended to be used by importing the `cv.typ` file from a "content"
 file (see [`template.typ`](template/template.typ) as an example). In this content file,
 call the functions which apply document styles, show CV components, and load CV
 data from a YAML file (see [`template.yml`](template/template.yml) as an example). Inside
 the content file you can modify several style variables and even override
 existing function implementations to your own needs and preferences.
-
-<!-- 
 
 ### With the [Typst CLI](https://github.com/typst/typst)
 
