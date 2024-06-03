@@ -36,6 +36,8 @@ data from a YAML file (see [`template.yml`](template/template.yml) as an example
 the content file you can modify several style variables and even override
 existing function implementations to your own needs and preferences.
 
+<!-- 
+
 ### With the [Typst CLI](https://github.com/typst/typst)
 
 The recommended usage with Typst CLI is by adding this `imprecv` repository as a [git
@@ -75,8 +77,8 @@ Take a look at the [example setup](https://github.com/jskherman/cv.typ-example-r
    `template.yml`.
 2. Use `template.typ` and `template.yml` (or whatever the names after you rename it) as a
    template/starting point for your CV.
+-->
 
-<!-- 
 ## Usage
 
 This `imprecv` is intended to be used by importing the template's [package entrypoint](cv.typ) from a "content" file (see [`template.typ`](template/template.typ) as an example).
@@ -85,15 +87,24 @@ Inside the content file you can modify several style variables and even override
 
 ### With the [Typst CLI](https://github.com/typst/typst)
 
-The recommended usage with the Typst CLI is by running the command `typst init @preview/imprecv:0.5.0` in your project directory.
+The recommended usage with the Typst CLI is by running the command `typst init @preview/imprecv:1.0.0` in your project directory.
 This will create a new Typst project with the `imprecv` template and the necessary files to get started.
 You can then run `typst compile template.typ` to compile your file to PDF.
 
 Take a look at the [example setup](https://github.com/jskherman/cv.typ-example-repo) for ideas on how to get started. It includes a GitHub action workflow to compile the Typst files to PDF and upload it to Cloudflare R2.
 
+<!--
 ### With [typst.app](https://typst.app)
 
 From the Dashboard, select "Start from template", search and choose the `imprecv` template.
 From there, decide on a name for your project and click "Create".
 You can now edit the template files and preview the result on the right.
 -->
+
+### With [typst.app](https://typst.app)
+
+1. Upload the [`cv.typ`](cv.typ), [`utils.typ`](utils.typ), [`template.typ`](template/template.typ). and
+   [`template.yml`](template/template.yml) files to your Typst project. You may rename `template.typ` and
+   `template.yml`.
+2. Use `template.typ` and `template.yml` (or whatever the names after you rename it) as a
+   template/starting point for your CV.
