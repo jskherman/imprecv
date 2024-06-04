@@ -16,9 +16,6 @@
 
 This is based on the [popular template on Reddit](https://web.archive.org/https://old.reddit.com/r/jobs/comments/7y8k6p/im_an_exrecruiter_for_some_of_the_top_companies/) by [u/SheetsGiggles](https://web.archive.org/https://old.reddit.com/user/SheetsGiggles) and the recommendations of the [r/EngineeringResumes wiki](https://web.archive.org/https://old.reddit.com/r/EngineeringResumes/comments/m2cc65/new_and_improved_wiki).
 
-> [!NOTE]  
-> [I'm](https://github.com/jskherman) only doing programming as a hobby so it might take me a while to respond to issues and pull requests. If you would like to contribute to this project, I would be happy to review your pull requests when I can. Thank you for your understanding.
-
 ## Demo
 
 See [**example CV**](https://github.com/jskherman/imprecv/releases/latest/download/example.pdf) and [@jskherman's CV](https://go.jskherman.com/cv):
@@ -91,14 +88,15 @@ You can then run `typst compile template.typ` to compile your file to PDF.
 
 Take a look at the [example setup](https://github.com/jskherman/cv.typ-example-repo) for ideas on how to get started. It includes a GitHub action workflow to compile the Typst files to PDF and upload it to Cloudflare R2.
 
-<!--
 ### With [typst.app](https://typst.app)
 
 From the Dashboard, select "Start from template", search and choose the `imprecv` template.
 From there, decide on a name for your project and click "Create".
 You can now edit the template files and preview the result on the right.
--->
 
+You can also click the `Create project in app` button in [Typst Universe](https://typst.app/universe/package/imprecv) to create a new project with the `imprecv` template.
+
+<!--
 ### With [typst.app](https://typst.app)
 
 1. Upload the [`cv.typ`](cv.typ), [`utils.typ`](utils.typ), [`template.typ`](template/template.typ). and
@@ -106,3 +104,11 @@ You can now edit the template files and preview the result on the right.
    `template.yml`.
 2. Use `template.typ` and `template.yml` (or whatever the names after you rename it) as a
    template/starting point for your CV.
+
+-->
+
+## Contributing
+
+[I'm](https://github.com/jskherman) only doing programming as a hobby so it might take me a while to respond to issues and pull requests.
+If you would like to contribute to this project, I would be happy to review your pull requests when I can.
+Thank you for your understanding.
