@@ -74,8 +74,13 @@
 // Address
 #let addresstext(info, uservars) = {
     if uservars.showAddress {
+        // Filter out empty address fields
+        let address = info.personal.location.pairs().filter(it => it.at(1) != none and str(it.at(1)) != "")
+        // Join non-empty address fields with commas
+        let location = address.map(it => str(it.at(1))).join(", ")
+
         block(width: 100%)[
-            #info.personal.location.city, #info.personal.location.region, #info.personal.location.country #info.personal.location.postalCode
+            #location
             #v(-4pt)
         ]
     } else {none}

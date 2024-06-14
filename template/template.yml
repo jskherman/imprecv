@@ -12,7 +12,6 @@ personal:
   location:
     city: New York
     region: New York
-    postalCode: 1234
     country: United States of America
   profiles:
     - network: LinkedIn

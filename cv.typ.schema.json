@@ -62,7 +62,6 @@
           "required": [
             "city",
             "region",
-            "postalCode",
             "country"
           ],
           "properties": {
