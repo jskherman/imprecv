@@ -118,9 +118,9 @@
     ]
 }
 
-#let cvwork(info, isbreakable: true) = {
+#let cvwork(info, title: "Work Experience", isbreakable: true) = {
     if info.work != none {block[
-        == Work Experience
+        == #title
         #for w in info.work {
             block(width: 100%, breakable: isbreakable)[
                 // Line 1: Company and Location
@@ -152,9 +152,9 @@
     ]}
 }
 
-#let cveducation(info, isbreakable: true) = {
+#let cveducation(info, title: "Education", isbreakable: true) = {
     if info.education != none {block[
-        == Education
+        == #title
         #for edu in info.education {
             let start = utils.strpdate(edu.startDate)
             let end = utils.strpdate(edu.endDate)
@@ -186,9 +186,9 @@
     ]}
 }
 
-#let cvaffiliations(info, isbreakable: true) = {
+#let cvaffiliations(info, title: "Leadership and Activities", isbreakable: true) = {
     if info.affiliations != none {block[
-        == Leadership & Activities
+        == #title
         #for org in info.affiliations {
             // Parse ISO date strings into datetime objects
             let start = utils.strpdate(org.startDate)
@@ -216,9 +216,9 @@
     ]}
 }
 
-#let cvprojects(info, isbreakable: true) = {
+#let cvprojects(info, title: "Projects", isbreakable: true) = {
     if info.projects != none {block[
-        == Projects
+        == #title
         #for project in info.projects {
             // Parse ISO date strings into datetime objects
             let start = utils.strpdate(project.startDate)
@@ -242,9 +242,9 @@
     ]}
 }
 
-#let cvawards(info, isbreakable: true) = {
+#let cvawards(info, title: "Honors and Awards", isbreakable: true) = {
     if info.awards != none {block[
-        == Honors & Awards
+        == #title
         #for award in info.awards {
             // Parse ISO date strings into datetime objects
             let date = utils.strpdate(award.date)
@@ -269,9 +269,9 @@
     ]}
 }
 
-#let cvcertificates(info, isbreakable: true) = {
+#let cvcertificates(info, title: "Licenses and Certifications", isbreakable: true) = {
     if info.certificates != none {block[
-        == Licenses & Certifications
+        == #title
 
         #for cert in info.certificates {
             // Parse ISO date strings into datetime objects
@@ -295,9 +295,9 @@
     ]}
 }
 
-#let cvpublications(info, isbreakable: true) = {
+#let cvpublications(info, title: "Research and Publications", isbreakable: true) = {
     if info.publications != none {block[
-        == Research & Publications
+        == #title
         #for pub in info.publications {
             // Parse ISO date strings into datetime objects
             let date = utils.strpdate(pub.releaseDate)
@@ -316,9 +316,9 @@
     ]}
 }
 
-#let cvskills(info, isbreakable: true) = {
+#let cvskills(info, title: "Skills, Languages, Interests", isbreakable: true) = {
     if (info.languages != none) or (info.skills != none) or (info.interests != none) {block(breakable: isbreakable)[
-        == Skills, Languages, Interests
+        == #title
         #if (info.languages != none) [
             #let langs = ()
             #for lang in info.languages {
@@ -337,9 +337,9 @@
     ]}
 }
 
-#let cvreferences(info, isbreakable: true) = {
+#let cvreferences(info, title: "References", isbreakable: true) = {
     if info.references != none {block[
-        == References
+        == #title
         #for ref in info.references {
             block(width: 100%, breakable: isbreakable)[
                 #if ref.url != none [
