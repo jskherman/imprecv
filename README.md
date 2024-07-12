@@ -20,10 +20,21 @@ This is based on the [popular template on Reddit](https://web.archive.org/https:
 
 See [**example CV**](https://github.com/jskherman/imprecv/releases/latest/download/example.pdf) and [@jskherman's CV](https://go.jskherman.com/cv):
 
-<div align="center">
+<table cellspacing="0" style="border-collapse: collapse !important; border-spacing: 0 !important;">
+ <tr>
+  <td>
+   <img src="https://github.com/jskherman/imprecv/raw/main/assets/thumbnail.1.png" alt="Sample CV Page 1">
+  </td>
+  <td>
+   <img src="https://github.com/jskherman/imprecv/raw/main/assets/thumbnail.2.png" alt="Sample CV Page 2">
+  </td>
+ </tr>
+</table>
+
+<!-- <div align="center">
   <img src="https://github.com/jskherman/imprecv/raw/main/assets/thumbnail.1.png" alt="Sample CV Page 1" style="float: left; width: 49%; height: auto;">
   <img src="https://github.com/jskherman/imprecv/raw/main/assets/thumbnail.2.png" alt="Sample CV Page 2" style="float: left; width: 49%; height: auto;">
-</div>
+</div> -->
 
 <!-- 
 `imprecv` is intended to be used by importing the `cv.typ` file from a "content"
@@ -64,14 +75,6 @@ into your CV's repo.
   ```
 
 Take a look at the [example setup](https://github.com/jskherman/cv.typ-example-repo) for ideas on how to get started. It includes a GitHub action workflow to compile the Typst files to PDF and upload it to Cloudflare R2.
-
-### With [typst.app](https://typst.app)
-
-1. Upload the [`cv.typ`](cv.typ), [`utils.typ`](utils.typ), [`template.typ`](template/template.typ). and
-   [`template.yml`](template/template.yml) files to your Typst project. You may rename `template.typ` and
-   `template.yml`.
-2. Use `template.typ` and `template.yml` (or whatever the names after you rename it) as a
-   template/starting point for your CV.
 -->
 
 ## Usage
