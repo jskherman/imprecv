@@ -310,7 +310,11 @@
                     *#pub.name* \
                 ]
                 // Line 2: Publisher and Date
-                Published on #text(style: "italic")[#pub.publisher]  #h(1fr) #date \
+                #if pub.publisher != none [
+                    Published on #text(style: "italic")[#pub.publisher]  #h(1fr) #date \
+                ] else [
+                    In press \
+                ]
             ]
         }
     ]}
