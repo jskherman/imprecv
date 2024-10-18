@@ -178,7 +178,11 @@
                     *#edu.institution* #h(1fr) *#edu.location* \
                 ]
                 // Line 2: Degree and Date
-                #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
+                #if edu.area != none [
+                    #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
+                ] else [
+                    #text(style: "italic")[#edu.studyType] #h(1fr)
+                ]
                 #utils.daterange(start, end) \
                 #eval(edu-items, mode: "markup")
             ]
