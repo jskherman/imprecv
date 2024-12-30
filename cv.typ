@@ -90,7 +90,7 @@
     #let profiles = (
         box(link("mailto:" + info.personal.email)),
         if uservars.showNumber {box(link("tel:" + info.personal.phone))} else {none},
-        if info.personal.url != none {
+        if ("url" in info.personal) and (info.personal.url != none) {
             box(link(info.personal.url)[#info.personal.url.split("//").at(1)])
         }
     ).filter(it => it != none) // Filter out none elements from the profile array
@@ -119,12 +119,12 @@
 }
 
 #let cvwork(info, title: "Work Experience", isbreakable: true) = {
-    if info.work != none {block[
+    if ("work" in info) and (info.work != none) {block[
         == #title
         #for w in info.work {
             block(width: 100%, breakable: isbreakable)[
                 // Line 1: Company and Location
-                #if w.url != none [
+                #if ("url" in w) and (w.url != none) [
                     *#link(w.url)[#w.organization]* #h(1fr) *#w.location* \
                 ] else [
                     *#w.organization* #h(1fr) *#w.location* \
@@ -153,16 +153,16 @@
 }
 
 #let cveducation(info, title: "Education", isbreakable: true) = {
-    if info.education != none {block[
+    if ("education" in info) and (info.education != none) {block[
         == #title
         #for edu in info.education {
             let start = utils.strpdate(edu.startDate)
             let end = utils.strpdate(edu.endDate)
 
             let edu-items = ""
-            if edu.honors != none {edu-items = edu-items + "- *Honors*: " + edu.honors.join(", ") + "\n"}
-            if edu.courses != none {edu-items = edu-items + "- *Courses*: " + edu.courses.join(", ") + "\n"}
-            if edu.highlights != none {
+            if ("honors" in edu) and (edu.honors != none) {edu-items = edu-items + "- *Honors*: " + edu.honors.join(", ") + "\n"}
+            if ("courses" in edu) and (edu.courses != none) {edu-items = edu-items + "- *Courses*: " + edu.courses.join(", ") + "\n"}
+            if ("highlights" in edu) and (edu.highlights != none) {
                 for hi in edu.highlights {
                     edu-items = edu-items + "- " + hi + "\n"
                 }
@@ -172,13 +172,13 @@
             // Create a block layout for each education entry
             block(width: 100%, breakable: isbreakable)[
                 // Line 1: Institution and Location
-                #if edu.url != none [
+                #if ("url" in edu) and (edu.url != none) [
                     *#link(edu.url)[#edu.institution]* #h(1fr) *#edu.location* \
                 ] else [
                     *#edu.institution* #h(1fr) *#edu.location* \
                 ]
                 // Line 2: Degree and Date
-                #if edu.area != none [
+                #if ("area" in edu) and (edu.area != none) [
                     #text(style: "italic")[#edu.studyType in #edu.area] #h(1fr)
                 ] else [
                     #text(style: "italic")[#edu.studyType] #h(1fr)
@@ -191,7 +191,7 @@
 }
 
 #let cvaffiliations(info, title: "Leadership and Activities", isbreakable: true) = {
-    if info.affiliations != none {block[
+    if ("affiliations" in info) and (info.affiliations != none) {block[
         == #title
         #for org in info.affiliations {
             // Parse ISO date strings into datetime objects
@@ -201,7 +201,7 @@
             // Create a block layout for each affiliation entry
             block(width: 100%, breakable: isbreakable)[
                 // Line 1: Organization and Location
-                #if org.url != none [
+                #if ("url" in org) and (org.url != none) [
                     *#link(org.url)[#org.organization]* #h(1fr) *#org.location* \
                 ] else [
                     *#org.organization* #h(1fr) *#org.location* \
@@ -210,7 +210,7 @@
                 #text(style: "italic")[#org.position] #h(1fr)
                 #utils.daterange(start, end) \
                 // Highlights or Description
-                #if org.highlights != none {
+                #if ("highlights" in org) and (org.highlights != none) {
                     for hi in org.highlights [
                         - #eval(hi, mode: "markup")
                     ]
@@ -221,7 +221,7 @@
 }
 
 #let cvprojects(info, title: "Projects", isbreakable: true) = {
-    if info.projects != none {block[
+    if ("projects" in info) and (info.projects != none) {block[
         == #title
         #for project in info.projects {
             // Parse ISO date strings into datetime objects
@@ -230,7 +230,7 @@
             // Create a block layout for each project entry
             block(width: 100%, breakable: isbreakable)[
                 // Line 1: Project Name
-                #if project.url != none [
+                #if ("url" in project) and (project.url != none) [
                     *#link(project.url)[#project.name]* \
                 ] else [
                     *#project.name* \
@@ -247,7 +247,7 @@
 }
 
 #let cvawards(info, title: "Honors and Awards", isbreakable: true) = {
-    if info.awards != none {block[
+    if ("awards" in info) and (info.awards != none) {block[
         == #title
         #for award in info.awards {
             // Parse ISO date strings into datetime objects
@@ -255,7 +255,7 @@
             // Create a block layout for each award entry
             block(width: 100%, breakable: isbreakable)[
                 // Line 1: Award Title and Location
-                #if award.url != none [
+                #if ("url" in award) and (award.url != none) [
                     *#link(award.url)[#award.title]* #h(1fr) *#award.location* \
                 ] else [
                     *#award.title* #h(1fr) *#award.location* \
@@ -263,7 +263,7 @@
                 // Line 2: Issuer and Date
                 Issued by #text(style: "italic")[#award.issuer]  #h(1fr) #date \
                 // Summary or Description
-                #if award.highlights != none {
+                #if ("highlights" in award) and (award.highlights != none) {
                     for hi in award.highlights [
                         - #eval(hi, mode: "markup")
                     ]
@@ -274,7 +274,7 @@
 }
 
 #let cvcertificates(info, title: "Licenses and Certifications", isbreakable: true) = {
-    if info.certificates != none {block[
+    if ("certificates" in info) and (info.certificates != none) {block[
         == #title
 
         #for cert in info.certificates {
@@ -283,12 +283,12 @@
             // Create a block layout for each certificate entry
             block(width: 100%, breakable: isbreakable)[
                 // Line 1: Certificate Name and ID (if applicable)
-                #if cert.url != none [
+                #if ("url" in cert) and (cert.url != none) [
                     *#link(cert.url)[#cert.name]* #h(1fr)
                 ] else [
                     *#cert.name* #h(1fr)
                 ]
-                #if "id" in cert.keys() and cert.id != none and cert.id.len() > 0 [
+                #if "id" in cert and cert.id != none and cert.id.len() > 0 [
                   ID: #raw(cert.id)
                 ]
                 \
@@ -300,7 +300,7 @@
 }
 
 #let cvpublications(info, title: "Research and Publications", isbreakable: true) = {
-    if info.publications != none {block[
+    if ("publications" in info) and (info.publications != none) {block[
         == #title
         #for pub in info.publications {
             // Parse ISO date strings into datetime objects
@@ -325,32 +325,32 @@
 }
 
 #let cvskills(info, title: "Skills, Languages, Interests", isbreakable: true) = {
-    if (info.languages != none) or (info.skills != none) or (info.interests != none) {block(breakable: isbreakable)[
+    if (("languages" in info) or ("skills" in info) or ("interests" in info)) and ((info.languages != none) or (info.skills != none) or (info.interests != none)) {block(breakable: isbreakable)[
         == #title
-        #if (info.languages != none) [
+        #if ("languages" in info) and (info.languages != none) [
             #let langs = ()
             #for lang in info.languages {
                 langs.push([#lang.language (#lang.fluency)])
             }
             - *Languages*: #langs.join(", ")
         ]
-        #if (info.skills != none) [
+        #if ("skills" in info) and (info.skills != none) [
             #for group in info.skills [
                 - *#group.category*: #group.skills.join(", ")
             ]
         ]
-        #if (info.interests != none) [
+        #if ("interests" in info) and (info.interests != none) [
             - *Interests*: #info.interests.join(", ")
         ]
     ]}
 }
 
 #let cvreferences(info, title: "References", isbreakable: true) = {
-    if info.references != none {block[
+    if ("references" in info) and (info.references != none) {block[
         == #title
         #for ref in info.references {
             block(width: 100%, breakable: isbreakable)[
-                #if ref.url != none [
+                #if ("url" in ref) and (ref.url != none) [
                     - *#link(ref.url)[#ref.name]*: "#ref.reference"
                 ] else [
                     - *#ref.name*: "#ref.reference"
