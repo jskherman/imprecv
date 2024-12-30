@@ -63,7 +63,7 @@
 
 // Job titles
 #let jobtitletext(info, uservars) = {
-    if uservars.showTitle {
+    if ("titles" in info.personal and info.personal.titles != none) and uservars.showTitle {
         block(width: 100%)[
             *#info.personal.titles.join("  /  ")*
             #v(-4pt)
@@ -73,7 +73,7 @@
 
 // Address
 #let addresstext(info, uservars) = {
-    if uservars.showAddress {
+    if ("location" in info.personal and info.personal.location != none) and uservars.showAddress {
         // Filter out empty address fields
         let address = info.personal.location.pairs().filter(it => it.at(1) != none and str(it.at(1)) != "")
         // Join non-empty address fields with commas
@@ -88,14 +88,14 @@
 
 #let contacttext(info, uservars) = block(width: 100%)[
     #let profiles = (
-        box(link("mailto:" + info.personal.email)),
-        if uservars.showNumber {box(link("tel:" + info.personal.phone))} else {none},
+        if "email" in info.personal and info.personal.email != none { box(link("mailto:" + info.personal.email)) },
+        if ("phone" in info.personal and info.personal.phone != none) and uservars.showNumber {box(link("tel:" + info.personal.phone))} else {none},
         if ("url" in info.personal) and (info.personal.url != none) {
             box(link(info.personal.url)[#info.personal.url.split("//").at(1)])
         }
     ).filter(it => it != none) // Filter out none elements from the profile array
 
-    #if info.personal.profiles.len() > 0 {
+    #if ("profiles" in info.personal) and (info.personal.profiles.len() > 0) {
         for profile in info.personal.profiles {
             profiles.push(
                 box(link(profile.url)[#profile.url.split("//").at(1)])
